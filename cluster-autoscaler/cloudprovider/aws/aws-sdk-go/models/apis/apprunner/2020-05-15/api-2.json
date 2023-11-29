@@ -97,6 +97,21 @@
         {"shape":"ServiceQuotaExceededException"}
       ]
     },
+    "CreateVpcIngressConnection":{
+      "name":"CreateVpcIngressConnection",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"CreateVpcIngressConnectionRequest"},
+      "output":{"shape":"CreateVpcIngressConnectionResponse"},
+      "errors":[
+        {"shape":"InvalidRequestException"},
+        {"shape":"InvalidStateException"},
+        {"shape":"InternalServiceErrorException"},
+        {"shape":"ServiceQuotaExceededException"}
+      ]
+    },
     "DeleteAutoScalingConfiguration":{
       "name":"DeleteAutoScalingConfiguration",
       "http":{
@@ -168,6 +183,21 @@
         {"shape":"ResourceNotFoundException"}
       ]
     },
+    "DeleteVpcIngressConnection":{
+      "name":"DeleteVpcIngressConnection",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteVpcIngressConnectionRequest"},
+      "output":{"shape":"DeleteVpcIngressConnectionResponse"},
+      "errors":[
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceErrorException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidStateException"}
+      ]
+    },
     "DescribeAutoScalingConfiguration":{
       "name":"DescribeAutoScalingConfiguration",
       "http":{
@@ -232,6 +262,20 @@
       },
       "input":{"shape":"DescribeVpcConnectorRequest"},
       "output":{"shape":"DescribeVpcConnectorResponse"},
+      "errors":[
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceErrorException"},
+        {"shape":"ResourceNotFoundException"}
+      ]
+    },
+    "DescribeVpcIngressConnection":{
+      "name":"DescribeVpcIngressConnection",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeVpcIngressConnectionRequest"},
+      "output":{"shape":"DescribeVpcIngressConnectionResponse"},
       "errors":[
         {"shape":"InvalidRequestException"},
         {"shape":"InternalServiceErrorException"},
@@ -319,6 +363,20 @@
         {"shape":"InternalServiceErrorException"}
       ]
     },
+    "ListServicesForAutoScalingConfiguration":{
+      "name":"ListServicesForAutoScalingConfiguration",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListServicesForAutoScalingConfigurationRequest"},
+      "output":{"shape":"ListServicesForAutoScalingConfigurationResponse"},
+      "errors":[
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceErrorException"},
+        {"shape":"ResourceNotFoundException"}
+      ]
+    },
     "ListTagsForResource":{
       "name":"ListTagsForResource",
       "http":{
@@ -342,6 +400,19 @@
       },
       "input":{"shape":"ListVpcConnectorsRequest"},
       "output":{"shape":"ListVpcConnectorsResponse"},
+      "errors":[
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceErrorException"}
+      ]
+    },
+    "ListVpcIngressConnections":{
+      "name":"ListVpcIngressConnections",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListVpcIngressConnectionsRequest"},
+      "output":{"shape":"ListVpcIngressConnectionsResponse"},
       "errors":[
         {"shape":"InvalidRequestException"},
         {"shape":"InternalServiceErrorException"}
@@ -421,6 +492,20 @@
         {"shape":"InvalidStateException"}
       ]
     },
+    "UpdateDefaultAutoScalingConfiguration":{
+      "name":"UpdateDefaultAutoScalingConfiguration",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateDefaultAutoScalingConfigurationRequest"},
+      "output":{"shape":"UpdateDefaultAutoScalingConfigurationResponse"},
+      "errors":[
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceErrorException"},
+        {"shape":"ResourceNotFoundException"}
+      ]
+    },
     "UpdateService":{
       "name":"UpdateService",
       "http":{
@@ -429,6 +514,21 @@
       },
       "input":{"shape":"UpdateServiceRequest"},
       "output":{"shape":"UpdateServiceResponse"},
+      "errors":[
+        {"shape":"InvalidRequestException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidStateException"},
+        {"shape":"InternalServiceErrorException"}
+      ]
+    },
+    "UpdateVpcIngressConnection":{
+      "name":"UpdateVpcIngressConnection",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateVpcIngressConnectionRequest"},
+      "output":{"shape":"UpdateVpcIngressConnectionResponse"},
       "errors":[
         {"shape":"InvalidRequestException"},
         {"shape":"ResourceNotFoundException"},
@@ -445,7 +545,6 @@
     },
     "ASConfigMaxSize":{
       "type":"integer",
-      "max":25,
       "min":1
     },
     "ASConfigMinSize":{
@@ -476,12 +575,14 @@
       "required":[
         "DNSTarget",
         "ServiceArn",
-        "CustomDomain"
+        "CustomDomain",
+        "VpcDNSTargets"
       ],
       "members":{
         "DNSTarget":{"shape":"String"},
         "ServiceArn":{"shape":"AppRunnerResourceArn"},
-        "CustomDomain":{"shape":"CustomDomain"}
+        "CustomDomain":{"shape":"CustomDomain"},
+        "VpcDNSTargets":{"shape":"VpcDNSTargetList"}
       }
     },
     "AuthenticationConfiguration":{
@@ -496,14 +597,16 @@
       "members":{
         "AutoScalingConfigurationArn":{"shape":"AppRunnerResourceArn"},
         "AutoScalingConfigurationName":{"shape":"AutoScalingConfigurationName"},
-        "AutoScalingConfigurationRevision":{"shape":"Integer"},
-        "Latest":{"shape":"Boolean"},
+        "AutoScalingConfigurationRevision":{"shape":"AutoScalingConfigurationRevision"},
+        "Latest":{"shape":"Latest"},
         "Status":{"shape":"AutoScalingConfigurationStatus"},
-        "MaxConcurrency":{"shape":"Integer"},
-        "MinSize":{"shape":"Integer"},
-        "MaxSize":{"shape":"Integer"},
+        "MaxConcurrency":{"shape":"MaxConcurrency"},
+        "MinSize":{"shape":"MinSize"},
+        "MaxSize":{"shape":"MaxSize"},
         "CreatedAt":{"shape":"Timestamp"},
-        "DeletedAt":{"shape":"Timestamp"}
+        "DeletedAt":{"shape":"Timestamp"},
+        "HasAssociatedService":{"shape":"HasAssociatedService"},
+        "IsDefault":{"shape":"IsDefault"}
       }
     },
     "AutoScalingConfigurationName":{
@@ -512,6 +615,7 @@
       "min":4,
       "pattern":"[A-Za-z0-9][A-Za-z0-9\\-_]{3,31}"
     },
+    "AutoScalingConfigurationRevision":{"type":"integer"},
     "AutoScalingConfigurationStatus":{
       "type":"string",
       "enum":[
@@ -524,7 +628,11 @@
       "members":{
         "AutoScalingConfigurationArn":{"shape":"AppRunnerResourceArn"},
         "AutoScalingConfigurationName":{"shape":"AutoScalingConfigurationName"},
-        "AutoScalingConfigurationRevision":{"shape":"Integer"}
+        "AutoScalingConfigurationRevision":{"shape":"Integer"},
+        "Status":{"shape":"AutoScalingConfigurationStatus"},
+        "CreatedAt":{"shape":"Timestamp"},
+        "HasAssociatedService":{"shape":"HasAssociatedService"},
+        "IsDefault":{"shape":"IsDefault"}
       }
     },
     "AutoScalingConfigurationSummaryList":{
@@ -574,7 +682,8 @@
         "BuildCommand":{"shape":"BuildCommand"},
         "StartCommand":{"shape":"StartCommand"},
         "Port":{"shape":"String"},
-        "RuntimeEnvironmentVariables":{"shape":"RuntimeEnvironmentVariables"}
+        "RuntimeEnvironmentVariables":{"shape":"RuntimeEnvironmentVariables"},
+        "RuntimeEnvironmentSecrets":{"shape":"RuntimeEnvironmentSecrets"}
       }
     },
     "CodeRepository":{
@@ -586,7 +695,8 @@
       "members":{
         "RepositoryUrl":{"shape":"String"},
         "SourceCodeVersion":{"shape":"SourceCodeVersion"},
-        "CodeConfiguration":{"shape":"CodeConfiguration"}
+        "CodeConfiguration":{"shape":"CodeConfiguration"},
+        "SourceDirectory":{"shape":"SourceDirectory"}
       }
     },
     "ConfigurationSource":{
@@ -637,9 +747,9 @@
     },
     "Cpu":{
       "type":"string",
-      "max":6,
-      "min":4,
-      "pattern":"1024|2048|(1|2) vCPU"
+      "max":9,
+      "min":3,
+      "pattern":"256|512|1024|2048|4096|(0.25|0.5|1|2|4) vCPU"
     },
     "CreateAutoScalingConfigurationRequest":{
       "type":"structure",
@@ -743,6 +853,27 @@
         "VpcConnector":{"shape":"VpcConnector"}
       }
     },
+    "CreateVpcIngressConnectionRequest":{
+      "type":"structure",
+      "required":[
+        "ServiceArn",
+        "VpcIngressConnectionName",
+        "IngressVpcConfiguration"
+      ],
+      "members":{
+        "ServiceArn":{"shape":"AppRunnerResourceArn"},
+        "VpcIngressConnectionName":{"shape":"VpcIngressConnectionName"},
+        "IngressVpcConfiguration":{"shape":"IngressVpcConfiguration"},
+        "Tags":{"shape":"TagList"}
+      }
+    },
+    "CreateVpcIngressConnectionResponse":{
+      "type":"structure",
+      "required":["VpcIngressConnection"],
+      "members":{
+        "VpcIngressConnection":{"shape":"VpcIngressConnection"}
+      }
+    },
     "CustomDomain":{
       "type":"structure",
       "required":[
@@ -773,11 +904,18 @@
       "type":"list",
       "member":{"shape":"CustomDomain"}
     },
+    "CustomerAccountId":{
+      "type":"string",
+      "max":12,
+      "min":12,
+      "pattern":"[0-9]{12}"
+    },
     "DeleteAutoScalingConfigurationRequest":{
       "type":"structure",
       "required":["AutoScalingConfigurationArn"],
       "members":{
-        "AutoScalingConfigurationArn":{"shape":"AppRunnerResourceArn"}
+        "AutoScalingConfigurationArn":{"shape":"AppRunnerResourceArn"},
+        "DeleteAllRevisions":{"shape":"Boolean"}
       }
     },
     "DeleteAutoScalingConfigurationResponse":{
@@ -846,6 +984,20 @@
         "VpcConnector":{"shape":"VpcConnector"}
       }
     },
+    "DeleteVpcIngressConnectionRequest":{
+      "type":"structure",
+      "required":["VpcIngressConnectionArn"],
+      "members":{
+        "VpcIngressConnectionArn":{"shape":"AppRunnerResourceArn"}
+      }
+    },
+    "DeleteVpcIngressConnectionResponse":{
+      "type":"structure",
+      "required":["VpcIngressConnection"],
+      "members":{
+        "VpcIngressConnection":{"shape":"VpcIngressConnection"}
+      }
+    },
     "DescribeAutoScalingConfigurationRequest":{
       "type":"structure",
       "required":["AutoScalingConfigurationArn"],
@@ -879,12 +1031,14 @@
       "required":[
         "DNSTarget",
         "ServiceArn",
-        "CustomDomains"
+        "CustomDomains",
+        "VpcDNSTargets"
       ],
       "members":{
         "DNSTarget":{"shape":"String"},
         "ServiceArn":{"shape":"AppRunnerResourceArn"},
         "CustomDomains":{"shape":"CustomDomainList"},
+        "VpcDNSTargets":{"shape":"VpcDNSTargetList"},
         "NextToken":{"shape":"String"}
       }
     },
@@ -930,6 +1084,20 @@
         "VpcConnector":{"shape":"VpcConnector"}
       }
     },
+    "DescribeVpcIngressConnectionRequest":{
+      "type":"structure",
+      "required":["VpcIngressConnectionArn"],
+      "members":{
+        "VpcIngressConnectionArn":{"shape":"AppRunnerResourceArn"}
+      }
+    },
+    "DescribeVpcIngressConnectionResponse":{
+      "type":"structure",
+      "required":["VpcIngressConnection"],
+      "members":{
+        "VpcIngressConnection":{"shape":"VpcIngressConnection"}
+      }
+    },
     "DisassociateCustomDomainRequest":{
       "type":"structure",
       "required":[
@@ -946,12 +1114,14 @@
       "required":[
         "DNSTarget",
         "ServiceArn",
-        "CustomDomain"
+        "CustomDomain",
+        "VpcDNSTargets"
       ],
       "members":{
         "DNSTarget":{"shape":"String"},
         "ServiceArn":{"shape":"AppRunnerResourceArn"},
-        "CustomDomain":{"shape":"CustomDomain"}
+        "CustomDomain":{"shape":"CustomDomain"},
+        "VpcDNSTargets":{"shape":"VpcDNSTargetList"}
       }
     },
     "DomainName":{
@@ -985,6 +1155,7 @@
       "type":"string",
       "max":600
     },
+    "HasAssociatedService":{"type":"boolean"},
     "HealthCheckConfiguration":{
       "type":"structure",
       "members":{
@@ -1032,7 +1203,8 @@
       "members":{
         "RuntimeEnvironmentVariables":{"shape":"RuntimeEnvironmentVariables"},
         "StartCommand":{"shape":"StartCommand"},
-        "Port":{"shape":"String"}
+        "Port":{"shape":"String"},
+        "RuntimeEnvironmentSecrets":{"shape":"RuntimeEnvironmentSecrets"}
       }
     },
     "ImageIdentifier":{
@@ -1059,6 +1231,19 @@
         "ECR",
         "ECR_PUBLIC"
       ]
+    },
+    "IngressConfiguration":{
+      "type":"structure",
+      "members":{
+        "IsPubliclyAccessible":{"shape":"Boolean"}
+      }
+    },
+    "IngressVpcConfiguration":{
+      "type":"structure",
+      "members":{
+        "VpcId":{"shape":"String"},
+        "VpcEndpointId":{"shape":"String"}
+      }
     },
     "InstanceConfiguration":{
       "type":"structure",
@@ -1091,12 +1276,21 @@
       },
       "exception":true
     },
+    "IpAddressType":{
+      "type":"string",
+      "enum":[
+        "IPV4",
+        "DUAL_STACK"
+      ]
+    },
+    "IsDefault":{"type":"boolean"},
     "KmsKeyArn":{
       "type":"string",
       "max":256,
       "min":0,
       "pattern":"arn:aws(-[\\w]+)*:kms:[a-z\\-]+-[0-9]{1}:[0-9]{12}:key\\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
     },
+    "Latest":{"type":"boolean"},
     "ListAutoScalingConfigurationsRequest":{
       "type":"structure",
       "members":{
@@ -1168,6 +1362,23 @@
         "NextToken":{"shape":"String"}
       }
     },
+    "ListServicesForAutoScalingConfigurationRequest":{
+      "type":"structure",
+      "required":["AutoScalingConfigurationArn"],
+      "members":{
+        "AutoScalingConfigurationArn":{"shape":"AppRunnerResourceArn"},
+        "MaxResults":{"shape":"MaxResults"},
+        "NextToken":{"shape":"NextToken"}
+      }
+    },
+    "ListServicesForAutoScalingConfigurationResponse":{
+      "type":"structure",
+      "required":["ServiceArnList"],
+      "members":{
+        "ServiceArnList":{"shape":"ServiceArnList"},
+        "NextToken":{"shape":"NextToken"}
+      }
+    },
     "ListServicesRequest":{
       "type":"structure",
       "members":{
@@ -1211,21 +1422,49 @@
         "NextToken":{"shape":"NextToken"}
       }
     },
+    "ListVpcIngressConnectionsFilter":{
+      "type":"structure",
+      "members":{
+        "ServiceArn":{"shape":"AppRunnerResourceArn"},
+        "VpcEndpointId":{"shape":"String"}
+      }
+    },
+    "ListVpcIngressConnectionsRequest":{
+      "type":"structure",
+      "members":{
+        "Filter":{"shape":"ListVpcIngressConnectionsFilter"},
+        "MaxResults":{"shape":"MaxResults"},
+        "NextToken":{"shape":"NextToken"}
+      }
+    },
+    "ListVpcIngressConnectionsResponse":{
+      "type":"structure",
+      "required":["VpcIngressConnectionSummaryList"],
+      "members":{
+        "VpcIngressConnectionSummaryList":{"shape":"VpcIngressConnectionSummaryList"},
+        "NextToken":{"shape":"NextToken"}
+      }
+    },
+    "MaxConcurrency":{"type":"integer"},
     "MaxResults":{
       "type":"integer",
       "max":100,
       "min":1
     },
+    "MaxSize":{"type":"integer"},
     "Memory":{
       "type":"string",
-      "max":4,
-      "min":4,
-      "pattern":"2048|3072|4096|(2|3|4) GB"
+      "max":6,
+      "min":3,
+      "pattern":"512|1024|2048|3072|4096|6144|8192|10240|12288|(0.5|1|2|3|4|6|8|10|12) GB"
     },
+    "MinSize":{"type":"integer"},
     "NetworkConfiguration":{
       "type":"structure",
       "members":{
-        "EgressConfiguration":{"shape":"EgressConfiguration"}
+        "EgressConfiguration":{"shape":"EgressConfiguration"},
+        "IngressConfiguration":{"shape":"IngressConfiguration"},
+        "IpAddressType":{"shape":"IpAddressType"}
       }
     },
     "NextToken":{
@@ -1308,7 +1547,8 @@
         "CREATE_SERVICE",
         "PAUSE_SERVICE",
         "RESUME_SERVICE",
-        "DELETE_SERVICE"
+        "DELETE_SERVICE",
+        "UPDATE_SERVICE"
       ]
     },
     "PauseServiceRequest":{
@@ -1328,7 +1568,10 @@
     },
     "ProviderType":{
       "type":"string",
-      "enum":["GITHUB"]
+      "enum":[
+        "GITHUB",
+        "BITBUCKET"
+      ]
     },
     "ResourceNotFoundException":{
       "type":"structure",
@@ -1365,8 +1608,30 @@
         "NODEJS_12",
         "NODEJS_14",
         "CORRETTO_8",
-        "CORRETTO_11"
+        "CORRETTO_11",
+        "NODEJS_16",
+        "GO_1",
+        "DOTNET_6",
+        "PHP_81",
+        "RUBY_31"
       ]
+    },
+    "RuntimeEnvironmentSecrets":{
+      "type":"map",
+      "key":{"shape":"RuntimeEnvironmentSecretsName"},
+      "value":{"shape":"RuntimeEnvironmentSecretsValue"}
+    },
+    "RuntimeEnvironmentSecretsName":{
+      "type":"string",
+      "max":2048,
+      "min":1,
+      "sensitive":true
+    },
+    "RuntimeEnvironmentSecretsValue":{
+      "type":"string",
+      "max":2048,
+      "min":1,
+      "sensitive":true
     },
     "RuntimeEnvironmentVariables":{
       "type":"map",
@@ -1393,7 +1658,6 @@
         "ServiceName",
         "ServiceId",
         "ServiceArn",
-        "ServiceUrl",
         "CreatedAt",
         "UpdatedAt",
         "Status",
@@ -1419,6 +1683,10 @@
         "NetworkConfiguration":{"shape":"NetworkConfiguration"},
         "ObservabilityConfiguration":{"shape":"ServiceObservabilityConfiguration"}
       }
+    },
+    "ServiceArnList":{
+      "type":"list",
+      "member":{"shape":"AppRunnerResourceArn"}
     },
     "ServiceId":{
       "type":"string",
@@ -1502,6 +1770,12 @@
         "AutoDeploymentsEnabled":{"shape":"NullableBoolean"},
         "AuthenticationConfiguration":{"shape":"AuthenticationConfiguration"}
       }
+    },
+    "SourceDirectory":{
+      "type":"string",
+      "max":4096,
+      "min":1,
+      "pattern":"[^\\x00]+"
     },
     "StartCommand":{
       "type":"string",
@@ -1609,6 +1883,20 @@
       "members":{
       }
     },
+    "UpdateDefaultAutoScalingConfigurationRequest":{
+      "type":"structure",
+      "required":["AutoScalingConfigurationArn"],
+      "members":{
+        "AutoScalingConfigurationArn":{"shape":"AppRunnerResourceArn"}
+      }
+    },
+    "UpdateDefaultAutoScalingConfigurationResponse":{
+      "type":"structure",
+      "required":["AutoScalingConfiguration"],
+      "members":{
+        "AutoScalingConfiguration":{"shape":"AutoScalingConfiguration"}
+      }
+    },
     "UpdateServiceRequest":{
       "type":"structure",
       "required":["ServiceArn"],
@@ -1631,6 +1919,24 @@
       "members":{
         "Service":{"shape":"Service"},
         "OperationId":{"shape":"UUID"}
+      }
+    },
+    "UpdateVpcIngressConnectionRequest":{
+      "type":"structure",
+      "required":[
+        "VpcIngressConnectionArn",
+        "IngressVpcConfiguration"
+      ],
+      "members":{
+        "VpcIngressConnectionArn":{"shape":"AppRunnerResourceArn"},
+        "IngressVpcConfiguration":{"shape":"IngressVpcConfiguration"}
+      }
+    },
+    "UpdateVpcIngressConnectionResponse":{
+      "type":"structure",
+      "required":["VpcIngressConnection"],
+      "members":{
+        "VpcIngressConnection":{"shape":"VpcIngressConnection"}
       }
     },
     "VpcConnector":{
@@ -1662,6 +1968,62 @@
     "VpcConnectors":{
       "type":"list",
       "member":{"shape":"VpcConnector"}
+    },
+    "VpcDNSTarget":{
+      "type":"structure",
+      "members":{
+        "VpcIngressConnectionArn":{"shape":"AppRunnerResourceArn"},
+        "VpcId":{"shape":"String"},
+        "DomainName":{"shape":"DomainName"}
+      }
+    },
+    "VpcDNSTargetList":{
+      "type":"list",
+      "member":{"shape":"VpcDNSTarget"}
+    },
+    "VpcIngressConnection":{
+      "type":"structure",
+      "members":{
+        "VpcIngressConnectionArn":{"shape":"AppRunnerResourceArn"},
+        "VpcIngressConnectionName":{"shape":"VpcIngressConnectionName"},
+        "ServiceArn":{"shape":"AppRunnerResourceArn"},
+        "Status":{"shape":"VpcIngressConnectionStatus"},
+        "AccountId":{"shape":"CustomerAccountId"},
+        "DomainName":{"shape":"DomainName"},
+        "IngressVpcConfiguration":{"shape":"IngressVpcConfiguration"},
+        "CreatedAt":{"shape":"Timestamp"},
+        "DeletedAt":{"shape":"Timestamp"}
+      }
+    },
+    "VpcIngressConnectionName":{
+      "type":"string",
+      "max":40,
+      "min":4,
+      "pattern":"[A-Za-z0-9][A-Za-z0-9\\-_]{3,39}"
+    },
+    "VpcIngressConnectionStatus":{
+      "type":"string",
+      "enum":[
+        "AVAILABLE",
+        "PENDING_CREATION",
+        "PENDING_UPDATE",
+        "PENDING_DELETION",
+        "FAILED_CREATION",
+        "FAILED_UPDATE",
+        "FAILED_DELETION",
+        "DELETED"
+      ]
+    },
+    "VpcIngressConnectionSummary":{
+      "type":"structure",
+      "members":{
+        "VpcIngressConnectionArn":{"shape":"AppRunnerResourceArn"},
+        "ServiceArn":{"shape":"AppRunnerResourceArn"}
+      }
+    },
+    "VpcIngressConnectionSummaryList":{
+      "type":"list",
+      "member":{"shape":"VpcIngressConnectionSummary"}
     }
   }
 }

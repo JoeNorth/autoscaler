@@ -29,6 +29,22 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "CreateCalculatedAttributeDefinition":{
+      "name":"CreateCalculatedAttributeDefinition",
+      "http":{
+        "method":"POST",
+        "requestUri":"/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}"
+      },
+      "input":{"shape":"CreateCalculatedAttributeDefinitionRequest"},
+      "output":{"shape":"CreateCalculatedAttributeDefinitionResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "CreateDomain":{
       "name":"CreateDomain",
       "http":{
@@ -37,6 +53,22 @@
       },
       "input":{"shape":"CreateDomainRequest"},
       "output":{"shape":"CreateDomainResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "CreateEventStream":{
+      "name":"CreateEventStream",
+      "http":{
+        "method":"POST",
+        "requestUri":"/domains/{DomainName}/event-streams/{EventStreamName}"
+      },
+      "input":{"shape":"CreateEventStreamRequest"},
+      "output":{"shape":"CreateEventStreamResponse"},
       "errors":[
         {"shape":"BadRequestException"},
         {"shape":"ResourceNotFoundException"},
@@ -77,6 +109,22 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "DeleteCalculatedAttributeDefinition":{
+      "name":"DeleteCalculatedAttributeDefinition",
+      "http":{
+        "method":"DELETE",
+        "requestUri":"/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}"
+      },
+      "input":{"shape":"DeleteCalculatedAttributeDefinitionRequest"},
+      "output":{"shape":"DeleteCalculatedAttributeDefinitionResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "DeleteDomain":{
       "name":"DeleteDomain",
       "http":{
@@ -92,6 +140,23 @@
         {"shape":"ThrottlingException"},
         {"shape":"InternalServerException"}
       ]
+    },
+    "DeleteEventStream":{
+      "name":"DeleteEventStream",
+      "http":{
+        "method":"DELETE",
+        "requestUri":"/domains/{DomainName}/event-streams/{EventStreamName}"
+      },
+      "input":{"shape":"DeleteEventStreamRequest"},
+      "output":{"shape":"DeleteEventStreamResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "idempotent":true
     },
     "DeleteIntegration":{
       "name":"DeleteIntegration",
@@ -189,6 +254,22 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "DetectProfileObjectType":{
+      "name":"DetectProfileObjectType",
+      "http":{
+        "method":"POST",
+        "requestUri":"/domains/{DomainName}/detect/object-types"
+      },
+      "input":{"shape":"DetectProfileObjectTypeRequest"},
+      "output":{"shape":"DetectProfileObjectTypeResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "GetAutoMergingPreview":{
       "name":"GetAutoMergingPreview",
       "http":{
@@ -205,6 +286,38 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "GetCalculatedAttributeDefinition":{
+      "name":"GetCalculatedAttributeDefinition",
+      "http":{
+        "method":"GET",
+        "requestUri":"/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}"
+      },
+      "input":{"shape":"GetCalculatedAttributeDefinitionRequest"},
+      "output":{"shape":"GetCalculatedAttributeDefinitionResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "GetCalculatedAttributeForProfile":{
+      "name":"GetCalculatedAttributeForProfile",
+      "http":{
+        "method":"GET",
+        "requestUri":"/domains/{DomainName}/profile/{ProfileId}/calculated-attributes/{CalculatedAttributeName}"
+      },
+      "input":{"shape":"GetCalculatedAttributeForProfileRequest"},
+      "output":{"shape":"GetCalculatedAttributeForProfileResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "GetDomain":{
       "name":"GetDomain",
       "http":{
@@ -213,6 +326,22 @@
       },
       "input":{"shape":"GetDomainRequest"},
       "output":{"shape":"GetDomainResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "GetEventStream":{
+      "name":"GetEventStream",
+      "http":{
+        "method":"GET",
+        "requestUri":"/domains/{DomainName}/event-streams/{EventStreamName}"
+      },
+      "input":{"shape":"GetEventStreamRequest"},
+      "output":{"shape":"GetEventStreamResponse"},
       "errors":[
         {"shape":"BadRequestException"},
         {"shape":"ResourceNotFoundException"},
@@ -301,6 +430,22 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "GetSimilarProfiles":{
+      "name":"GetSimilarProfiles",
+      "http":{
+        "method":"POST",
+        "requestUri":"/domains/{DomainName}/matches"
+      },
+      "input":{"shape":"GetSimilarProfilesRequest"},
+      "output":{"shape":"GetSimilarProfilesResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "GetWorkflow":{
       "name":"GetWorkflow",
       "http":{
@@ -349,6 +494,38 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "ListCalculatedAttributeDefinitions":{
+      "name":"ListCalculatedAttributeDefinitions",
+      "http":{
+        "method":"GET",
+        "requestUri":"/domains/{DomainName}/calculated-attributes"
+      },
+      "input":{"shape":"ListCalculatedAttributeDefinitionsRequest"},
+      "output":{"shape":"ListCalculatedAttributeDefinitionsResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "ListCalculatedAttributesForProfile":{
+      "name":"ListCalculatedAttributesForProfile",
+      "http":{
+        "method":"GET",
+        "requestUri":"/domains/{DomainName}/profile/{ProfileId}/calculated-attributes"
+      },
+      "input":{"shape":"ListCalculatedAttributesForProfileRequest"},
+      "output":{"shape":"ListCalculatedAttributesForProfileResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "ListDomains":{
       "name":"ListDomains",
       "http":{
@@ -357,6 +534,22 @@
       },
       "input":{"shape":"ListDomainsRequest"},
       "output":{"shape":"ListDomainsResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "ListEventStreams":{
+      "name":"ListEventStreams",
+      "http":{
+        "method":"GET",
+        "requestUri":"/domains/{DomainName}/event-streams"
+      },
+      "input":{"shape":"ListEventStreamsRequest"},
+      "output":{"shape":"ListEventStreamsResponse"},
       "errors":[
         {"shape":"BadRequestException"},
         {"shape":"ResourceNotFoundException"},
@@ -437,6 +630,22 @@
       },
       "input":{"shape":"ListProfileObjectsRequest"},
       "output":{"shape":"ListProfileObjectsResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "ListRuleBasedMatches":{
+      "name":"ListRuleBasedMatches",
+      "http":{
+        "method":"GET",
+        "requestUri":"/domains/{DomainName}/profiles/ruleBasedMatches"
+      },
+      "input":{"shape":"ListRuleBasedMatchesRequest"},
+      "output":{"shape":"ListRuleBasedMatchesResponse"},
       "errors":[
         {"shape":"BadRequestException"},
         {"shape":"AccessDeniedException"},
@@ -582,6 +791,22 @@
         {"shape":"ResourceNotFoundException"}
       ]
     },
+    "UpdateCalculatedAttributeDefinition":{
+      "name":"UpdateCalculatedAttributeDefinition",
+      "http":{
+        "method":"PUT",
+        "requestUri":"/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}"
+      },
+      "input":{"shape":"UpdateCalculatedAttributeDefinitionRequest"},
+      "output":{"shape":"UpdateCalculatedAttributeDefinitionResponse"},
+      "errors":[
+        {"shape":"BadRequestException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "UpdateDomain":{
       "name":"UpdateDomain",
       "http":{
@@ -656,6 +881,17 @@
         "Values":{"shape":"requestValueList"}
       }
     },
+    "AdditionalSearchKey":{
+      "type":"structure",
+      "required":[
+        "KeyName",
+        "Values"
+      ],
+      "members":{
+        "KeyName":{"shape":"name"},
+        "Values":{"shape":"requestValueList"}
+      }
+    },
     "Address":{
       "type":"structure",
       "members":{
@@ -669,7 +905,14 @@
         "Province":{"shape":"string1To255"},
         "Country":{"shape":"string1To255"},
         "PostalCode":{"shape":"string1To255"}
-      }
+      },
+      "sensitive":true
+    },
+    "AddressList":{
+      "type":"list",
+      "member":{"shape":"string1To255"},
+      "max":4,
+      "min":1
     },
     "AppflowIntegration":{
       "type":"structure",
@@ -727,15 +970,58 @@
         "LastUpdatedAt":{"shape":"timestamp"}
       }
     },
+    "AttributeDetails":{
+      "type":"structure",
+      "required":[
+        "Attributes",
+        "Expression"
+      ],
+      "members":{
+        "Attributes":{"shape":"AttributeList"},
+        "Expression":{"shape":"string1To255"}
+      },
+      "sensitive":true
+    },
+    "AttributeItem":{
+      "type":"structure",
+      "required":["Name"],
+      "members":{
+        "Name":{"shape":"attributeName"}
+      }
+    },
+    "AttributeList":{
+      "type":"list",
+      "member":{"shape":"AttributeItem"},
+      "max":2,
+      "min":1
+    },
+    "AttributeMatchingModel":{
+      "type":"string",
+      "enum":[
+        "ONE_TO_ONE",
+        "MANY_TO_MANY"
+      ]
+    },
     "AttributeSourceIdMap":{
       "type":"map",
       "key":{"shape":"string1To255"},
       "value":{"shape":"uuid"}
     },
+    "AttributeTypesSelector":{
+      "type":"structure",
+      "required":["AttributeMatchingModel"],
+      "members":{
+        "AttributeMatchingModel":{"shape":"AttributeMatchingModel"},
+        "Address":{"shape":"AddressList"},
+        "PhoneNumber":{"shape":"PhoneNumberList"},
+        "EmailAddress":{"shape":"EmailList"}
+      }
+    },
     "Attributes":{
       "type":"map",
       "key":{"shape":"string1To255"},
-      "value":{"shape":"string1To255"}
+      "value":{"shape":"string1To255"},
+      "sensitive":true
     },
     "AutoMerging":{
       "type":"structure",
@@ -743,7 +1029,8 @@
       "members":{
         "Enabled":{"shape":"optionalBoolean"},
         "Consolidation":{"shape":"Consolidation"},
-        "ConflictResolution":{"shape":"ConflictResolution"}
+        "ConflictResolution":{"shape":"ConflictResolution"},
+        "MinAllowedConfidenceScoreForMerging":{"shape":"Double0To1"}
       }
     },
     "BadRequestException":{
@@ -779,6 +1066,24 @@
       "type":"string",
       "max":512,
       "pattern":".*"
+    },
+    "CalculatedAttributeDefinitionsList":{
+      "type":"list",
+      "member":{"shape":"ListCalculatedAttributeDefinitionItem"},
+      "sensitive":true
+    },
+    "CalculatedAttributesForProfileList":{
+      "type":"list",
+      "member":{"shape":"ListCalculatedAttributeForProfileItem"}
+    },
+    "Conditions":{
+      "type":"structure",
+      "members":{
+        "Range":{"shape":"Range"},
+        "ObjectCount":{"shape":"ObjectCount"},
+        "Threshold":{"shape":"Threshold"}
+      },
+      "sensitive":true
     },
     "ConflictResolution":{
       "type":"structure",
@@ -817,6 +1122,47 @@
         "MatchingAttributesList":{"shape":"MatchingAttributesList"}
       }
     },
+    "CreateCalculatedAttributeDefinitionRequest":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "CalculatedAttributeName",
+        "AttributeDetails",
+        "Statistic"
+      ],
+      "members":{
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "CalculatedAttributeName":{
+          "shape":"typeName",
+          "location":"uri",
+          "locationName":"CalculatedAttributeName"
+        },
+        "DisplayName":{"shape":"displayName"},
+        "Description":{"shape":"sensitiveText"},
+        "AttributeDetails":{"shape":"AttributeDetails"},
+        "Conditions":{"shape":"Conditions"},
+        "Statistic":{"shape":"Statistic"},
+        "Tags":{"shape":"TagMap"}
+      }
+    },
+    "CreateCalculatedAttributeDefinitionResponse":{
+      "type":"structure",
+      "members":{
+        "CalculatedAttributeName":{"shape":"typeName"},
+        "DisplayName":{"shape":"displayName"},
+        "Description":{"shape":"sensitiveText"},
+        "AttributeDetails":{"shape":"AttributeDetails"},
+        "Conditions":{"shape":"Conditions"},
+        "Statistic":{"shape":"Statistic"},
+        "CreatedAt":{"shape":"timestamp"},
+        "LastUpdatedAt":{"shape":"timestamp"},
+        "Tags":{"shape":"TagMap"}
+      }
+    },
     "CreateDomainRequest":{
       "type":"structure",
       "required":[
@@ -833,6 +1179,7 @@
         "DefaultEncryptionKey":{"shape":"encryptionKey"},
         "DeadLetterQueueUrl":{"shape":"sqsQueueUrl"},
         "Matching":{"shape":"MatchingRequest"},
+        "RuleBasedMatching":{"shape":"RuleBasedMatchingRequest"},
         "Tags":{"shape":"TagMap"}
       }
     },
@@ -850,8 +1197,39 @@
         "DefaultEncryptionKey":{"shape":"encryptionKey"},
         "DeadLetterQueueUrl":{"shape":"sqsQueueUrl"},
         "Matching":{"shape":"MatchingResponse"},
+        "RuleBasedMatching":{"shape":"RuleBasedMatchingResponse"},
         "CreatedAt":{"shape":"timestamp"},
         "LastUpdatedAt":{"shape":"timestamp"},
+        "Tags":{"shape":"TagMap"}
+      }
+    },
+    "CreateEventStreamRequest":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "Uri",
+        "EventStreamName"
+      ],
+      "members":{
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "Uri":{"shape":"string1To255"},
+        "EventStreamName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"EventStreamName"
+        },
+        "Tags":{"shape":"TagMap"}
+      }
+    },
+    "CreateEventStreamResponse":{
+      "type":"structure",
+      "required":["EventStreamArn"],
+      "members":{
+        "EventStreamArn":{"shape":"string1To255"},
         "Tags":{"shape":"TagMap"}
       }
     },
@@ -897,27 +1275,29 @@
           "location":"uri",
           "locationName":"DomainName"
         },
-        "AccountNumber":{"shape":"string1To255"},
-        "AdditionalInformation":{"shape":"string1To1000"},
+        "AccountNumber":{"shape":"sensitiveString1To255"},
+        "AdditionalInformation":{"shape":"sensitiveString1To1000"},
         "PartyType":{"shape":"PartyType"},
-        "BusinessName":{"shape":"string1To255"},
-        "FirstName":{"shape":"string1To255"},
-        "MiddleName":{"shape":"string1To255"},
-        "LastName":{"shape":"string1To255"},
-        "BirthDate":{"shape":"string1To255"},
+        "BusinessName":{"shape":"sensitiveString1To255"},
+        "FirstName":{"shape":"sensitiveString1To255"},
+        "MiddleName":{"shape":"sensitiveString1To255"},
+        "LastName":{"shape":"sensitiveString1To255"},
+        "BirthDate":{"shape":"sensitiveString1To255"},
         "Gender":{"shape":"Gender"},
-        "PhoneNumber":{"shape":"string1To255"},
-        "MobilePhoneNumber":{"shape":"string1To255"},
-        "HomePhoneNumber":{"shape":"string1To255"},
-        "BusinessPhoneNumber":{"shape":"string1To255"},
-        "EmailAddress":{"shape":"string1To255"},
-        "PersonalEmailAddress":{"shape":"string1To255"},
-        "BusinessEmailAddress":{"shape":"string1To255"},
+        "PhoneNumber":{"shape":"sensitiveString1To255"},
+        "MobilePhoneNumber":{"shape":"sensitiveString1To255"},
+        "HomePhoneNumber":{"shape":"sensitiveString1To255"},
+        "BusinessPhoneNumber":{"shape":"sensitiveString1To255"},
+        "EmailAddress":{"shape":"sensitiveString1To255"},
+        "PersonalEmailAddress":{"shape":"sensitiveString1To255"},
+        "BusinessEmailAddress":{"shape":"sensitiveString1To255"},
         "Address":{"shape":"Address"},
         "ShippingAddress":{"shape":"Address"},
         "MailingAddress":{"shape":"Address"},
         "BillingAddress":{"shape":"Address"},
-        "Attributes":{"shape":"Attributes"}
+        "Attributes":{"shape":"Attributes"},
+        "PartyTypeString":{"shape":"sensitiveString1To255"},
+        "GenderString":{"shape":"sensitiveString1To255"}
       }
     },
     "CreateProfileResponse":{
@@ -940,6 +1320,30 @@
       "max":256,
       "pattern":".*"
     },
+    "DeleteCalculatedAttributeDefinitionRequest":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "CalculatedAttributeName"
+      ],
+      "members":{
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "CalculatedAttributeName":{
+          "shape":"typeName",
+          "location":"uri",
+          "locationName":"CalculatedAttributeName"
+        }
+      }
+    },
+    "DeleteCalculatedAttributeDefinitionResponse":{
+      "type":"structure",
+      "members":{
+      }
+    },
     "DeleteDomainRequest":{
       "type":"structure",
       "required":["DomainName"],
@@ -956,6 +1360,30 @@
       "required":["Message"],
       "members":{
         "Message":{"shape":"message"}
+      }
+    },
+    "DeleteEventStreamRequest":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "EventStreamName"
+      ],
+      "members":{
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "EventStreamName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"EventStreamName"
+        }
+      }
+    },
+    "DeleteEventStreamResponse":{
+      "type":"structure",
+      "members":{
       }
     },
     "DeleteIntegrationRequest":{
@@ -1106,6 +1534,51 @@
       "max":256,
       "pattern":".*"
     },
+    "DestinationSummary":{
+      "type":"structure",
+      "required":[
+        "Uri",
+        "Status"
+      ],
+      "members":{
+        "Uri":{"shape":"string1To255"},
+        "Status":{"shape":"EventStreamDestinationStatus"},
+        "UnhealthySince":{"shape":"timestamp"}
+      }
+    },
+    "DetectProfileObjectTypeRequest":{
+      "type":"structure",
+      "required":[
+        "Objects",
+        "DomainName"
+      ],
+      "members":{
+        "Objects":{"shape":"Objects"},
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        }
+      }
+    },
+    "DetectProfileObjectTypeResponse":{
+      "type":"structure",
+      "members":{
+        "DetectedProfileObjectTypes":{"shape":"DetectedProfileObjectTypes"}
+      }
+    },
+    "DetectedProfileObjectType":{
+      "type":"structure",
+      "members":{
+        "SourceLastUpdatedTimestampFormat":{"shape":"string1To255"},
+        "Fields":{"shape":"FieldMap"},
+        "Keys":{"shape":"KeyMap"}
+      }
+    },
+    "DetectedProfileObjectTypes":{
+      "type":"list",
+      "member":{"shape":"DetectedProfileObjectType"}
+    },
     "DomainList":{
       "type":"list",
       "member":{"shape":"ListDomainItem"}
@@ -1120,6 +1593,66 @@
       }
     },
     "Double":{"type":"double"},
+    "Double0To1":{
+      "type":"double",
+      "max":1.0,
+      "min":0.0
+    },
+    "EmailList":{
+      "type":"list",
+      "member":{"shape":"string1To255"},
+      "max":3,
+      "min":1
+    },
+    "EventStreamDestinationDetails":{
+      "type":"structure",
+      "required":[
+        "Uri",
+        "Status"
+      ],
+      "members":{
+        "Uri":{"shape":"string1To255"},
+        "Status":{"shape":"EventStreamDestinationStatus"},
+        "UnhealthySince":{"shape":"timestamp"},
+        "Message":{"shape":"string1To1000"}
+      }
+    },
+    "EventStreamDestinationStatus":{
+      "type":"string",
+      "enum":[
+        "HEALTHY",
+        "UNHEALTHY"
+      ]
+    },
+    "EventStreamState":{
+      "type":"string",
+      "enum":[
+        "RUNNING",
+        "STOPPED"
+      ]
+    },
+    "EventStreamSummary":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "EventStreamName",
+        "EventStreamArn",
+        "State"
+      ],
+      "members":{
+        "DomainName":{"shape":"name"},
+        "EventStreamName":{"shape":"name"},
+        "EventStreamArn":{"shape":"string1To255"},
+        "State":{"shape":"EventStreamState"},
+        "StoppedSince":{"shape":"timestamp"},
+        "DestinationSummary":{"shape":"DestinationSummary"},
+        "Tags":{"shape":"TagMap"}
+      }
+    },
+    "EventStreamSummaryList":{
+      "type":"list",
+      "member":{"shape":"EventStreamSummary"}
+    },
     "ExportingConfig":{
       "type":"structure",
       "members":{
@@ -1145,7 +1678,8 @@
     "FieldMap":{
       "type":"map",
       "key":{"shape":"name"},
-      "value":{"shape":"ObjectTypeField"}
+      "value":{"shape":"ObjectTypeField"},
+      "sensitive":true
     },
     "FieldNameList":{
       "type":"list",
@@ -1193,7 +1727,8 @@
         "SourceFlowConfig":{"shape":"SourceFlowConfig"},
         "Tasks":{"shape":"Tasks"},
         "TriggerConfig":{"shape":"TriggerConfig"}
-      }
+      },
+      "sensitive":true
     },
     "FlowDescription":{
       "type":"string",
@@ -1205,13 +1740,22 @@
       "max":256,
       "pattern":"[a-zA-Z0-9][\\w!@#.-]+"
     },
+    "FoundByKeyValue":{
+      "type":"structure",
+      "members":{
+        "KeyName":{"shape":"name"},
+        "Values":{"shape":"requestValueList"}
+      }
+    },
     "Gender":{
       "type":"string",
+      "deprecated":true,
       "enum":[
         "MALE",
         "FEMALE",
         "UNSPECIFIED"
-      ]
+      ],
+      "sensitive":true
     },
     "GetAutoMergingPreviewRequest":{
       "type":"structure",
@@ -1227,7 +1771,8 @@
           "locationName":"DomainName"
         },
         "Consolidation":{"shape":"Consolidation"},
-        "ConflictResolution":{"shape":"ConflictResolution"}
+        "ConflictResolution":{"shape":"ConflictResolution"},
+        "MinAllowedConfidenceScoreForMerging":{"shape":"Double0To1"}
       }
     },
     "GetAutoMergingPreviewResponse":{
@@ -1238,6 +1783,73 @@
         "NumberOfMatchesInSample":{"shape":"long"},
         "NumberOfProfilesInSample":{"shape":"long"},
         "NumberOfProfilesWillBeMerged":{"shape":"long"}
+      }
+    },
+    "GetCalculatedAttributeDefinitionRequest":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "CalculatedAttributeName"
+      ],
+      "members":{
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "CalculatedAttributeName":{
+          "shape":"typeName",
+          "location":"uri",
+          "locationName":"CalculatedAttributeName"
+        }
+      }
+    },
+    "GetCalculatedAttributeDefinitionResponse":{
+      "type":"structure",
+      "members":{
+        "CalculatedAttributeName":{"shape":"typeName"},
+        "DisplayName":{"shape":"displayName"},
+        "Description":{"shape":"sensitiveText"},
+        "CreatedAt":{"shape":"timestamp"},
+        "LastUpdatedAt":{"shape":"timestamp"},
+        "Statistic":{"shape":"Statistic"},
+        "Conditions":{"shape":"Conditions"},
+        "AttributeDetails":{"shape":"AttributeDetails"},
+        "Tags":{"shape":"TagMap"}
+      }
+    },
+    "GetCalculatedAttributeForProfileRequest":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "ProfileId",
+        "CalculatedAttributeName"
+      ],
+      "members":{
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "ProfileId":{
+          "shape":"uuid",
+          "location":"uri",
+          "locationName":"ProfileId"
+        },
+        "CalculatedAttributeName":{
+          "shape":"typeName",
+          "location":"uri",
+          "locationName":"CalculatedAttributeName"
+        }
+      }
+    },
+    "GetCalculatedAttributeForProfileResponse":{
+      "type":"structure",
+      "members":{
+        "CalculatedAttributeName":{"shape":"typeName"},
+        "DisplayName":{"shape":"displayName"},
+        "IsDataPartial":{"shape":"string1To255"},
+        "Value":{"shape":"string1To255"}
       }
     },
     "GetDomainRequest":{
@@ -1265,8 +1877,47 @@
         "DeadLetterQueueUrl":{"shape":"sqsQueueUrl"},
         "Stats":{"shape":"DomainStats"},
         "Matching":{"shape":"MatchingResponse"},
+        "RuleBasedMatching":{"shape":"RuleBasedMatchingResponse"},
         "CreatedAt":{"shape":"timestamp"},
         "LastUpdatedAt":{"shape":"timestamp"},
+        "Tags":{"shape":"TagMap"}
+      }
+    },
+    "GetEventStreamRequest":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "EventStreamName"
+      ],
+      "members":{
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "EventStreamName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"EventStreamName"
+        }
+      }
+    },
+    "GetEventStreamResponse":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "EventStreamArn",
+        "CreatedAt",
+        "State",
+        "DestinationDetails"
+      ],
+      "members":{
+        "DomainName":{"shape":"name"},
+        "EventStreamArn":{"shape":"string1To255"},
+        "CreatedAt":{"shape":"timestamp"},
+        "State":{"shape":"EventStreamState"},
+        "StoppedSince":{"shape":"timestamp"},
+        "DestinationDetails":{"shape":"EventStreamDestinationDetails"},
         "Tags":{"shape":"TagMap"}
       }
     },
@@ -1336,7 +1987,8 @@
         "LastUpdatedAt":{"shape":"timestamp"},
         "Tags":{"shape":"TagMap"},
         "ObjectTypeNames":{"shape":"ObjectTypeNames"},
-        "WorkflowId":{"shape":"string1To255"}
+        "WorkflowId":{"shape":"string1To255"},
+        "IsUnstructured":{"shape":"optionalBoolean"}
       }
     },
     "GetMatchesRequest":{
@@ -1396,7 +2048,7 @@
       ],
       "members":{
         "ObjectTypeName":{"shape":"typeName"},
-        "Description":{"shape":"text"},
+        "Description":{"shape":"sensitiveText"},
         "TemplateId":{"shape":"name"},
         "ExpirationDays":{"shape":"expirationDaysInteger"},
         "EncryptionKey":{"shape":"encryptionKey"},
@@ -1430,6 +2082,46 @@
         "SourceLastUpdatedTimestampFormat":{"shape":"string1To255"},
         "Fields":{"shape":"FieldMap"},
         "Keys":{"shape":"KeyMap"}
+      }
+    },
+    "GetSimilarProfilesRequest":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "MatchType",
+        "SearchKey",
+        "SearchValue"
+      ],
+      "members":{
+        "NextToken":{
+          "shape":"token",
+          "location":"querystring",
+          "locationName":"next-token"
+        },
+        "MaxResults":{
+          "shape":"maxSize100",
+          "location":"querystring",
+          "locationName":"max-results"
+        },
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "MatchType":{"shape":"MatchType"},
+        "SearchKey":{"shape":"string1To255"},
+        "SearchValue":{"shape":"string1To255"}
+      }
+    },
+    "GetSimilarProfilesResponse":{
+      "type":"structure",
+      "members":{
+        "ProfileIds":{"shape":"ProfileIdList"},
+        "MatchId":{"shape":"string1To255"},
+        "MatchType":{"shape":"MatchType"},
+        "RuleLevel":{"shape":"RuleLevel"},
+        "ConfidenceScore":{"shape":"Double"},
+        "NextToken":{"shape":"token"}
       }
     },
     "GetWorkflowRequest":{
@@ -1596,7 +2288,8 @@
     "KeyMap":{
       "type":"map",
       "key":{"shape":"name"},
-      "value":{"shape":"ObjectTypeKeyList"}
+      "value":{"shape":"ObjectTypeKeyList"},
+      "sensitive":true
     },
     "KmsArn":{
       "type":"string",
@@ -1633,6 +2326,90 @@
         "NextToken":{"shape":"token"}
       }
     },
+    "ListCalculatedAttributeDefinitionItem":{
+      "type":"structure",
+      "members":{
+        "CalculatedAttributeName":{"shape":"typeName"},
+        "DisplayName":{"shape":"displayName"},
+        "Description":{"shape":"sensitiveText"},
+        "CreatedAt":{"shape":"timestamp"},
+        "LastUpdatedAt":{"shape":"timestamp"},
+        "Tags":{"shape":"TagMap"}
+      }
+    },
+    "ListCalculatedAttributeDefinitionsRequest":{
+      "type":"structure",
+      "required":["DomainName"],
+      "members":{
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "NextToken":{
+          "shape":"token",
+          "location":"querystring",
+          "locationName":"next-token"
+        },
+        "MaxResults":{
+          "shape":"maxSize100",
+          "location":"querystring",
+          "locationName":"max-results"
+        }
+      }
+    },
+    "ListCalculatedAttributeDefinitionsResponse":{
+      "type":"structure",
+      "members":{
+        "Items":{"shape":"CalculatedAttributeDefinitionsList"},
+        "NextToken":{"shape":"token"}
+      }
+    },
+    "ListCalculatedAttributeForProfileItem":{
+      "type":"structure",
+      "members":{
+        "CalculatedAttributeName":{"shape":"typeName"},
+        "DisplayName":{"shape":"displayName"},
+        "IsDataPartial":{"shape":"string1To255"},
+        "Value":{"shape":"string1To255"}
+      }
+    },
+    "ListCalculatedAttributesForProfileRequest":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "ProfileId"
+      ],
+      "members":{
+        "NextToken":{
+          "shape":"token",
+          "location":"querystring",
+          "locationName":"next-token"
+        },
+        "MaxResults":{
+          "shape":"maxSize100",
+          "location":"querystring",
+          "locationName":"max-results"
+        },
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "ProfileId":{
+          "shape":"uuid",
+          "location":"uri",
+          "locationName":"ProfileId"
+        }
+      }
+    },
+    "ListCalculatedAttributesForProfileResponse":{
+      "type":"structure",
+      "members":{
+        "Items":{"shape":"CalculatedAttributesForProfileList"},
+        "NextToken":{"shape":"token"}
+      }
+    },
     "ListDomainItem":{
       "type":"structure",
       "required":[
@@ -1666,6 +2443,34 @@
       "type":"structure",
       "members":{
         "Items":{"shape":"DomainList"},
+        "NextToken":{"shape":"token"}
+      }
+    },
+    "ListEventStreamsRequest":{
+      "type":"structure",
+      "required":["DomainName"],
+      "members":{
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "NextToken":{
+          "shape":"token",
+          "location":"querystring",
+          "locationName":"next-token"
+        },
+        "MaxResults":{
+          "shape":"maxSize100",
+          "location":"querystring",
+          "locationName":"max-results"
+        }
+      }
+    },
+    "ListEventStreamsResponse":{
+      "type":"structure",
+      "members":{
+        "Items":{"shape":"EventStreamSummaryList"},
         "NextToken":{"shape":"token"}
       }
     },
@@ -1713,7 +2518,8 @@
         "LastUpdatedAt":{"shape":"timestamp"},
         "Tags":{"shape":"TagMap"},
         "ObjectTypeNames":{"shape":"ObjectTypeNames"},
-        "WorkflowId":{"shape":"string1To255"}
+        "WorkflowId":{"shape":"string1To255"},
+        "IsUnstructured":{"shape":"optionalBoolean"}
       }
     },
     "ListIntegrationsRequest":{
@@ -1864,6 +2670,34 @@
         "NextToken":{"shape":"token"}
       }
     },
+    "ListRuleBasedMatchesRequest":{
+      "type":"structure",
+      "required":["DomainName"],
+      "members":{
+        "NextToken":{
+          "shape":"token",
+          "location":"querystring",
+          "locationName":"next-token"
+        },
+        "MaxResults":{
+          "shape":"maxSize100",
+          "location":"querystring",
+          "locationName":"max-results"
+        },
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        }
+      }
+    },
+    "ListRuleBasedMatchesResponse":{
+      "type":"structure",
+      "members":{
+        "MatchIds":{"shape":"MatchIdList"},
+        "NextToken":{"shape":"token"}
+      }
+    },
     "ListTagsForResourceRequest":{
       "type":"structure",
       "required":["resourceArn"],
@@ -1960,6 +2794,10 @@
         "Object":{"shape":"Object"}
       }
     },
+    "MatchIdList":{
+      "type":"list",
+      "member":{"shape":"string1To255"}
+    },
     "MatchItem":{
       "type":"structure",
       "members":{
@@ -1967,6 +2805,13 @@
         "ProfileIds":{"shape":"ProfileIdList"},
         "ConfidenceScore":{"shape":"Double"}
       }
+    },
+    "MatchType":{
+      "type":"string",
+      "enum":[
+        "RULE_BASED_MATCHING",
+        "ML_BASED_MATCHING"
+      ]
     },
     "MatchesList":{
       "type":"list",
@@ -2003,6 +2848,35 @@
         "ExportingConfig":{"shape":"ExportingConfig"}
       }
     },
+    "MatchingRule":{
+      "type":"structure",
+      "required":["Rule"],
+      "members":{
+        "Rule":{"shape":"MatchingRuleAttributeList"}
+      }
+    },
+    "MatchingRuleAttributeList":{
+      "type":"list",
+      "member":{"shape":"string1To255"},
+      "max":15,
+      "min":1
+    },
+    "MatchingRules":{
+      "type":"list",
+      "member":{"shape":"MatchingRule"},
+      "max":15,
+      "min":1
+    },
+    "MaxAllowedRuleLevelForMatching":{
+      "type":"integer",
+      "max":15,
+      "min":1
+    },
+    "MaxAllowedRuleLevelForMerging":{
+      "type":"integer",
+      "max":15,
+      "min":1
+    },
     "MergeProfilesRequest":{
       "type":"structure",
       "required":[
@@ -2031,6 +2905,11 @@
       "type":"string",
       "max":512,
       "pattern":"\\S+"
+    },
+    "ObjectCount":{
+      "type":"integer",
+      "max":100,
+      "min":1
     },
     "ObjectFilter":{
       "type":"structure",
@@ -2067,6 +2946,22 @@
       "key":{"shape":"string1To255"},
       "value":{"shape":"typeName"}
     },
+    "Objects":{
+      "type":"list",
+      "member":{"shape":"stringifiedJson"},
+      "max":5,
+      "min":1,
+      "sensitive":true
+    },
+    "Operator":{
+      "type":"string",
+      "enum":[
+        "EQUAL_TO",
+        "GREATER_THAN",
+        "LESS_THAN",
+        "NOT_EQUAL_TO"
+      ]
+    },
     "OperatorPropertiesKeys":{
       "type":"string",
       "enum":[
@@ -2088,37 +2983,48 @@
     },
     "PartyType":{
       "type":"string",
+      "deprecated":true,
       "enum":[
         "INDIVIDUAL",
         "BUSINESS",
         "OTHER"
-      ]
+      ],
+      "sensitive":true
+    },
+    "PhoneNumberList":{
+      "type":"list",
+      "member":{"shape":"string1To255"},
+      "max":4,
+      "min":1
     },
     "Profile":{
       "type":"structure",
       "members":{
         "ProfileId":{"shape":"uuid"},
-        "AccountNumber":{"shape":"string1To255"},
-        "AdditionalInformation":{"shape":"string1To1000"},
+        "AccountNumber":{"shape":"sensitiveString1To255"},
+        "AdditionalInformation":{"shape":"sensitiveString1To1000"},
         "PartyType":{"shape":"PartyType"},
-        "BusinessName":{"shape":"string1To255"},
-        "FirstName":{"shape":"string1To255"},
-        "MiddleName":{"shape":"string1To255"},
-        "LastName":{"shape":"string1To255"},
-        "BirthDate":{"shape":"string1To255"},
+        "BusinessName":{"shape":"sensitiveString1To255"},
+        "FirstName":{"shape":"sensitiveString1To255"},
+        "MiddleName":{"shape":"sensitiveString1To255"},
+        "LastName":{"shape":"sensitiveString1To255"},
+        "BirthDate":{"shape":"sensitiveString1To255"},
         "Gender":{"shape":"Gender"},
-        "PhoneNumber":{"shape":"string1To255"},
-        "MobilePhoneNumber":{"shape":"string1To255"},
-        "HomePhoneNumber":{"shape":"string1To255"},
-        "BusinessPhoneNumber":{"shape":"string1To255"},
-        "EmailAddress":{"shape":"string1To255"},
-        "PersonalEmailAddress":{"shape":"string1To255"},
-        "BusinessEmailAddress":{"shape":"string1To255"},
+        "PhoneNumber":{"shape":"sensitiveString1To255"},
+        "MobilePhoneNumber":{"shape":"sensitiveString1To255"},
+        "HomePhoneNumber":{"shape":"sensitiveString1To255"},
+        "BusinessPhoneNumber":{"shape":"sensitiveString1To255"},
+        "EmailAddress":{"shape":"sensitiveString1To255"},
+        "PersonalEmailAddress":{"shape":"sensitiveString1To255"},
+        "BusinessEmailAddress":{"shape":"sensitiveString1To255"},
         "Address":{"shape":"Address"},
         "ShippingAddress":{"shape":"Address"},
         "MailingAddress":{"shape":"Address"},
         "BillingAddress":{"shape":"Address"},
-        "Attributes":{"shape":"Attributes"}
+        "Attributes":{"shape":"Attributes"},
+        "FoundByItems":{"shape":"foundByList"},
+        "PartyTypeString":{"shape":"sensitiveString1To255"},
+        "GenderString":{"shape":"sensitiveString1To255"}
       }
     },
     "ProfileIdList":{
@@ -2141,7 +3047,8 @@
     },
     "ProfileObjectTypeList":{
       "type":"list",
-      "member":{"shape":"ListProfileObjectTypeItem"}
+      "member":{"shape":"ListProfileObjectTypeItem"},
+      "sensitive":true
     },
     "ProfileObjectTypeTemplateList":{
       "type":"list",
@@ -2184,7 +3091,8 @@
         "LastUpdatedAt":{"shape":"timestamp"},
         "Tags":{"shape":"TagMap"},
         "ObjectTypeNames":{"shape":"ObjectTypeNames"},
-        "WorkflowId":{"shape":"string1To255"}
+        "WorkflowId":{"shape":"string1To255"},
+        "IsUnstructured":{"shape":"optionalBoolean"}
       }
     },
     "PutProfileObjectRequest":{
@@ -2228,7 +3136,7 @@
           "location":"uri",
           "locationName":"ObjectTypeName"
         },
-        "Description":{"shape":"text"},
+        "Description":{"shape":"sensitiveText"},
         "TemplateId":{"shape":"name"},
         "ExpirationDays":{"shape":"expirationDaysInteger"},
         "EncryptionKey":{"shape":"encryptionKey"},
@@ -2247,7 +3155,7 @@
       ],
       "members":{
         "ObjectTypeName":{"shape":"typeName"},
-        "Description":{"shape":"text"},
+        "Description":{"shape":"sensitiveText"},
         "TemplateId":{"shape":"name"},
         "ExpirationDays":{"shape":"expirationDaysInteger"},
         "EncryptionKey":{"shape":"encryptionKey"},
@@ -2258,6 +3166,17 @@
         "CreatedAt":{"shape":"timestamp"},
         "LastUpdatedAt":{"shape":"timestamp"},
         "Tags":{"shape":"TagMap"}
+      }
+    },
+    "Range":{
+      "type":"structure",
+      "required":[
+        "Value",
+        "Unit"
+      ],
+      "members":{
+        "Value":{"shape":"Value"},
+        "Unit":{"shape":"Unit"}
       }
     },
     "ResourceNotFoundException":{
@@ -2272,6 +3191,45 @@
       "type":"string",
       "max":512,
       "pattern":"arn:aws:iam:.*:[0-9]+:.*"
+    },
+    "RuleBasedMatchingRequest":{
+      "type":"structure",
+      "required":["Enabled"],
+      "members":{
+        "Enabled":{"shape":"optionalBoolean"},
+        "MatchingRules":{"shape":"MatchingRules"},
+        "MaxAllowedRuleLevelForMerging":{"shape":"MaxAllowedRuleLevelForMerging"},
+        "MaxAllowedRuleLevelForMatching":{"shape":"MaxAllowedRuleLevelForMatching"},
+        "AttributeTypesSelector":{"shape":"AttributeTypesSelector"},
+        "ConflictResolution":{"shape":"ConflictResolution"},
+        "ExportingConfig":{"shape":"ExportingConfig"}
+      }
+    },
+    "RuleBasedMatchingResponse":{
+      "type":"structure",
+      "members":{
+        "Enabled":{"shape":"optionalBoolean"},
+        "MatchingRules":{"shape":"MatchingRules"},
+        "Status":{"shape":"RuleBasedMatchingStatus"},
+        "MaxAllowedRuleLevelForMerging":{"shape":"MaxAllowedRuleLevelForMerging"},
+        "MaxAllowedRuleLevelForMatching":{"shape":"MaxAllowedRuleLevelForMatching"},
+        "AttributeTypesSelector":{"shape":"AttributeTypesSelector"},
+        "ConflictResolution":{"shape":"ConflictResolution"},
+        "ExportingConfig":{"shape":"ExportingConfig"}
+      }
+    },
+    "RuleBasedMatchingStatus":{
+      "type":"string",
+      "enum":[
+        "PENDING",
+        "IN_PROGRESS",
+        "ACTIVE"
+      ]
+    },
+    "RuleLevel":{
+      "type":"integer",
+      "max":15,
+      "min":1
     },
     "S3ConnectorOperator":{
       "type":"string",
@@ -2406,7 +3364,9 @@
           "locationName":"DomainName"
         },
         "KeyName":{"shape":"name"},
-        "Values":{"shape":"requestValueList"}
+        "Values":{"shape":"requestValueList"},
+        "AdditionalSearchKeys":{"shape":"additionalSearchKeysList"},
+        "LogicalOperator":{"shape":"logicalOperator"}
       }
     },
     "SearchProfilesResponse":{
@@ -2503,6 +3463,20 @@
       "type":"list",
       "member":{"shape":"StandardIdentifier"}
     },
+    "Statistic":{
+      "type":"string",
+      "enum":[
+        "FIRST_OCCURRENCE",
+        "LAST_OCCURRENCE",
+        "COUNT",
+        "SUM",
+        "MINIMUM",
+        "MAXIMUM",
+        "AVERAGE",
+        "MAX_OCCURRENCE"
+      ],
+      "sensitive":true
+    },
     "Status":{
       "type":"string",
       "enum":[
@@ -2598,6 +3572,17 @@
       "type":"list",
       "member":{"shape":"Task"}
     },
+    "Threshold":{
+      "type":"structure",
+      "required":[
+        "Value",
+        "Operator"
+      ],
+      "members":{
+        "Value":{"shape":"string1To255"},
+        "Operator":{"shape":"Operator"}
+      }
+    },
     "ThrottlingException":{
       "type":"structure",
       "members":{
@@ -2632,6 +3617,10 @@
         "Event",
         "OnDemand"
       ]
+    },
+    "Unit":{
+      "type":"string",
+      "enum":["DAYS"]
     },
     "UntagResourceRequest":{
       "type":"structure",
@@ -2670,12 +3659,50 @@
         "Province":{"shape":"string0To255"},
         "Country":{"shape":"string0To255"},
         "PostalCode":{"shape":"string0To255"}
-      }
+      },
+      "sensitive":true
     },
     "UpdateAttributes":{
       "type":"map",
       "key":{"shape":"string1To255"},
-      "value":{"shape":"string0To255"}
+      "value":{"shape":"string0To255"},
+      "sensitive":true
+    },
+    "UpdateCalculatedAttributeDefinitionRequest":{
+      "type":"structure",
+      "required":[
+        "DomainName",
+        "CalculatedAttributeName"
+      ],
+      "members":{
+        "DomainName":{
+          "shape":"name",
+          "location":"uri",
+          "locationName":"DomainName"
+        },
+        "CalculatedAttributeName":{
+          "shape":"typeName",
+          "location":"uri",
+          "locationName":"CalculatedAttributeName"
+        },
+        "DisplayName":{"shape":"displayName"},
+        "Description":{"shape":"sensitiveText"},
+        "Conditions":{"shape":"Conditions"}
+      }
+    },
+    "UpdateCalculatedAttributeDefinitionResponse":{
+      "type":"structure",
+      "members":{
+        "CalculatedAttributeName":{"shape":"typeName"},
+        "DisplayName":{"shape":"displayName"},
+        "Description":{"shape":"sensitiveText"},
+        "CreatedAt":{"shape":"timestamp"},
+        "LastUpdatedAt":{"shape":"timestamp"},
+        "Statistic":{"shape":"Statistic"},
+        "Conditions":{"shape":"Conditions"},
+        "AttributeDetails":{"shape":"AttributeDetails"},
+        "Tags":{"shape":"TagMap"}
+      }
     },
     "UpdateDomainRequest":{
       "type":"structure",
@@ -2690,6 +3717,7 @@
         "DefaultEncryptionKey":{"shape":"encryptionKey"},
         "DeadLetterQueueUrl":{"shape":"sqsQueueUrl"},
         "Matching":{"shape":"MatchingRequest"},
+        "RuleBasedMatching":{"shape":"RuleBasedMatchingRequest"},
         "Tags":{"shape":"TagMap"}
       }
     },
@@ -2706,6 +3734,7 @@
         "DefaultEncryptionKey":{"shape":"encryptionKey"},
         "DeadLetterQueueUrl":{"shape":"sqsQueueUrl"},
         "Matching":{"shape":"MatchingResponse"},
+        "RuleBasedMatching":{"shape":"RuleBasedMatchingResponse"},
         "CreatedAt":{"shape":"timestamp"},
         "LastUpdatedAt":{"shape":"timestamp"},
         "Tags":{"shape":"TagMap"}
@@ -2724,27 +3753,29 @@
           "locationName":"DomainName"
         },
         "ProfileId":{"shape":"uuid"},
-        "AdditionalInformation":{"shape":"string0To1000"},
-        "AccountNumber":{"shape":"string0To255"},
+        "AdditionalInformation":{"shape":"sensitiveString0To1000"},
+        "AccountNumber":{"shape":"sensitiveString0To255"},
         "PartyType":{"shape":"PartyType"},
-        "BusinessName":{"shape":"string0To255"},
-        "FirstName":{"shape":"string0To255"},
-        "MiddleName":{"shape":"string0To255"},
-        "LastName":{"shape":"string0To255"},
-        "BirthDate":{"shape":"string0To255"},
+        "BusinessName":{"shape":"sensitiveString0To255"},
+        "FirstName":{"shape":"sensitiveString0To255"},
+        "MiddleName":{"shape":"sensitiveString0To255"},
+        "LastName":{"shape":"sensitiveString0To255"},
+        "BirthDate":{"shape":"sensitiveString0To255"},
         "Gender":{"shape":"Gender"},
-        "PhoneNumber":{"shape":"string0To255"},
-        "MobilePhoneNumber":{"shape":"string0To255"},
-        "HomePhoneNumber":{"shape":"string0To255"},
-        "BusinessPhoneNumber":{"shape":"string0To255"},
-        "EmailAddress":{"shape":"string0To255"},
-        "PersonalEmailAddress":{"shape":"string0To255"},
-        "BusinessEmailAddress":{"shape":"string0To255"},
+        "PhoneNumber":{"shape":"sensitiveString0To255"},
+        "MobilePhoneNumber":{"shape":"sensitiveString0To255"},
+        "HomePhoneNumber":{"shape":"sensitiveString0To255"},
+        "BusinessPhoneNumber":{"shape":"sensitiveString0To255"},
+        "EmailAddress":{"shape":"sensitiveString0To255"},
+        "PersonalEmailAddress":{"shape":"sensitiveString0To255"},
+        "BusinessEmailAddress":{"shape":"sensitiveString0To255"},
         "Address":{"shape":"UpdateAddress"},
         "ShippingAddress":{"shape":"UpdateAddress"},
         "MailingAddress":{"shape":"UpdateAddress"},
         "BillingAddress":{"shape":"UpdateAddress"},
-        "Attributes":{"shape":"UpdateAttributes"}
+        "Attributes":{"shape":"UpdateAttributes"},
+        "PartyTypeString":{"shape":"sensitiveString0To255"},
+        "GenderString":{"shape":"sensitiveString0To255"}
       }
     },
     "UpdateProfileResponse":{
@@ -2753,6 +3784,11 @@
       "members":{
         "ProfileId":{"shape":"uuid"}
       }
+    },
+    "Value":{
+      "type":"integer",
+      "max":366,
+      "min":1
     },
     "WorkflowAttributes":{
       "type":"structure",
@@ -2810,7 +3846,25 @@
         "Object":{"shape":"Object"}
       }
     },
+    "additionalSearchKeysList":{
+      "type":"list",
+      "member":{"shape":"AdditionalSearchKey"},
+      "max":4,
+      "min":1
+    },
+    "attributeName":{
+      "type":"string",
+      "max":64,
+      "min":1,
+      "pattern":"^[a-zA-Z0-9_.-]+$"
+    },
     "boolean":{"type":"boolean"},
+    "displayName":{
+      "type":"string",
+      "max":255,
+      "min":1,
+      "pattern":"^[a-zA-Z_][a-zA-Z_0-9-\\s]*$"
+    },
     "encryptionKey":{
       "type":"string",
       "max":255,
@@ -2820,6 +3874,19 @@
       "type":"integer",
       "max":1098,
       "min":1
+    },
+    "foundByList":{
+      "type":"list",
+      "member":{"shape":"FoundByKeyValue"},
+      "max":5,
+      "min":1
+    },
+    "logicalOperator":{
+      "type":"string",
+      "enum":[
+        "AND",
+        "OR"
+      ]
     },
     "long":{"type":"long"},
     "matchesNumber":{
@@ -2855,14 +3922,39 @@
       "min":1,
       "pattern":".*"
     },
+    "sensitiveString0To1000":{
+      "type":"string",
+      "max":1000,
+      "min":0,
+      "sensitive":true
+    },
+    "sensitiveString0To255":{
+      "type":"string",
+      "max":255,
+      "min":0,
+      "sensitive":true
+    },
+    "sensitiveString1To1000":{
+      "type":"string",
+      "max":1000,
+      "min":1,
+      "sensitive":true
+    },
+    "sensitiveString1To255":{
+      "type":"string",
+      "max":255,
+      "min":1,
+      "sensitive":true
+    },
+    "sensitiveText":{
+      "type":"string",
+      "max":1000,
+      "min":1,
+      "sensitive":true
+    },
     "sqsQueueUrl":{
       "type":"string",
       "max":255,
-      "min":0
-    },
-    "string0To1000":{
-      "type":"string",
-      "max":1000,
       "min":0
     },
     "string0To255":{
@@ -2888,7 +3980,8 @@
     "stringifiedJson":{
       "type":"string",
       "max":256000,
-      "min":1
+      "min":1,
+      "sensitive":true
     },
     "text":{
       "type":"string",

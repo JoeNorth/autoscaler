@@ -23,11 +23,61 @@
       "input":{"shape":"CreateAccessRequest"},
       "output":{"shape":"CreateAccessResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceExistsException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ResourceExistsException"}
+      ]
+    },
+    "CreateAgreement":{
+      "name":"CreateAgreement",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"CreateAgreementRequest"},
+      "output":{"shape":"CreateAgreementResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ResourceExistsException"}
+      ]
+    },
+    "CreateConnector":{
+      "name":"CreateConnector",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"CreateConnectorRequest"},
+      "output":{"shape":"CreateConnectorResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ResourceExistsException"}
+      ]
+    },
+    "CreateProfile":{
+      "name":"CreateProfile",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"CreateProfileRequest"},
+      "output":{"shape":"CreateProfileResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "CreateServer":{
@@ -39,13 +89,13 @@
       "input":{"shape":"CreateServerRequest"},
       "output":{"shape":"CreateServerResponse"},
       "errors":[
-        {"shape":"AccessDeniedException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceExistsException"},
         {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"}
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ResourceExistsException"},
+        {"shape":"AccessDeniedException"}
       ]
     },
     "CreateUser":{
@@ -57,11 +107,11 @@
       "input":{"shape":"CreateUserRequest"},
       "output":{"shape":"CreateUserResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceExistsException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ResourceExistsException"}
       ]
     },
     "CreateWorkflow":{
@@ -73,12 +123,12 @@
       "input":{"shape":"CreateWorkflowRequest"},
       "output":{"shape":"CreateWorkflowResponse"},
       "errors":[
-        {"shape":"AccessDeniedException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
         {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
         {"shape":"ResourceExistsException"},
-        {"shape":"ThrottlingException"}
+        {"shape":"AccessDeniedException"}
       ]
     },
     "DeleteAccess":{
@@ -89,10 +139,81 @@
       },
       "input":{"shape":"DeleteAccessRequest"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "DeleteAgreement":{
+      "name":"DeleteAgreement",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteAgreementRequest"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "DeleteCertificate":{
+      "name":"DeleteCertificate",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteCertificateRequest"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "DeleteConnector":{
+      "name":"DeleteConnector",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteConnectorRequest"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "DeleteHostKey":{
+      "name":"DeleteHostKey",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteHostKeyRequest"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "DeleteProfile":{
+      "name":"DeleteProfile",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteProfileRequest"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "DeleteServer":{
@@ -103,11 +224,11 @@
       },
       "input":{"shape":"DeleteServerRequest"},
       "errors":[
-        {"shape":"AccessDeniedException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"AccessDeniedException"}
       ]
     },
     "DeleteSshPublicKey":{
@@ -118,11 +239,11 @@
       },
       "input":{"shape":"DeleteSshPublicKeyRequest"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
-        {"shape":"InvalidRequestException"},
         {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"}
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "DeleteUser":{
@@ -133,10 +254,10 @@
       },
       "input":{"shape":"DeleteUserRequest"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "DeleteWorkflow":{
@@ -147,11 +268,11 @@
       },
       "input":{"shape":"DeleteWorkflowRequest"},
       "errors":[
-        {"shape":"AccessDeniedException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"AccessDeniedException"}
       ]
     },
     "DescribeAccess":{
@@ -163,10 +284,55 @@
       "input":{"shape":"DescribeAccessRequest"},
       "output":{"shape":"DescribeAccessResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "DescribeAgreement":{
+      "name":"DescribeAgreement",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeAgreementRequest"},
+      "output":{"shape":"DescribeAgreementResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "DescribeCertificate":{
+      "name":"DescribeCertificate",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeCertificateRequest"},
+      "output":{"shape":"DescribeCertificateResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "DescribeConnector":{
+      "name":"DescribeConnector",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeConnectorRequest"},
+      "output":{"shape":"DescribeConnectorResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "DescribeExecution":{
@@ -178,10 +344,40 @@
       "input":{"shape":"DescribeExecutionRequest"},
       "output":{"shape":"DescribeExecutionResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "DescribeHostKey":{
+      "name":"DescribeHostKey",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeHostKeyRequest"},
+      "output":{"shape":"DescribeHostKeyResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "DescribeProfile":{
+      "name":"DescribeProfile",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeProfileRequest"},
+      "output":{"shape":"DescribeProfileResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "DescribeSecurityPolicy":{
@@ -193,10 +389,10 @@
       "input":{"shape":"DescribeSecurityPolicyRequest"},
       "output":{"shape":"DescribeSecurityPolicyResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "DescribeServer":{
@@ -208,10 +404,10 @@
       "input":{"shape":"DescribeServerRequest"},
       "output":{"shape":"DescribeServerResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "DescribeUser":{
@@ -223,10 +419,10 @@
       "input":{"shape":"DescribeUserRequest"},
       "output":{"shape":"DescribeUserResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "DescribeWorkflow":{
@@ -238,10 +434,42 @@
       "input":{"shape":"DescribeWorkflowRequest"},
       "output":{"shape":"DescribeWorkflowResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "ImportCertificate":{
+      "name":"ImportCertificate",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ImportCertificateRequest"},
+      "output":{"shape":"ImportCertificateResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "ImportHostKey":{
+      "name":"ImportHostKey",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ImportHostKeyRequest"},
+      "output":{"shape":"ImportHostKeyResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ResourceExistsException"}
       ]
     },
     "ImportSshPublicKey":{
@@ -253,12 +481,12 @@
       "input":{"shape":"ImportSshPublicKeyRequest"},
       "output":{"shape":"ImportSshPublicKeyResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceExistsException"},
         {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"}
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ResourceExistsException"}
       ]
     },
     "ListAccesses":{
@@ -270,11 +498,59 @@
       "input":{"shape":"ListAccessesRequest"},
       "output":{"shape":"ListAccessesResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
-        {"shape":"InvalidNextTokenException"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
+      ]
+    },
+    "ListAgreements":{
+      "name":"ListAgreements",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListAgreementsRequest"},
+      "output":{"shape":"ListAgreementsResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
+      ]
+    },
+    "ListCertificates":{
+      "name":"ListCertificates",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListCertificatesRequest"},
+      "output":{"shape":"ListCertificatesResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
+      ]
+    },
+    "ListConnectors":{
+      "name":"ListConnectors",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListConnectorsRequest"},
+      "output":{"shape":"ListConnectorsResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
       ]
     },
     "ListExecutions":{
@@ -286,11 +562,43 @@
       "input":{"shape":"ListExecutionsRequest"},
       "output":{"shape":"ListExecutionsResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
-        {"shape":"InvalidNextTokenException"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
+      ]
+    },
+    "ListHostKeys":{
+      "name":"ListHostKeys",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListHostKeysRequest"},
+      "output":{"shape":"ListHostKeysResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
+      ]
+    },
+    "ListProfiles":{
+      "name":"ListProfiles",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListProfilesRequest"},
+      "output":{"shape":"ListProfilesResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
       ]
     },
     "ListSecurityPolicies":{
@@ -302,10 +610,10 @@
       "input":{"shape":"ListSecurityPoliciesRequest"},
       "output":{"shape":"ListSecurityPoliciesResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidRequestException"},
         {"shape":"InternalServiceError"},
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"InvalidRequestException"}
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
       ]
     },
     "ListServers":{
@@ -317,10 +625,10 @@
       "input":{"shape":"ListServersRequest"},
       "output":{"shape":"ListServersResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidRequestException"},
         {"shape":"InternalServiceError"},
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"InvalidRequestException"}
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
       ]
     },
     "ListTagsForResource":{
@@ -332,10 +640,10 @@
       "input":{"shape":"ListTagsForResourceRequest"},
       "output":{"shape":"ListTagsForResourceResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidRequestException"},
         {"shape":"InternalServiceError"},
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"InvalidRequestException"}
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
       ]
     },
     "ListUsers":{
@@ -347,11 +655,11 @@
       "input":{"shape":"ListUsersRequest"},
       "output":{"shape":"ListUsersResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
-        {"shape":"InvalidNextTokenException"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
       ]
     },
     "ListWorkflows":{
@@ -363,10 +671,10 @@
       "input":{"shape":"ListWorkflowsRequest"},
       "output":{"shape":"ListWorkflowsResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidRequestException"},
         {"shape":"InternalServiceError"},
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"InvalidRequestException"}
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidNextTokenException"}
       ]
     },
     "SendWorkflowStepState":{
@@ -378,12 +686,28 @@
       "input":{"shape":"SendWorkflowStepStateRequest"},
       "output":{"shape":"SendWorkflowStepStateResponse"},
       "errors":[
-        {"shape":"AccessDeniedException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
-        {"shape":"InvalidRequestException"},
         {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"}
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"AccessDeniedException"}
+      ]
+    },
+    "StartFileTransfer":{
+      "name":"StartFileTransfer",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"StartFileTransferRequest"},
+      "output":{"shape":"StartFileTransferResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "StartServer":{
@@ -394,11 +718,11 @@
       },
       "input":{"shape":"StartServerRequest"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
-        {"shape":"InvalidRequestException"},
         {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"}
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "StopServer":{
@@ -409,11 +733,11 @@
       },
       "input":{"shape":"StopServerRequest"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
-        {"shape":"InvalidRequestException"},
         {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"}
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "TagResource":{
@@ -424,10 +748,25 @@
       },
       "input":{"shape":"TagResourceRequest"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "TestConnection":{
+      "name":"TestConnection",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"TestConnectionRequest"},
+      "output":{"shape":"TestConnectionResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "TestIdentityProvider":{
@@ -439,10 +778,10 @@
       "input":{"shape":"TestIdentityProviderRequest"},
       "output":{"shape":"TestIdentityProviderResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "UntagResource":{
@@ -453,10 +792,10 @@
       },
       "input":{"shape":"UntagResourceRequest"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "UpdateAccess":{
@@ -468,11 +807,94 @@
       "input":{"shape":"UpdateAccessRequest"},
       "output":{"shape":"UpdateAccessResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidRequestException"},
-        {"shape":"ResourceExistsException"},
-        {"shape":"ResourceNotFoundException"}
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ResourceExistsException"}
+      ]
+    },
+    "UpdateAgreement":{
+      "name":"UpdateAgreement",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateAgreementRequest"},
+      "output":{"shape":"UpdateAgreementResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ResourceExistsException"}
+      ]
+    },
+    "UpdateCertificate":{
+      "name":"UpdateCertificate",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateCertificateRequest"},
+      "output":{"shape":"UpdateCertificateResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "UpdateConnector":{
+      "name":"UpdateConnector",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateConnectorRequest"},
+      "output":{"shape":"UpdateConnectorResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ResourceExistsException"}
+      ]
+    },
+    "UpdateHostKey":{
+      "name":"UpdateHostKey",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateHostKeyRequest"},
+      "output":{"shape":"UpdateHostKeyResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "UpdateProfile":{
+      "name":"UpdateProfile",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateProfileRequest"},
+      "output":{"shape":"UpdateProfileResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "UpdateServer":{
@@ -484,14 +906,14 @@
       "input":{"shape":"UpdateServerRequest"},
       "output":{"shape":"UpdateServerResponse"},
       "errors":[
-        {"shape":"AccessDeniedException"},
-        {"shape":"ServiceUnavailableException"},
         {"shape":"ConflictException"},
-        {"shape":"InternalServiceError"},
-        {"shape":"InvalidRequestException"},
-        {"shape":"ResourceExistsException"},
         {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"}
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ResourceExistsException"},
+        {"shape":"AccessDeniedException"}
       ]
     },
     "UpdateUser":{
@@ -503,11 +925,11 @@
       "input":{"shape":"UpdateUserRequest"},
       "output":{"shape":"UpdateUserResponse"},
       "errors":[
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalServiceError"},
-        {"shape":"InvalidRequestException"},
         {"shape":"ResourceNotFoundException"},
-        {"shape":"ThrottlingException"}
+        {"shape":"InvalidRequestException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServiceError"},
+        {"shape":"ServiceUnavailableException"}
       ]
     }
   },
@@ -517,19 +939,66 @@
       "members":{
         "Message":{"shape":"ServiceErrorMessage"}
       },
-      "exception":true,
-      "synthetic":true
+      "exception":true
     },
     "AddressAllocationId":{"type":"string"},
     "AddressAllocationIds":{
       "type":"list",
       "member":{"shape":"AddressAllocationId"}
     },
+    "AgreementId":{
+      "type":"string",
+      "max":19,
+      "min":19,
+      "pattern":"a-([0-9a-f]{17})"
+    },
+    "AgreementStatusType":{
+      "type":"string",
+      "enum":[
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
     "Arn":{
       "type":"string",
       "max":1600,
       "min":20,
-      "pattern":"arn:.*"
+      "pattern":"arn:\\S+"
+    },
+    "As2ConnectorConfig":{
+      "type":"structure",
+      "members":{
+        "LocalProfileId":{"shape":"ProfileId"},
+        "PartnerProfileId":{"shape":"ProfileId"},
+        "MessageSubject":{"shape":"MessageSubject"},
+        "Compression":{"shape":"CompressionEnum"},
+        "EncryptionAlgorithm":{"shape":"EncryptionAlg"},
+        "SigningAlgorithm":{"shape":"SigningAlg"},
+        "MdnSigningAlgorithm":{"shape":"MdnSigningAlg"},
+        "MdnResponse":{"shape":"MdnResponse"},
+        "BasicAuthSecretId":{"shape":"As2ConnectorSecretId"}
+      }
+    },
+    "As2ConnectorSecretId":{
+      "type":"string",
+      "max":2048,
+      "min":0
+    },
+    "As2Id":{
+      "type":"string",
+      "max":128,
+      "min":1,
+      "pattern":"[\\p{Print}\\s]*"
+    },
+    "As2Transport":{
+      "type":"string",
+      "enum":["HTTP"]
+    },
+    "As2Transports":{
+      "type":"list",
+      "member":{"shape":"As2Transport"},
+      "max":1,
+      "min":1
     },
     "CallbackToken":{
       "type":"string",
@@ -537,9 +1006,70 @@
       "min":1,
       "pattern":"\\w+"
     },
+    "CertDate":{"type":"timestamp"},
+    "CertSerial":{
+      "type":"string",
+      "max":48,
+      "min":0,
+      "pattern":"[\\p{XDigit}{2}:?]*"
+    },
     "Certificate":{
       "type":"string",
-      "max":1600
+      "max":1600,
+      "min":0
+    },
+    "CertificateBodyType":{
+      "type":"string",
+      "max":16384,
+      "min":1,
+      "pattern":"[\\u0009\\u000A\\u000D\\u0020-\\u00FF]*",
+      "sensitive":true
+    },
+    "CertificateChainType":{
+      "type":"string",
+      "max":2097152,
+      "min":1,
+      "pattern":"[\\u0009\\u000A\\u000D\\u0020-\\u00FF]*",
+      "sensitive":true
+    },
+    "CertificateId":{
+      "type":"string",
+      "max":22,
+      "min":22,
+      "pattern":"cert-([0-9a-f]{17})"
+    },
+    "CertificateIds":{
+      "type":"list",
+      "member":{"shape":"CertificateId"}
+    },
+    "CertificateStatusType":{
+      "type":"string",
+      "enum":[
+        "ACTIVE",
+        "PENDING_ROTATION",
+        "INACTIVE"
+      ]
+    },
+    "CertificateType":{
+      "type":"string",
+      "enum":[
+        "CERTIFICATE",
+        "CERTIFICATE_WITH_PRIVATE_KEY"
+      ]
+    },
+    "CertificateUsageType":{
+      "type":"string",
+      "enum":[
+        "SIGNING",
+        "ENCRYPTION"
+      ]
+    },
+    "CompressionEnum":{
+      "type":"string",
+      "enum":[
+        "ZLIB",
+        "DISABLED"
+      ]
     },
     "ConflictException":{
       "type":"structure",
@@ -548,6 +1078,12 @@
         "Message":{"shape":"Message"}
       },
       "exception":true
+    },
+    "ConnectorId":{
+      "type":"string",
+      "max":19,
+      "min":19,
+      "pattern":"c-([0-9a-f]{17})"
     },
     "CopyStepDetails":{
       "type":"structure",
@@ -587,6 +1123,75 @@
         "ExternalId":{"shape":"ExternalId"}
       }
     },
+    "CreateAgreementRequest":{
+      "type":"structure",
+      "required":[
+        "ServerId",
+        "LocalProfileId",
+        "PartnerProfileId",
+        "BaseDirectory",
+        "AccessRole"
+      ],
+      "members":{
+        "Description":{"shape":"Description"},
+        "ServerId":{"shape":"ServerId"},
+        "LocalProfileId":{"shape":"ProfileId"},
+        "PartnerProfileId":{"shape":"ProfileId"},
+        "BaseDirectory":{"shape":"HomeDirectory"},
+        "AccessRole":{"shape":"Role"},
+        "Status":{"shape":"AgreementStatusType"},
+        "Tags":{"shape":"Tags"}
+      }
+    },
+    "CreateAgreementResponse":{
+      "type":"structure",
+      "required":["AgreementId"],
+      "members":{
+        "AgreementId":{"shape":"AgreementId"}
+      }
+    },
+    "CreateConnectorRequest":{
+      "type":"structure",
+      "required":[
+        "Url",
+        "AccessRole"
+      ],
+      "members":{
+        "Url":{"shape":"Url"},
+        "As2Config":{"shape":"As2ConnectorConfig"},
+        "AccessRole":{"shape":"Role"},
+        "LoggingRole":{"shape":"Role"},
+        "Tags":{"shape":"Tags"},
+        "SftpConfig":{"shape":"SftpConnectorConfig"}
+      }
+    },
+    "CreateConnectorResponse":{
+      "type":"structure",
+      "required":["ConnectorId"],
+      "members":{
+        "ConnectorId":{"shape":"ConnectorId"}
+      }
+    },
+    "CreateProfileRequest":{
+      "type":"structure",
+      "required":[
+        "As2Id",
+        "ProfileType"
+      ],
+      "members":{
+        "As2Id":{"shape":"As2Id"},
+        "ProfileType":{"shape":"ProfileType"},
+        "CertificateIds":{"shape":"CertificateIds"},
+        "Tags":{"shape":"Tags"}
+      }
+    },
+    "CreateProfileResponse":{
+      "type":"structure",
+      "required":["ProfileId"],
+      "members":{
+        "ProfileId":{"shape":"ProfileId"}
+      }
+    },
     "CreateServerRequest":{
       "type":"structure",
       "members":{
@@ -597,14 +1202,16 @@
         "HostKey":{"shape":"HostKey"},
         "IdentityProviderDetails":{"shape":"IdentityProviderDetails"},
         "IdentityProviderType":{"shape":"IdentityProviderType"},
-        "LoggingRole":{"shape":"Role"},
+        "LoggingRole":{"shape":"NullableRole"},
         "PostAuthenticationLoginBanner":{"shape":"PostAuthenticationLoginBanner"},
         "PreAuthenticationLoginBanner":{"shape":"PreAuthenticationLoginBanner"},
         "Protocols":{"shape":"Protocols"},
         "ProtocolDetails":{"shape":"ProtocolDetails"},
         "SecurityPolicyName":{"shape":"SecurityPolicyName"},
         "Tags":{"shape":"Tags"},
-        "WorkflowDetails":{"shape":"WorkflowDetails"}
+        "WorkflowDetails":{"shape":"WorkflowDetails"},
+        "StructuredLogDestinations":{"shape":"StructuredLogDestinations"},
+        "S3StorageOptions":{"shape":"S3StorageOptions"}
       }
     },
     "CreateServerResponse":{
@@ -681,14 +1288,30 @@
     "CustomStepTarget":{
       "type":"string",
       "max":170,
-      "pattern":"arn:[a-z-]+:lambda:.*$"
+      "min":0,
+      "pattern":"arn:[a-z-]+:lambda:.*"
     },
     "CustomStepTimeoutSeconds":{
       "type":"integer",
+      "box":true,
       "max":1800,
       "min":1
     },
     "DateImported":{"type":"timestamp"},
+    "DecryptStepDetails":{
+      "type":"structure",
+      "required":[
+        "Type",
+        "DestinationFileLocation"
+      ],
+      "members":{
+        "Name":{"shape":"WorkflowStepName"},
+        "Type":{"shape":"EncryptionType"},
+        "SourceFileLocation":{"shape":"SourceFileLocation"},
+        "OverwriteExisting":{"shape":"OverwriteExisting"},
+        "DestinationFileLocation":{"shape":"InputFileLocation"}
+      }
+    },
     "DeleteAccessRequest":{
       "type":"structure",
       "required":[
@@ -698,6 +1321,49 @@
       "members":{
         "ServerId":{"shape":"ServerId"},
         "ExternalId":{"shape":"ExternalId"}
+      }
+    },
+    "DeleteAgreementRequest":{
+      "type":"structure",
+      "required":[
+        "AgreementId",
+        "ServerId"
+      ],
+      "members":{
+        "AgreementId":{"shape":"AgreementId"},
+        "ServerId":{"shape":"ServerId"}
+      }
+    },
+    "DeleteCertificateRequest":{
+      "type":"structure",
+      "required":["CertificateId"],
+      "members":{
+        "CertificateId":{"shape":"CertificateId"}
+      }
+    },
+    "DeleteConnectorRequest":{
+      "type":"structure",
+      "required":["ConnectorId"],
+      "members":{
+        "ConnectorId":{"shape":"ConnectorId"}
+      }
+    },
+    "DeleteHostKeyRequest":{
+      "type":"structure",
+      "required":[
+        "ServerId",
+        "HostKeyId"
+      ],
+      "members":{
+        "ServerId":{"shape":"ServerId"},
+        "HostKeyId":{"shape":"HostKeyId"}
+      }
+    },
+    "DeleteProfileRequest":{
+      "type":"structure",
+      "required":["ProfileId"],
+      "members":{
+        "ProfileId":{"shape":"ProfileId"}
       }
     },
     "DeleteServerRequest":{
@@ -767,6 +1433,52 @@
         "Access":{"shape":"DescribedAccess"}
       }
     },
+    "DescribeAgreementRequest":{
+      "type":"structure",
+      "required":[
+        "AgreementId",
+        "ServerId"
+      ],
+      "members":{
+        "AgreementId":{"shape":"AgreementId"},
+        "ServerId":{"shape":"ServerId"}
+      }
+    },
+    "DescribeAgreementResponse":{
+      "type":"structure",
+      "required":["Agreement"],
+      "members":{
+        "Agreement":{"shape":"DescribedAgreement"}
+      }
+    },
+    "DescribeCertificateRequest":{
+      "type":"structure",
+      "required":["CertificateId"],
+      "members":{
+        "CertificateId":{"shape":"CertificateId"}
+      }
+    },
+    "DescribeCertificateResponse":{
+      "type":"structure",
+      "required":["Certificate"],
+      "members":{
+        "Certificate":{"shape":"DescribedCertificate"}
+      }
+    },
+    "DescribeConnectorRequest":{
+      "type":"structure",
+      "required":["ConnectorId"],
+      "members":{
+        "ConnectorId":{"shape":"ConnectorId"}
+      }
+    },
+    "DescribeConnectorResponse":{
+      "type":"structure",
+      "required":["Connector"],
+      "members":{
+        "Connector":{"shape":"DescribedConnector"}
+      }
+    },
     "DescribeExecutionRequest":{
       "type":"structure",
       "required":[
@@ -787,6 +1499,38 @@
       "members":{
         "WorkflowId":{"shape":"WorkflowId"},
         "Execution":{"shape":"DescribedExecution"}
+      }
+    },
+    "DescribeHostKeyRequest":{
+      "type":"structure",
+      "required":[
+        "ServerId",
+        "HostKeyId"
+      ],
+      "members":{
+        "ServerId":{"shape":"ServerId"},
+        "HostKeyId":{"shape":"HostKeyId"}
+      }
+    },
+    "DescribeHostKeyResponse":{
+      "type":"structure",
+      "required":["HostKey"],
+      "members":{
+        "HostKey":{"shape":"DescribedHostKey"}
+      }
+    },
+    "DescribeProfileRequest":{
+      "type":"structure",
+      "required":["ProfileId"],
+      "members":{
+        "ProfileId":{"shape":"ProfileId"}
+      }
+    },
+    "DescribeProfileResponse":{
+      "type":"structure",
+      "required":["Profile"],
+      "members":{
+        "Profile":{"shape":"DescribedProfile"}
       }
     },
     "DescribeSecurityPolicyRequest":{
@@ -865,6 +1609,56 @@
         "ExternalId":{"shape":"ExternalId"}
       }
     },
+    "DescribedAgreement":{
+      "type":"structure",
+      "required":["Arn"],
+      "members":{
+        "Arn":{"shape":"Arn"},
+        "AgreementId":{"shape":"AgreementId"},
+        "Description":{"shape":"Description"},
+        "Status":{"shape":"AgreementStatusType"},
+        "ServerId":{"shape":"ServerId"},
+        "LocalProfileId":{"shape":"ProfileId"},
+        "PartnerProfileId":{"shape":"ProfileId"},
+        "BaseDirectory":{"shape":"HomeDirectory"},
+        "AccessRole":{"shape":"Role"},
+        "Tags":{"shape":"Tags"}
+      }
+    },
+    "DescribedCertificate":{
+      "type":"structure",
+      "required":["Arn"],
+      "members":{
+        "Arn":{"shape":"Arn"},
+        "CertificateId":{"shape":"CertificateId"},
+        "Usage":{"shape":"CertificateUsageType"},
+        "Status":{"shape":"CertificateStatusType"},
+        "Certificate":{"shape":"CertificateBodyType"},
+        "CertificateChain":{"shape":"CertificateChainType"},
+        "ActiveDate":{"shape":"CertDate"},
+        "InactiveDate":{"shape":"CertDate"},
+        "Serial":{"shape":"CertSerial"},
+        "NotBeforeDate":{"shape":"CertDate"},
+        "NotAfterDate":{"shape":"CertDate"},
+        "Type":{"shape":"CertificateType"},
+        "Description":{"shape":"Description"},
+        "Tags":{"shape":"Tags"}
+      }
+    },
+    "DescribedConnector":{
+      "type":"structure",
+      "required":["Arn"],
+      "members":{
+        "Arn":{"shape":"Arn"},
+        "ConnectorId":{"shape":"ConnectorId"},
+        "Url":{"shape":"Url"},
+        "As2Config":{"shape":"As2ConnectorConfig"},
+        "AccessRole":{"shape":"Role"},
+        "LoggingRole":{"shape":"Role"},
+        "Tags":{"shape":"Tags"},
+        "SftpConfig":{"shape":"SftpConnectorConfig"}
+      }
+    },
     "DescribedExecution":{
       "type":"structure",
       "members":{
@@ -876,6 +1670,31 @@
         "PosixProfile":{"shape":"PosixProfile"},
         "Status":{"shape":"ExecutionStatus"},
         "Results":{"shape":"ExecutionResults"}
+      }
+    },
+    "DescribedHostKey":{
+      "type":"structure",
+      "required":["Arn"],
+      "members":{
+        "Arn":{"shape":"Arn"},
+        "HostKeyId":{"shape":"HostKeyId"},
+        "HostKeyFingerprint":{"shape":"HostKeyFingerprint"},
+        "Description":{"shape":"HostKeyDescription"},
+        "Type":{"shape":"HostKeyType"},
+        "DateImported":{"shape":"DateImported"},
+        "Tags":{"shape":"Tags"}
+      }
+    },
+    "DescribedProfile":{
+      "type":"structure",
+      "required":["Arn"],
+      "members":{
+        "Arn":{"shape":"Arn"},
+        "ProfileId":{"shape":"ProfileId"},
+        "ProfileType":{"shape":"ProfileType"},
+        "As2Id":{"shape":"As2Id"},
+        "CertificateIds":{"shape":"CertificateIds"},
+        "Tags":{"shape":"Tags"}
       }
     },
     "DescribedSecurityPolicy":{
@@ -903,7 +1722,7 @@
         "HostKeyFingerprint":{"shape":"HostKeyFingerprint"},
         "IdentityProviderDetails":{"shape":"IdentityProviderDetails"},
         "IdentityProviderType":{"shape":"IdentityProviderType"},
-        "LoggingRole":{"shape":"Role"},
+        "LoggingRole":{"shape":"NullableRole"},
         "PostAuthenticationLoginBanner":{"shape":"PostAuthenticationLoginBanner"},
         "PreAuthenticationLoginBanner":{"shape":"PreAuthenticationLoginBanner"},
         "Protocols":{"shape":"Protocols"},
@@ -912,7 +1731,9 @@
         "State":{"shape":"State"},
         "Tags":{"shape":"Tags"},
         "UserCount":{"shape":"UserCount"},
-        "WorkflowDetails":{"shape":"WorkflowDetails"}
+        "WorkflowDetails":{"shape":"WorkflowDetails"},
+        "StructuredLogDestinations":{"shape":"StructuredLogDestinations"},
+        "S3StorageOptions":{"shape":"S3StorageOptions"}
       }
     },
     "DescribedUser":{
@@ -943,11 +1764,24 @@
         "Tags":{"shape":"Tags"}
       }
     },
+    "Description":{
+      "type":"string",
+      "max":200,
+      "min":1,
+      "pattern":"[\\p{Graph}]+"
+    },
     "DirectoryId":{
       "type":"string",
       "max":12,
       "min":12,
-      "pattern":"^d-[0-9a-f]{10}$"
+      "pattern":"d-[0-9a-f]{10}"
+    },
+    "DirectoryListingOptimization":{
+      "type":"string",
+      "enum":[
+        "ENABLED",
+        "DISABLED"
+      ]
     },
     "Domain":{
       "type":"string",
@@ -966,13 +1800,27 @@
     "EfsFileSystemId":{
       "type":"string",
       "max":128,
-      "pattern":"^(arn:aws[-a-z]*:elasticfilesystem:[0-9a-z-:]+:(access-point/fsap|file-system/fs)-[0-9a-f]{8,40}|fs(ap)?-[0-9a-f]{8,40})$"
+      "min":0,
+      "pattern":"(arn:aws[-a-z]*:elasticfilesystem:[0-9a-z-:]+:(access-point/fsap|file-system/fs)-[0-9a-f]{8,40}|fs(ap)?-[0-9a-f]{8,40})"
     },
     "EfsPath":{
       "type":"string",
       "max":65536,
       "min":1,
-      "pattern":"^[^\\x00]+$"
+      "pattern":"[^\\x00]+"
+    },
+    "EncryptionAlg":{
+      "type":"string",
+      "enum":[
+        "AES128_CBC",
+        "AES192_CBC",
+        "AES256_CBC",
+        "NONE"
+      ]
+    },
+    "EncryptionType":{
+      "type":"string",
+      "enum":["PGP"]
     },
     "EndpointDetails":{
       "type":"structure",
@@ -1021,7 +1869,7 @@
       "type":"string",
       "max":36,
       "min":36,
-      "pattern":"^[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}$"
+      "pattern":"[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}"
     },
     "ExecutionResults":{
       "type":"structure",
@@ -1057,7 +1905,7 @@
       "type":"string",
       "max":256,
       "min":1,
-      "pattern":"^S-1-[\\d-]+$"
+      "pattern":"S-1-[\\d-]+"
     },
     "FileLocation":{
       "type":"structure",
@@ -1066,17 +1914,33 @@
         "EfsFileLocation":{"shape":"EfsFileLocation"}
       }
     },
-    "Fips":{"type":"boolean"},
+    "FilePath":{
+      "type":"string",
+      "max":1024,
+      "min":1,
+      "pattern":"(.)+"
+    },
+    "FilePaths":{
+      "type":"list",
+      "member":{"shape":"FilePath"},
+      "max":10,
+      "min":1
+    },
+    "Fips":{
+      "type":"boolean",
+      "box":true
+    },
     "Function":{
       "type":"string",
       "max":170,
       "min":1,
-      "pattern":"^arn:[a-z-]+:lambda:.*$"
+      "pattern":"arn:[a-z-]+:lambda:.*"
     },
     "HomeDirectory":{
       "type":"string",
       "max":1024,
-      "pattern":"^$|/.*"
+      "min":0,
+      "pattern":"(|/.*)"
     },
     "HomeDirectoryMapEntry":{
       "type":"structure",
@@ -1086,13 +1950,14 @@
       ],
       "members":{
         "Entry":{"shape":"MapEntry"},
-        "Target":{"shape":"MapTarget"}
+        "Target":{"shape":"MapTarget"},
+        "Type":{"shape":"MapType"}
       }
     },
     "HomeDirectoryMappings":{
       "type":"list",
       "member":{"shape":"HomeDirectoryMapEntry"},
-      "max":50,
+      "max":50000,
       "min":1
     },
     "HomeDirectoryType":{
@@ -1105,16 +1970,31 @@
     "HostKey":{
       "type":"string",
       "max":4096,
+      "min":0,
       "sensitive":true
     },
+    "HostKeyDescription":{
+      "type":"string",
+      "max":200,
+      "min":0,
+      "pattern":"[\\p{Print}]*"
+    },
     "HostKeyFingerprint":{"type":"string"},
+    "HostKeyId":{
+      "type":"string",
+      "max":25,
+      "min":25,
+      "pattern":"hostkey-[0-9a-f]{17}"
+    },
+    "HostKeyType":{"type":"string"},
     "IdentityProviderDetails":{
       "type":"structure",
       "members":{
         "Url":{"shape":"Url"},
         "InvocationRole":{"shape":"Role"},
         "DirectoryId":{"shape":"DirectoryId"},
-        "Function":{"shape":"Function"}
+        "Function":{"shape":"Function"},
+        "SftpAuthenticationMethods":{"shape":"SftpAuthenticationMethods"}
       }
     },
     "IdentityProviderType":{
@@ -1125,6 +2005,54 @@
         "AWS_DIRECTORY_SERVICE",
         "AWS_LAMBDA"
       ]
+    },
+    "ImportCertificateRequest":{
+      "type":"structure",
+      "required":[
+        "Usage",
+        "Certificate"
+      ],
+      "members":{
+        "Usage":{"shape":"CertificateUsageType"},
+        "Certificate":{"shape":"CertificateBodyType"},
+        "CertificateChain":{"shape":"CertificateChainType"},
+        "PrivateKey":{"shape":"PrivateKeyType"},
+        "ActiveDate":{"shape":"CertDate"},
+        "InactiveDate":{"shape":"CertDate"},
+        "Description":{"shape":"Description"},
+        "Tags":{"shape":"Tags"}
+      }
+    },
+    "ImportCertificateResponse":{
+      "type":"structure",
+      "required":["CertificateId"],
+      "members":{
+        "CertificateId":{"shape":"CertificateId"}
+      }
+    },
+    "ImportHostKeyRequest":{
+      "type":"structure",
+      "required":[
+        "ServerId",
+        "HostKeyBody"
+      ],
+      "members":{
+        "ServerId":{"shape":"ServerId"},
+        "HostKeyBody":{"shape":"HostKey"},
+        "Description":{"shape":"HostKeyDescription"},
+        "Tags":{"shape":"Tags"}
+      }
+    },
+    "ImportHostKeyResponse":{
+      "type":"structure",
+      "required":[
+        "ServerId",
+        "HostKeyId"
+      ],
+      "members":{
+        "ServerId":{"shape":"ServerId"},
+        "HostKeyId":{"shape":"HostKeyId"}
+      }
     },
     "ImportSshPublicKeyRequest":{
       "type":"structure",
@@ -1205,6 +2133,53 @@
         "Accesses":{"shape":"ListedAccesses"}
       }
     },
+    "ListAgreementsRequest":{
+      "type":"structure",
+      "required":["ServerId"],
+      "members":{
+        "MaxResults":{"shape":"MaxResults"},
+        "NextToken":{"shape":"NextToken"},
+        "ServerId":{"shape":"ServerId"}
+      }
+    },
+    "ListAgreementsResponse":{
+      "type":"structure",
+      "required":["Agreements"],
+      "members":{
+        "NextToken":{"shape":"NextToken"},
+        "Agreements":{"shape":"ListedAgreements"}
+      }
+    },
+    "ListCertificatesRequest":{
+      "type":"structure",
+      "members":{
+        "MaxResults":{"shape":"MaxResults"},
+        "NextToken":{"shape":"NextToken"}
+      }
+    },
+    "ListCertificatesResponse":{
+      "type":"structure",
+      "required":["Certificates"],
+      "members":{
+        "NextToken":{"shape":"NextToken"},
+        "Certificates":{"shape":"ListedCertificates"}
+      }
+    },
+    "ListConnectorsRequest":{
+      "type":"structure",
+      "members":{
+        "MaxResults":{"shape":"MaxResults"},
+        "NextToken":{"shape":"NextToken"}
+      }
+    },
+    "ListConnectorsResponse":{
+      "type":"structure",
+      "required":["Connectors"],
+      "members":{
+        "NextToken":{"shape":"NextToken"},
+        "Connectors":{"shape":"ListedConnectors"}
+      }
+    },
     "ListExecutionsRequest":{
       "type":"structure",
       "required":["WorkflowId"],
@@ -1224,6 +2199,43 @@
         "NextToken":{"shape":"NextToken"},
         "WorkflowId":{"shape":"WorkflowId"},
         "Executions":{"shape":"ListedExecutions"}
+      }
+    },
+    "ListHostKeysRequest":{
+      "type":"structure",
+      "required":["ServerId"],
+      "members":{
+        "MaxResults":{"shape":"MaxResults"},
+        "NextToken":{"shape":"NextToken"},
+        "ServerId":{"shape":"ServerId"}
+      }
+    },
+    "ListHostKeysResponse":{
+      "type":"structure",
+      "required":[
+        "ServerId",
+        "HostKeys"
+      ],
+      "members":{
+        "NextToken":{"shape":"NextToken"},
+        "ServerId":{"shape":"ServerId"},
+        "HostKeys":{"shape":"ListedHostKeys"}
+      }
+    },
+    "ListProfilesRequest":{
+      "type":"structure",
+      "members":{
+        "MaxResults":{"shape":"MaxResults"},
+        "NextToken":{"shape":"NextToken"},
+        "ProfileType":{"shape":"ProfileType"}
+      }
+    },
+    "ListProfilesResponse":{
+      "type":"structure",
+      "required":["Profiles"],
+      "members":{
+        "NextToken":{"shape":"NextToken"},
+        "Profiles":{"shape":"ListedProfiles"}
       }
     },
     "ListSecurityPoliciesRequest":{
@@ -1322,6 +2334,51 @@
       "type":"list",
       "member":{"shape":"ListedAccess"}
     },
+    "ListedAgreement":{
+      "type":"structure",
+      "members":{
+        "Arn":{"shape":"Arn"},
+        "AgreementId":{"shape":"AgreementId"},
+        "Description":{"shape":"Description"},
+        "Status":{"shape":"AgreementStatusType"},
+        "ServerId":{"shape":"ServerId"},
+        "LocalProfileId":{"shape":"ProfileId"},
+        "PartnerProfileId":{"shape":"ProfileId"}
+      }
+    },
+    "ListedAgreements":{
+      "type":"list",
+      "member":{"shape":"ListedAgreement"}
+    },
+    "ListedCertificate":{
+      "type":"structure",
+      "members":{
+        "Arn":{"shape":"Arn"},
+        "CertificateId":{"shape":"CertificateId"},
+        "Usage":{"shape":"CertificateUsageType"},
+        "Status":{"shape":"CertificateStatusType"},
+        "ActiveDate":{"shape":"CertDate"},
+        "InactiveDate":{"shape":"CertDate"},
+        "Type":{"shape":"CertificateType"},
+        "Description":{"shape":"Description"}
+      }
+    },
+    "ListedCertificates":{
+      "type":"list",
+      "member":{"shape":"ListedCertificate"}
+    },
+    "ListedConnector":{
+      "type":"structure",
+      "members":{
+        "Arn":{"shape":"Arn"},
+        "ConnectorId":{"shape":"ConnectorId"},
+        "Url":{"shape":"Url"}
+      }
+    },
+    "ListedConnectors":{
+      "type":"list",
+      "member":{"shape":"ListedConnector"}
+    },
     "ListedExecution":{
       "type":"structure",
       "members":{
@@ -1334,6 +2391,35 @@
     "ListedExecutions":{
       "type":"list",
       "member":{"shape":"ListedExecution"}
+    },
+    "ListedHostKey":{
+      "type":"structure",
+      "required":["Arn"],
+      "members":{
+        "Arn":{"shape":"Arn"},
+        "HostKeyId":{"shape":"HostKeyId"},
+        "Fingerprint":{"shape":"HostKeyFingerprint"},
+        "Description":{"shape":"HostKeyDescription"},
+        "Type":{"shape":"HostKeyType"},
+        "DateImported":{"shape":"DateImported"}
+      }
+    },
+    "ListedHostKeys":{
+      "type":"list",
+      "member":{"shape":"ListedHostKey"}
+    },
+    "ListedProfile":{
+      "type":"structure",
+      "members":{
+        "Arn":{"shape":"Arn"},
+        "ProfileId":{"shape":"ProfileId"},
+        "As2Id":{"shape":"As2Id"},
+        "ProfileType":{"shape":"ProfileType"}
+      }
+    },
+    "ListedProfiles":{
+      "type":"list",
+      "member":{"shape":"ListedProfile"}
     },
     "ListedServer":{
       "type":"structure",
@@ -1397,19 +2483,53 @@
     "MapEntry":{
       "type":"string",
       "max":1024,
-      "pattern":"^/.*"
+      "min":0,
+      "pattern":"/.*"
     },
     "MapTarget":{
       "type":"string",
       "max":1024,
-      "pattern":"^/.*"
+      "min":0,
+      "pattern":"/.*"
+    },
+    "MapType":{
+      "type":"string",
+      "enum":[
+        "FILE",
+        "DIRECTORY"
+      ]
     },
     "MaxResults":{
       "type":"integer",
+      "box":true,
       "max":1000,
       "min":1
     },
+    "MdnResponse":{
+      "type":"string",
+      "enum":[
+        "SYNC",
+        "NONE"
+      ]
+    },
+    "MdnSigningAlg":{
+      "type":"string",
+      "enum":[
+        "SHA256",
+        "SHA384",
+        "SHA512",
+        "SHA1",
+        "NONE",
+        "DEFAULT"
+      ]
+    },
     "Message":{"type":"string"},
+    "MessageSubject":{
+      "type":"string",
+      "max":1024,
+      "min":1,
+      "pattern":"[\\p{Print}\\p{Blank}]+"
+    },
     "NextToken":{
       "type":"string",
       "max":6144,
@@ -1418,12 +2538,20 @@
     "NullableRole":{
       "type":"string",
       "max":2048,
-      "pattern":"^$|arn:.*role/.*"
+      "min":0,
+      "pattern":"(|arn:.*role/\\S+)"
+    },
+    "OnPartialUploadWorkflowDetails":{
+      "type":"list",
+      "member":{"shape":"WorkflowDetail"},
+      "max":1,
+      "min":0
     },
     "OnUploadWorkflowDetails":{
       "type":"list",
       "member":{"shape":"WorkflowDetail"},
-      "max":1
+      "max":1,
+      "min":0
     },
     "OverwriteExisting":{
       "type":"string",
@@ -1434,14 +2562,17 @@
     },
     "PassiveIp":{
       "type":"string",
-      "max":15
+      "max":15,
+      "min":0
     },
     "Policy":{
       "type":"string",
-      "max":2048
+      "max":2048,
+      "min":0
     },
     "PosixId":{
       "type":"long",
+      "box":true,
       "max":4294967295,
       "min":0
     },
@@ -1459,20 +2590,43 @@
     },
     "PostAuthenticationLoginBanner":{
       "type":"string",
-      "max":512,
+      "max":4096,
+      "min":0,
       "pattern":"[\\x09-\\x0D\\x20-\\x7E]*"
     },
     "PreAuthenticationLoginBanner":{
       "type":"string",
-      "max":512,
+      "max":4096,
+      "min":0,
       "pattern":"[\\x09-\\x0D\\x20-\\x7E]*"
+    },
+    "PrivateKeyType":{
+      "type":"string",
+      "max":16384,
+      "min":1,
+      "pattern":"[\\u0009\\u000A\\u000D\\u0020-\\u00FF]*",
+      "sensitive":true
+    },
+    "ProfileId":{
+      "type":"string",
+      "max":19,
+      "min":19,
+      "pattern":"p-([0-9a-f]{17})"
+    },
+    "ProfileType":{
+      "type":"string",
+      "enum":[
+        "LOCAL",
+        "PARTNER"
+      ]
     },
     "Protocol":{
       "type":"string",
       "enum":[
         "SFTP",
         "FTP",
-        "FTPS"
+        "FTPS",
+        "AS2"
       ]
     },
     "ProtocolDetails":{
@@ -1480,13 +2634,14 @@
       "members":{
         "PassiveIp":{"shape":"PassiveIp"},
         "TlsSessionResumptionMode":{"shape":"TlsSessionResumptionMode"},
-        "SetStatOption":{"shape":"SetStatOption"}
+        "SetStatOption":{"shape":"SetStatOption"},
+        "As2Transports":{"shape":"As2Transports"}
       }
     },
     "Protocols":{
       "type":"list",
       "member":{"shape":"Protocol"},
-      "max":3,
+      "max":4,
       "min":1
     },
     "Resource":{"type":"string"},
@@ -1525,19 +2680,19 @@
       "type":"string",
       "max":2048,
       "min":20,
-      "pattern":"arn:.*role/.*"
+      "pattern":"arn:.*role/\\S+"
     },
     "S3Bucket":{
       "type":"string",
       "max":63,
       "min":3,
-      "pattern":"^[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9]$"
+      "pattern":"[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9]"
     },
     "S3Etag":{
       "type":"string",
       "max":65536,
       "min":1,
-      "pattern":"^.+$"
+      "pattern":".+"
     },
     "S3FileLocation":{
       "type":"structure",
@@ -1558,7 +2713,14 @@
     "S3Key":{
       "type":"string",
       "max":1024,
+      "min":0,
       "pattern":"[\\P{M}\\p{M}]*"
+    },
+    "S3StorageOptions":{
+      "type":"structure",
+      "members":{
+        "DirectoryListingOptimization":{"shape":"DirectoryListingOptimization"}
+      }
     },
     "S3Tag":{
       "type":"structure",
@@ -1575,12 +2737,13 @@
       "type":"string",
       "max":128,
       "min":1,
-      "pattern":"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"
+      "pattern":"([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)"
     },
     "S3TagValue":{
       "type":"string",
       "max":256,
-      "pattern":"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"
+      "min":0,
+      "pattern":"([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)"
     },
     "S3Tags":{
       "type":"list",
@@ -1592,7 +2755,7 @@
       "type":"string",
       "max":1024,
       "min":1,
-      "pattern":"^.+$"
+      "pattern":".+"
     },
     "SecondaryGids":{
       "type":"list",
@@ -1600,11 +2763,16 @@
       "max":16,
       "min":0
     },
+    "SecretId":{
+      "type":"string",
+      "max":2048,
+      "min":1
+    },
     "SecurityGroupId":{
       "type":"string",
       "max":20,
       "min":11,
-      "pattern":"^sg-[0-9a-f]{8,17}$"
+      "pattern":"sg-[0-9a-f]{8,17}"
     },
     "SecurityGroupIds":{
       "type":"list",
@@ -1613,6 +2781,7 @@
     "SecurityPolicyName":{
       "type":"string",
       "max":100,
+      "min":0,
       "pattern":"TransferSecurityPolicy-.+"
     },
     "SecurityPolicyNames":{
@@ -1621,7 +2790,8 @@
     },
     "SecurityPolicyOption":{
       "type":"string",
-      "max":50
+      "max":50,
+      "min":0
     },
     "SecurityPolicyOptions":{
       "type":"list",
@@ -1651,7 +2821,7 @@
       "type":"string",
       "max":19,
       "min":19,
-      "pattern":"^s-([0-9a-f]{17})$"
+      "pattern":"s-([0-9a-f]{17})"
     },
     "ServiceErrorMessage":{"type":"string"},
     "ServiceMetadata":{
@@ -1667,14 +2837,13 @@
         "Message":{"shape":"ServiceErrorMessage"}
       },
       "exception":true,
-      "fault":true,
-      "synthetic":true
+      "fault":true
     },
     "SessionId":{
       "type":"string",
       "max":32,
       "min":3,
-      "pattern":"^[\\w-]*$"
+      "pattern":"[\\w-]*"
     },
     "SetStatOption":{
       "type":"string",
@@ -1683,15 +2852,54 @@
         "ENABLE_NO_OP"
       ]
     },
+    "SftpAuthenticationMethods":{
+      "type":"string",
+      "enum":[
+        "PASSWORD",
+        "PUBLIC_KEY",
+        "PUBLIC_KEY_OR_PASSWORD",
+        "PUBLIC_KEY_AND_PASSWORD"
+      ]
+    },
+    "SftpConnectorConfig":{
+      "type":"structure",
+      "members":{
+        "UserSecretId":{"shape":"SecretId"},
+        "TrustedHostKeys":{"shape":"SftpConnectorTrustedHostKeyList"}
+      }
+    },
+    "SftpConnectorTrustedHostKey":{
+      "type":"string",
+      "max":2048,
+      "min":1
+    },
+    "SftpConnectorTrustedHostKeyList":{
+      "type":"list",
+      "member":{"shape":"SftpConnectorTrustedHostKey"},
+      "max":10,
+      "min":1
+    },
+    "SigningAlg":{
+      "type":"string",
+      "enum":[
+        "SHA256",
+        "SHA384",
+        "SHA512",
+        "SHA1",
+        "NONE"
+      ]
+    },
     "SourceFileLocation":{
       "type":"string",
       "max":256,
-      "pattern":"^\\$\\{(\\w+.)+\\w+\\}$"
+      "min":0,
+      "pattern":"\\$\\{(\\w+.)+\\w+\\}"
     },
     "SourceIp":{
       "type":"string",
       "max":32,
-      "pattern":"^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$"
+      "min":0,
+      "pattern":"\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"
     },
     "SshPublicKey":{
       "type":"structure",
@@ -1709,19 +2917,41 @@
     "SshPublicKeyBody":{
       "type":"string",
       "max":2048,
-      "pattern":"^ssh-rsa\\s+[A-Za-z0-9+/]+[=]{0,3}(\\s+.+)?\\s*$"
+      "min":0
     },
-    "SshPublicKeyCount":{"type":"integer"},
+    "SshPublicKeyCount":{
+      "type":"integer",
+      "box":true
+    },
     "SshPublicKeyId":{
       "type":"string",
       "max":21,
       "min":21,
-      "pattern":"^key-[0-9a-f]{17}$"
+      "pattern":"key-[0-9a-f]{17}"
     },
     "SshPublicKeys":{
       "type":"list",
       "member":{"shape":"SshPublicKey"},
-      "max":5
+      "max":5,
+      "min":0
+    },
+    "StartFileTransferRequest":{
+      "type":"structure",
+      "required":["ConnectorId"],
+      "members":{
+        "ConnectorId":{"shape":"ConnectorId"},
+        "SendFilePaths":{"shape":"FilePaths"},
+        "RetrieveFilePaths":{"shape":"FilePaths"},
+        "LocalDirectoryPath":{"shape":"FilePath"},
+        "RemoteDirectoryPath":{"shape":"FilePath"}
+      }
+    },
+    "StartFileTransferResponse":{
+      "type":"structure",
+      "required":["TransferId"],
+      "members":{
+        "TransferId":{"shape":"TransferId"}
+      }
     },
     "StartServerRequest":{
       "type":"structure",
@@ -1741,10 +2971,12 @@
         "STOP_FAILED"
       ]
     },
+    "Status":{"type":"string"},
     "StatusCode":{"type":"integer"},
     "StepResultOutputsJson":{
       "type":"string",
-      "max":65536
+      "max":65536,
+      "min":0
     },
     "StopServerRequest":{
       "type":"structure",
@@ -1752,6 +2984,12 @@
       "members":{
         "ServerId":{"shape":"ServerId"}
       }
+    },
+    "StructuredLogDestinations":{
+      "type":"list",
+      "member":{"shape":"Arn"},
+      "max":1,
+      "min":0
     },
     "SubnetId":{"type":"string"},
     "SubnetIds":{
@@ -1771,7 +3009,8 @@
     },
     "TagKey":{
       "type":"string",
-      "max":128
+      "max":128,
+      "min":0
     },
     "TagKeys":{
       "type":"list",
@@ -1800,13 +3039,29 @@
     },
     "TagValue":{
       "type":"string",
-      "max":256
+      "max":256,
+      "min":0
     },
     "Tags":{
       "type":"list",
       "member":{"shape":"Tag"},
       "max":50,
       "min":1
+    },
+    "TestConnectionRequest":{
+      "type":"structure",
+      "required":["ConnectorId"],
+      "members":{
+        "ConnectorId":{"shape":"ConnectorId"}
+      }
+    },
+    "TestConnectionResponse":{
+      "type":"structure",
+      "members":{
+        "ConnectorId":{"shape":"ConnectorId"},
+        "Status":{"shape":"Status"},
+        "StatusMessage":{"shape":"Message"}
+      }
     },
     "TestIdentityProviderRequest":{
       "type":"structure",
@@ -1850,6 +3105,12 @@
         "ENFORCED"
       ]
     },
+    "TransferId":{
+      "type":"string",
+      "max":512,
+      "min":1,
+      "pattern":"[0-9a-zA-Z./-]+"
+    },
     "UntagResourceRequest":{
       "type":"structure",
       "required":[
@@ -1889,6 +3150,105 @@
         "ExternalId":{"shape":"ExternalId"}
       }
     },
+    "UpdateAgreementRequest":{
+      "type":"structure",
+      "required":[
+        "AgreementId",
+        "ServerId"
+      ],
+      "members":{
+        "AgreementId":{"shape":"AgreementId"},
+        "ServerId":{"shape":"ServerId"},
+        "Description":{"shape":"Description"},
+        "Status":{"shape":"AgreementStatusType"},
+        "LocalProfileId":{"shape":"ProfileId"},
+        "PartnerProfileId":{"shape":"ProfileId"},
+        "BaseDirectory":{"shape":"HomeDirectory"},
+        "AccessRole":{"shape":"Role"}
+      }
+    },
+    "UpdateAgreementResponse":{
+      "type":"structure",
+      "required":["AgreementId"],
+      "members":{
+        "AgreementId":{"shape":"AgreementId"}
+      }
+    },
+    "UpdateCertificateRequest":{
+      "type":"structure",
+      "required":["CertificateId"],
+      "members":{
+        "CertificateId":{"shape":"CertificateId"},
+        "ActiveDate":{"shape":"CertDate"},
+        "InactiveDate":{"shape":"CertDate"},
+        "Description":{"shape":"Description"}
+      }
+    },
+    "UpdateCertificateResponse":{
+      "type":"structure",
+      "required":["CertificateId"],
+      "members":{
+        "CertificateId":{"shape":"CertificateId"}
+      }
+    },
+    "UpdateConnectorRequest":{
+      "type":"structure",
+      "required":["ConnectorId"],
+      "members":{
+        "ConnectorId":{"shape":"ConnectorId"},
+        "Url":{"shape":"Url"},
+        "As2Config":{"shape":"As2ConnectorConfig"},
+        "AccessRole":{"shape":"Role"},
+        "LoggingRole":{"shape":"Role"},
+        "SftpConfig":{"shape":"SftpConnectorConfig"}
+      }
+    },
+    "UpdateConnectorResponse":{
+      "type":"structure",
+      "required":["ConnectorId"],
+      "members":{
+        "ConnectorId":{"shape":"ConnectorId"}
+      }
+    },
+    "UpdateHostKeyRequest":{
+      "type":"structure",
+      "required":[
+        "ServerId",
+        "HostKeyId",
+        "Description"
+      ],
+      "members":{
+        "ServerId":{"shape":"ServerId"},
+        "HostKeyId":{"shape":"HostKeyId"},
+        "Description":{"shape":"HostKeyDescription"}
+      }
+    },
+    "UpdateHostKeyResponse":{
+      "type":"structure",
+      "required":[
+        "ServerId",
+        "HostKeyId"
+      ],
+      "members":{
+        "ServerId":{"shape":"ServerId"},
+        "HostKeyId":{"shape":"HostKeyId"}
+      }
+    },
+    "UpdateProfileRequest":{
+      "type":"structure",
+      "required":["ProfileId"],
+      "members":{
+        "ProfileId":{"shape":"ProfileId"},
+        "CertificateIds":{"shape":"CertificateIds"}
+      }
+    },
+    "UpdateProfileResponse":{
+      "type":"structure",
+      "required":["ProfileId"],
+      "members":{
+        "ProfileId":{"shape":"ProfileId"}
+      }
+    },
     "UpdateServerRequest":{
       "type":"structure",
       "required":["ServerId"],
@@ -1905,7 +3265,9 @@
         "Protocols":{"shape":"Protocols"},
         "SecurityPolicyName":{"shape":"SecurityPolicyName"},
         "ServerId":{"shape":"ServerId"},
-        "WorkflowDetails":{"shape":"WorkflowDetails"}
+        "WorkflowDetails":{"shape":"WorkflowDetails"},
+        "StructuredLogDestinations":{"shape":"StructuredLogDestinations"},
+        "S3StorageOptions":{"shape":"S3StorageOptions"}
       }
     },
     "UpdateServerResponse":{
@@ -1945,9 +3307,13 @@
     },
     "Url":{
       "type":"string",
-      "max":255
+      "max":255,
+      "min":0
     },
-    "UserCount":{"type":"integer"},
+    "UserCount":{
+      "type":"integer",
+      "box":true
+    },
     "UserDetails":{
       "type":"structure",
       "required":[
@@ -1964,24 +3330,26 @@
       "type":"string",
       "max":100,
       "min":3,
-      "pattern":"^[\\w][\\w@.-]{2,99}$"
+      "pattern":"[\\w][\\w@.-]{2,99}"
     },
     "UserPassword":{
       "type":"string",
       "max":1024,
+      "min":0,
       "sensitive":true
     },
     "VpcEndpointId":{
       "type":"string",
       "max":22,
       "min":22,
-      "pattern":"^vpce-[0-9a-f]{17}$"
+      "pattern":"vpce-[0-9a-f]{17}"
     },
     "VpcId":{"type":"string"},
     "WorkflowDescription":{
       "type":"string",
       "max":256,
-      "pattern":"^[\\w- ]*$"
+      "min":0,
+      "pattern":"[\\w- ]*"
     },
     "WorkflowDetail":{
       "type":"structure",
@@ -1996,16 +3364,16 @@
     },
     "WorkflowDetails":{
       "type":"structure",
-      "required":["OnUpload"],
       "members":{
-        "OnUpload":{"shape":"OnUploadWorkflowDetails"}
+        "OnUpload":{"shape":"OnUploadWorkflowDetails"},
+        "OnPartialUpload":{"shape":"OnPartialUploadWorkflowDetails"}
       }
     },
     "WorkflowId":{
       "type":"string",
       "max":19,
       "min":19,
-      "pattern":"^w-([a-z0-9]{17})$"
+      "pattern":"w-([a-z0-9]{17})"
     },
     "WorkflowStep":{
       "type":"structure",
@@ -2014,13 +3382,15 @@
         "CopyStepDetails":{"shape":"CopyStepDetails"},
         "CustomStepDetails":{"shape":"CustomStepDetails"},
         "DeleteStepDetails":{"shape":"DeleteStepDetails"},
-        "TagStepDetails":{"shape":"TagStepDetails"}
+        "TagStepDetails":{"shape":"TagStepDetails"},
+        "DecryptStepDetails":{"shape":"DecryptStepDetails"}
       }
     },
     "WorkflowStepName":{
       "type":"string",
       "max":30,
-      "pattern":"^[\\w-]*$"
+      "min":0,
+      "pattern":"[\\w-]*"
     },
     "WorkflowStepType":{
       "type":"string",
@@ -2028,13 +3398,15 @@
         "COPY",
         "CUSTOM",
         "TAG",
-        "DELETE"
+        "DELETE",
+        "DECRYPT"
       ]
     },
     "WorkflowSteps":{
       "type":"list",
       "member":{"shape":"WorkflowStep"},
-      "max":8
+      "max":8,
+      "min":0
     }
   }
 }

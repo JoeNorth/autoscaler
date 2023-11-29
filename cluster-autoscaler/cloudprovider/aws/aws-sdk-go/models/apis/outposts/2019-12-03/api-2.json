@@ -125,6 +125,21 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "GetConnection":{
+      "name":"GetConnection",
+      "http":{
+        "method":"GET",
+        "requestUri":"/connections/{ConnectionId}"
+      },
+      "input":{"shape":"GetConnectionRequest"},
+      "output":{"shape":"GetConnectionResponse"},
+      "errors":[
+        {"shape":"AccessDeniedException"},
+        {"shape":"ValidationException"},
+        {"shape":"NotFoundException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "GetOrder":{
       "name":"GetOrder",
       "http":{
@@ -283,6 +298,21 @@
         {"shape":"InternalServerException"},
         {"shape":"ValidationException"},
         {"shape":"NotFoundException"}
+      ]
+    },
+    "StartConnection":{
+      "name":"StartConnection",
+      "http":{
+        "method":"POST",
+        "requestUri":"/connections"
+      },
+      "input":{"shape":"StartConnectionRequest"},
+      "output":{"shape":"StartConnectionResponse"},
+      "errors":[
+        {"shape":"AccessDeniedException"},
+        {"shape":"ValidationException"},
+        {"shape":"NotFoundException"},
+        {"shape":"InternalServerException"}
       ]
     },
     "TagResource":{
@@ -458,12 +488,27 @@
         "AssetId":{"shape":"AssetId"},
         "RackId":{"shape":"RackId"},
         "AssetType":{"shape":"AssetType"},
-        "ComputeAttributes":{"shape":"ComputeAttributes"}
+        "ComputeAttributes":{"shape":"ComputeAttributes"},
+        "AssetLocation":{"shape":"AssetLocation"}
       }
     },
     "AssetListDefinition":{
       "type":"list",
       "member":{"shape":"AssetInfo"}
+    },
+    "AssetLocation":{
+      "type":"structure",
+      "members":{
+        "RackElevation":{"shape":"RackElevation"}
+      }
+    },
+    "AssetState":{
+      "type":"string",
+      "enum":[
+        "ACTIVE",
+        "RETIRING",
+        "ISOLATED"
+      ]
     },
     "AssetType":{
       "type":"string",
@@ -492,6 +537,16 @@
       "member":{"shape":"AvailabilityZone"},
       "max":5,
       "min":1
+    },
+    "CIDR":{
+      "type":"string",
+      "max":18,
+      "min":9,
+      "pattern":"^([0-9]{1,3}\\.){3}[0-9]{1,3}/[0-9]{1,2}$"
+    },
+    "CIDRList":{
+      "type":"list",
+      "member":{"shape":"CIDR"}
     },
     "CancelOrderInput":{
       "type":"structure",
@@ -561,10 +616,20 @@
       "type":"list",
       "member":{"shape":"City"}
     },
+    "ComputeAssetState":{
+      "type":"string",
+      "enum":[
+        "ACTIVE",
+        "ISOLATED",
+        "RETIRING"
+      ]
+    },
     "ComputeAttributes":{
       "type":"structure",
       "members":{
-        "HostId":{"shape":"HostId"}
+        "HostId":{"shape":"HostId"},
+        "State":{"shape":"ComputeAssetState"},
+        "InstanceFamilies":{"shape":"InstanceFamilies"}
       }
     },
     "ConflictException":{
@@ -576,6 +641,23 @@
       },
       "error":{"httpStatusCode":409},
       "exception":true
+    },
+    "ConnectionDetails":{
+      "type":"structure",
+      "members":{
+        "ClientPublicKey":{"shape":"WireGuardPublicKey"},
+        "ServerPublicKey":{"shape":"WireGuardPublicKey"},
+        "ServerEndpoint":{"shape":"ServerEndpoint"},
+        "ClientTunnelAddress":{"shape":"CIDR"},
+        "ServerTunnelAddress":{"shape":"CIDR"},
+        "AllowedIps":{"shape":"CIDRList"}
+      }
+    },
+    "ConnectionId":{
+      "type":"string",
+      "max":1024,
+      "min":1,
+      "pattern":"^[a-zA-Z0-9+/=]{1,1024}$"
     },
     "ContactName":{
       "type":"string",
@@ -692,6 +774,12 @@
       "members":{
       }
     },
+    "DeviceSerialNumber":{
+      "type":"string",
+      "max":100,
+      "min":1,
+      "pattern":"^(\\w+)$"
+    },
     "DistrictOrCounty":{
       "type":"string",
       "max":60,
@@ -748,6 +836,24 @@
       "type":"structure",
       "members":{
         "CatalogItem":{"shape":"CatalogItem"}
+      }
+    },
+    "GetConnectionRequest":{
+      "type":"structure",
+      "required":["ConnectionId"],
+      "members":{
+        "ConnectionId":{
+          "shape":"ConnectionId",
+          "location":"uri",
+          "locationName":"ConnectionId"
+        }
+      }
+    },
+    "GetConnectionResponse":{
+      "type":"structure",
+      "members":{
+        "ConnectionId":{"shape":"ConnectionId"},
+        "ConnectionDetails":{"shape":"ConnectionDetails"}
       }
     },
     "GetOrderInput":{
@@ -869,6 +975,16 @@
       "member":{"shape":"HostId"}
     },
     "ISO8601Timestamp":{"type":"timestamp"},
+    "InstanceFamilies":{
+      "type":"list",
+      "member":{"shape":"InstanceFamilyName"}
+    },
+    "InstanceFamilyName":{
+      "type":"string",
+      "max":200,
+      "min":1,
+      "pattern":"^(?:.{1,200}/)?(?:[a-z0-9-_A-Z])+$"
+    },
     "InstanceType":{"type":"string"},
     "InstanceTypeItem":{
       "type":"structure",
@@ -906,8 +1022,23 @@
         "CatalogItemId":{"shape":"SkuCode"},
         "LineItemId":{"shape":"LineItemId"},
         "Quantity":{"shape":"LineItemQuantity"},
-        "Status":{"shape":"LineItemStatus"}
+        "Status":{"shape":"LineItemStatus"},
+        "ShipmentInformation":{"shape":"ShipmentInformation"},
+        "AssetInformationList":{"shape":"LineItemAssetInformationList"},
+        "PreviousLineItemId":{"shape":"LineItemId"},
+        "PreviousOrderId":{"shape":"OrderId"}
       }
+    },
+    "LineItemAssetInformation":{
+      "type":"structure",
+      "members":{
+        "AssetId":{"shape":"AssetId"},
+        "MacAddressList":{"shape":"MacAddressList"}
+      }
+    },
+    "LineItemAssetInformationList":{
+      "type":"list",
+      "member":{"shape":"LineItemAssetInformation"}
     },
     "LineItemId":{
       "type":"string",
@@ -945,7 +1076,8 @@
         "INSTALLING",
         "INSTALLED",
         "ERROR",
-        "CANCELLED"
+        "CANCELLED",
+        "REPLACED"
       ]
     },
     "LineItemStatusCounts":{
@@ -976,6 +1108,11 @@
           "shape":"Token",
           "location":"querystring",
           "locationName":"NextToken"
+        },
+        "StatusFilter":{
+          "shape":"StatusList",
+          "location":"querystring",
+          "locationName":"StatusFilter"
         }
       }
     },
@@ -1141,6 +1278,16 @@
         "Tags":{"shape":"TagMap"}
       }
     },
+    "MacAddress":{
+      "type":"string",
+      "max":17,
+      "min":17,
+      "pattern":"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
+    },
+    "MacAddressList":{
+      "type":"list",
+      "member":{"shape":"MacAddress"}
+    },
     "MaxResults1000":{
       "type":"integer",
       "box":true,
@@ -1163,6 +1310,11 @@
       "max":180,
       "min":0,
       "pattern":"^\\S[\\S ]*$"
+    },
+    "NetworkInterfaceDeviceIndex":{
+      "type":"integer",
+      "max":1,
+      "min":0
     },
     "NotFoundException":{
       "type":"structure",
@@ -1199,7 +1351,9 @@
         "LineItems":{"shape":"LineItemListDefinition"},
         "PaymentOption":{"shape":"PaymentOption"},
         "OrderSubmissionDate":{"shape":"ISO8601Timestamp"},
-        "OrderFulfilledDate":{"shape":"ISO8601Timestamp"}
+        "OrderFulfilledDate":{"shape":"ISO8601Timestamp"},
+        "PaymentTerm":{"shape":"PaymentTerm"},
+        "OrderType":{"shape":"OrderType"}
       }
     },
     "OrderId":{
@@ -1315,7 +1469,10 @@
     },
     "PaymentTerm":{
       "type":"string",
-      "enum":["THREE_YEARS"]
+      "enum":[
+        "THREE_YEARS",
+        "ONE_YEAR"
+      ]
     },
     "PostalCode":{
       "type":"string",
@@ -1337,7 +1494,8 @@
       "enum":[
         "POWER_5_KVA",
         "POWER_10_KVA",
-        "POWER_15_KVA"
+        "POWER_15_KVA",
+        "POWER_30_KVA"
       ]
     },
     "PowerFeedDrop":{
@@ -1355,6 +1513,12 @@
       ]
     },
     "Quantity":{"type":"string"},
+    "RackElevation":{
+      "type":"float",
+      "box":true,
+      "max":99,
+      "min":0
+    },
     "RackId":{
       "type":"string",
       "max":20,
@@ -1382,6 +1546,12 @@
         "ORDER"
       ]
     },
+    "ServerEndpoint":{
+      "type":"string",
+      "max":21,
+      "min":9,
+      "pattern":"^([0-9]{1,3}\\.){3}[0-9]{1,3}:[0-9]{1,5}$"
+    },
     "ServiceQuotaExceededException":{
       "type":"structure",
       "members":{
@@ -1389,6 +1559,22 @@
       },
       "error":{"httpStatusCode":402},
       "exception":true
+    },
+    "ShipmentCarrier":{
+      "type":"string",
+      "enum":[
+        "DHL",
+        "DBS",
+        "FEDEX",
+        "UPS"
+      ]
+    },
+    "ShipmentInformation":{
+      "type":"structure",
+      "members":{
+        "ShipmentTrackingNumber":{"shape":"TrackingId"},
+        "ShipmentCarrier":{"shape":"ShipmentCarrier"}
+      }
     },
     "Site":{
       "type":"structure",
@@ -1442,6 +1628,28 @@
       "min":1,
       "pattern":"OR-[A-Z0-9]{7}"
     },
+    "StartConnectionRequest":{
+      "type":"structure",
+      "required":[
+        "DeviceSerialNumber",
+        "AssetId",
+        "ClientPublicKey",
+        "NetworkInterfaceDeviceIndex"
+      ],
+      "members":{
+        "DeviceSerialNumber":{"shape":"DeviceSerialNumber"},
+        "AssetId":{"shape":"AssetId"},
+        "ClientPublicKey":{"shape":"WireGuardPublicKey"},
+        "NetworkInterfaceDeviceIndex":{"shape":"NetworkInterfaceDeviceIndex"}
+      }
+    },
+    "StartConnectionResponse":{
+      "type":"structure",
+      "members":{
+        "ConnectionId":{"shape":"ConnectionId"},
+        "UnderlayIpAddress":{"shape":"UnderlayIpAddress"}
+      }
+    },
     "StateOrRegion":{
       "type":"string",
       "max":50,
@@ -1451,6 +1659,12 @@
     "StateOrRegionList":{
       "type":"list",
       "member":{"shape":"StateOrRegion"}
+    },
+    "StatusList":{
+      "type":"list",
+      "member":{"shape":"AssetState"},
+      "max":3,
+      "min":1
     },
     "String":{
       "type":"string",
@@ -1527,9 +1741,21 @@
     },
     "Token":{
       "type":"string",
-      "max":1005,
+      "max":2048,
       "min":1,
       "pattern":"^(\\d+)##(\\S+)$"
+    },
+    "TrackingId":{
+      "type":"string",
+      "max":42,
+      "min":6,
+      "pattern":"^[a-zA-Z0-9]+$"
+    },
+    "UnderlayIpAddress":{
+      "type":"string",
+      "max":15,
+      "min":7,
+      "pattern":"^([0-9]{1,3}\\.){3}[0-9]{1,3}$"
     },
     "UntagResourceRequest":{
       "type":"structure",
@@ -1676,6 +1902,12 @@
       },
       "error":{"httpStatusCode":400},
       "exception":true
+    },
+    "WireGuardPublicKey":{
+      "type":"string",
+      "max":44,
+      "min":44,
+      "pattern":"^[a-zA-Z0-9/+]{43}=$"
     },
     "outpostListDefinition":{
       "type":"list",

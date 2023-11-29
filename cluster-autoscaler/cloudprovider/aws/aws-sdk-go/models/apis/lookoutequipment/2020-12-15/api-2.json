@@ -48,6 +48,41 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "CreateLabel":{
+      "name":"CreateLabel",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"CreateLabelRequest"},
+      "output":{"shape":"CreateLabelResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ConflictException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"ServiceQuotaExceededException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "CreateLabelGroup":{
+      "name":"CreateLabelGroup",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"CreateLabelGroupRequest"},
+      "output":{"shape":"CreateLabelGroupResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ConflictException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"ServiceQuotaExceededException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "CreateModel":{
       "name":"CreateModel",
       "http":{
@@ -66,6 +101,23 @@
         {"shape":"AccessDeniedException"}
       ]
     },
+    "CreateRetrainingScheduler":{
+      "name":"CreateRetrainingScheduler",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"CreateRetrainingSchedulerRequest"},
+      "output":{"shape":"CreateRetrainingSchedulerResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ConflictException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "DeleteDataset":{
       "name":"DeleteDataset",
       "http":{
@@ -78,7 +130,8 @@
         {"shape":"ThrottlingException"},
         {"shape":"InternalServerException"},
         {"shape":"AccessDeniedException"},
-        {"shape":"ConflictException"}
+        {"shape":"ConflictException"},
+        {"shape":"ValidationException"}
       ]
     },
     "DeleteInferenceScheduler":{
@@ -97,6 +150,38 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "DeleteLabel":{
+      "name":"DeleteLabel",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteLabelRequest"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ConflictException"},
+        {"shape":"ValidationException"}
+      ]
+    },
+    "DeleteLabelGroup":{
+      "name":"DeleteLabelGroup",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteLabelGroupRequest"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ConflictException"},
+        {"shape":"ValidationException"}
+      ]
+    },
     "DeleteModel":{
       "name":"DeleteModel",
       "http":{
@@ -109,7 +194,40 @@
         {"shape":"ThrottlingException"},
         {"shape":"InternalServerException"},
         {"shape":"ConflictException"},
-        {"shape":"AccessDeniedException"}
+        {"shape":"AccessDeniedException"},
+        {"shape":"ValidationException"}
+      ]
+    },
+    "DeleteResourcePolicy":{
+      "name":"DeleteResourcePolicy",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteResourcePolicyRequest"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ConflictException"},
+        {"shape":"ValidationException"}
+      ]
+    },
+    "DeleteRetrainingScheduler":{
+      "name":"DeleteRetrainingScheduler",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteRetrainingSchedulerRequest"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ConflictException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
       ]
     },
     "DescribeDataIngestionJob":{
@@ -160,6 +278,38 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "DescribeLabel":{
+      "name":"DescribeLabel",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeLabelRequest"},
+      "output":{"shape":"DescribeLabelResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "DescribeLabelGroup":{
+      "name":"DescribeLabelGroup",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeLabelGroupRequest"},
+      "output":{"shape":"DescribeLabelGroupResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "DescribeModel":{
       "name":"DescribeModel",
       "http":{
@@ -171,6 +321,90 @@
       "errors":[
         {"shape":"ValidationException"},
         {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "DescribeModelVersion":{
+      "name":"DescribeModelVersion",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeModelVersionRequest"},
+      "output":{"shape":"DescribeModelVersionResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "DescribeResourcePolicy":{
+      "name":"DescribeResourcePolicy",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeResourcePolicyRequest"},
+      "output":{"shape":"DescribeResourcePolicyResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "DescribeRetrainingScheduler":{
+      "name":"DescribeRetrainingScheduler",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeRetrainingSchedulerRequest"},
+      "output":{"shape":"DescribeRetrainingSchedulerResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "ImportDataset":{
+      "name":"ImportDataset",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ImportDatasetRequest"},
+      "output":{"shape":"ImportDatasetResponse"},
+      "errors":[
+        {"shape":"ConflictException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ValidationException"},
+        {"shape":"ServiceQuotaExceededException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "ImportModelVersion":{
+      "name":"ImportModelVersion",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ImportModelVersionRequest"},
+      "output":{"shape":"ImportModelVersionResponse"},
+      "errors":[
+        {"shape":"ConflictException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ValidationException"},
+        {"shape":"ServiceQuotaExceededException"},
         {"shape":"ThrottlingException"},
         {"shape":"AccessDeniedException"},
         {"shape":"InternalServerException"}
@@ -206,6 +440,22 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "ListInferenceEvents":{
+      "name":"ListInferenceEvents",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListInferenceEventsRequest"},
+      "output":{"shape":"ListInferenceEventsResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "ListInferenceExecutions":{
       "name":"ListInferenceExecutions",
       "http":{
@@ -237,6 +487,52 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "ListLabelGroups":{
+      "name":"ListLabelGroups",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListLabelGroupsRequest"},
+      "output":{"shape":"ListLabelGroupsResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "ListLabels":{
+      "name":"ListLabels",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListLabelsRequest"},
+      "output":{"shape":"ListLabelsResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "ListModelVersions":{
+      "name":"ListModelVersions",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListModelVersionsRequest"},
+      "output":{"shape":"ListModelVersionsResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "ListModels":{
       "name":"ListModels",
       "http":{
@@ -245,6 +541,21 @@
       },
       "input":{"shape":"ListModelsRequest"},
       "output":{"shape":"ListModelsResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "ListRetrainingSchedulers":{
+      "name":"ListRetrainingSchedulers",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListRetrainingSchedulersRequest"},
+      "output":{"shape":"ListRetrainingSchedulersResponse"},
       "errors":[
         {"shape":"ValidationException"},
         {"shape":"ThrottlingException"},
@@ -284,6 +595,24 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "PutResourcePolicy":{
+      "name":"PutResourcePolicy",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"PutResourcePolicyRequest"},
+      "output":{"shape":"PutResourcePolicyResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ConflictException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"ServiceQuotaExceededException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "StartDataIngestionJob":{
       "name":"StartDataIngestionJob",
       "http":{
@@ -319,6 +648,23 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "StartRetrainingScheduler":{
+      "name":"StartRetrainingScheduler",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"StartRetrainingSchedulerRequest"},
+      "output":{"shape":"StartRetrainingSchedulerResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ConflictException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
     "StopInferenceScheduler":{
       "name":"StopInferenceScheduler",
       "http":{
@@ -331,6 +677,23 @@
         {"shape":"ValidationException"},
         {"shape":"ConflictException"},
         {"shape":"ResourceNotFoundException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "StopRetrainingScheduler":{
+      "name":"StopRetrainingScheduler",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"StopRetrainingSchedulerRequest"},
+      "output":{"shape":"StopRetrainingSchedulerResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ConflictException"},
         {"shape":"ThrottlingException"},
         {"shape":"AccessDeniedException"},
         {"shape":"InternalServerException"}
@@ -369,6 +732,23 @@
         {"shape":"InternalServerException"}
       ]
     },
+    "UpdateActiveModelVersion":{
+      "name":"UpdateActiveModelVersion",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateActiveModelVersionRequest"},
+      "output":{"shape":"UpdateActiveModelVersionResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InternalServerException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ConflictException"}
+      ]
+    },
     "UpdateInferenceScheduler":{
       "name":"UpdateInferenceScheduler",
       "http":{
@@ -380,6 +760,54 @@
         {"shape":"ConflictException"},
         {"shape":"ResourceNotFoundException"},
         {"shape":"ValidationException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "UpdateLabelGroup":{
+      "name":"UpdateLabelGroup",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateLabelGroupRequest"},
+      "errors":[
+        {"shape":"ConflictException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ValidationException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "UpdateModel":{
+      "name":"UpdateModel",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateModelRequest"},
+      "errors":[
+        {"shape":"ConflictException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ValidationException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ]
+    },
+    "UpdateRetrainingScheduler":{
+      "name":"UpdateRetrainingScheduler",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateRetrainingSchedulerRequest"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ConflictException"},
         {"shape":"ThrottlingException"},
         {"shape":"AccessDeniedException"},
         {"shape":"InternalServerException"}
@@ -400,6 +828,21 @@
       "max":1011,
       "min":1
     },
+    "AutoPromotionResult":{
+      "type":"string",
+      "enum":[
+        "MODEL_PROMOTED",
+        "MODEL_NOT_PROMOTED",
+        "RETRAINING_INTERNAL_ERROR",
+        "RETRAINING_CUSTOMER_ERROR",
+        "RETRAINING_CANCELLED"
+      ]
+    },
+    "AutoPromotionResultReason":{
+      "type":"string",
+      "max":256,
+      "min":1
+    },
     "Boolean":{"type":"boolean"},
     "BoundedLengthString":{
       "type":"string",
@@ -414,6 +857,12 @@
         "Status":{"shape":"StatisticalIssueStatus"},
         "NumberOfCategory":{"shape":"Integer"}
       }
+    },
+    "Comments":{
+      "type":"string",
+      "max":2560,
+      "min":1,
+      "pattern":"[\\P{M}\\p{M}]{1,2560}"
     },
     "ComponentName":{
       "type":"string",
@@ -506,6 +955,58 @@
         "Status":{"shape":"InferenceSchedulerStatus"}
       }
     },
+    "CreateLabelGroupRequest":{
+      "type":"structure",
+      "required":[
+        "LabelGroupName",
+        "ClientToken"
+      ],
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"},
+        "FaultCodes":{"shape":"FaultCodes"},
+        "ClientToken":{
+          "shape":"IdempotenceToken",
+          "idempotencyToken":true
+        },
+        "Tags":{"shape":"TagList"}
+      }
+    },
+    "CreateLabelGroupResponse":{
+      "type":"structure",
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"},
+        "LabelGroupArn":{"shape":"LabelGroupArn"}
+      }
+    },
+    "CreateLabelRequest":{
+      "type":"structure",
+      "required":[
+        "LabelGroupName",
+        "StartTime",
+        "EndTime",
+        "Rating",
+        "ClientToken"
+      ],
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"},
+        "StartTime":{"shape":"Timestamp"},
+        "EndTime":{"shape":"Timestamp"},
+        "Rating":{"shape":"LabelRating"},
+        "FaultCode":{"shape":"FaultCode"},
+        "Notes":{"shape":"Comments"},
+        "Equipment":{"shape":"Equipment"},
+        "ClientToken":{
+          "shape":"IdempotenceToken",
+          "idempotencyToken":true
+        }
+      }
+    },
+    "CreateLabelResponse":{
+      "type":"structure",
+      "members":{
+        "LabelId":{"shape":"LabelId"}
+      }
+    },
     "CreateModelRequest":{
       "type":"structure",
       "required":[
@@ -538,6 +1039,34 @@
       "members":{
         "ModelArn":{"shape":"ModelArn"},
         "Status":{"shape":"ModelStatus"}
+      }
+    },
+    "CreateRetrainingSchedulerRequest":{
+      "type":"structure",
+      "required":[
+        "ModelName",
+        "RetrainingFrequency",
+        "LookbackWindow",
+        "ClientToken"
+      ],
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "RetrainingStartDate":{"shape":"Timestamp"},
+        "RetrainingFrequency":{"shape":"RetrainingFrequency"},
+        "LookbackWindow":{"shape":"LookbackWindow"},
+        "PromoteMode":{"shape":"ModelPromoteMode"},
+        "ClientToken":{
+          "shape":"IdempotenceToken",
+          "idempotencyToken":true
+        }
+      }
+    },
+    "CreateRetrainingSchedulerResponse":{
+      "type":"structure",
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "ModelArn":{"shape":"ModelArn"},
+        "Status":{"shape":"RetrainingSchedulerStatus"}
       }
     },
     "DataDelayOffsetInMinutes":{
@@ -628,7 +1157,8 @@
       "enum":[
         "CREATED",
         "INGESTION_IN_PROGRESS",
-        "ACTIVE"
+        "ACTIVE",
+        "IMPORT_IN_PROGRESS"
       ]
     },
     "DatasetSummaries":{
@@ -658,7 +1188,39 @@
         "InferenceSchedulerName":{"shape":"InferenceSchedulerIdentifier"}
       }
     },
+    "DeleteLabelGroupRequest":{
+      "type":"structure",
+      "required":["LabelGroupName"],
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"}
+      }
+    },
+    "DeleteLabelRequest":{
+      "type":"structure",
+      "required":[
+        "LabelGroupName",
+        "LabelId"
+      ],
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"},
+        "LabelId":{"shape":"LabelId"}
+      }
+    },
     "DeleteModelRequest":{
+      "type":"structure",
+      "required":["ModelName"],
+      "members":{
+        "ModelName":{"shape":"ModelName"}
+      }
+    },
+    "DeleteResourcePolicyRequest":{
+      "type":"structure",
+      "required":["ResourceArn"],
+      "members":{
+        "ResourceArn":{"shape":"ResourceArn"}
+      }
+    },
+    "DeleteRetrainingSchedulerRequest":{
       "type":"structure",
       "required":["ModelName"],
       "members":{
@@ -687,7 +1249,8 @@
         "StatusDetail":{"shape":"BoundedLengthString"},
         "IngestedDataSize":{"shape":"DataSizeInBytes"},
         "DataStartTime":{"shape":"Timestamp"},
-        "DataEndTime":{"shape":"Timestamp"}
+        "DataEndTime":{"shape":"Timestamp"},
+        "SourceDatasetArn":{"shape":"DatasetArn"}
       }
     },
     "DescribeDatasetRequest":{
@@ -715,7 +1278,8 @@
         "IngestedFilesSummary":{"shape":"IngestedFilesSummary"},
         "RoleArn":{"shape":"IamRoleArn"},
         "DataStartTime":{"shape":"Timestamp"},
-        "DataEndTime":{"shape":"Timestamp"}
+        "DataEndTime":{"shape":"Timestamp"},
+        "SourceDatasetArn":{"shape":"DatasetArn"}
       }
     },
     "DescribeInferenceSchedulerRequest":{
@@ -740,7 +1304,51 @@
         "DataInputConfiguration":{"shape":"InferenceInputConfiguration"},
         "DataOutputConfiguration":{"shape":"InferenceOutputConfiguration"},
         "RoleArn":{"shape":"IamRoleArn"},
-        "ServerSideKmsKeyId":{"shape":"KmsKeyArn"}
+        "ServerSideKmsKeyId":{"shape":"KmsKeyArn"},
+        "LatestInferenceResult":{"shape":"LatestInferenceResult"}
+      }
+    },
+    "DescribeLabelGroupRequest":{
+      "type":"structure",
+      "required":["LabelGroupName"],
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"}
+      }
+    },
+    "DescribeLabelGroupResponse":{
+      "type":"structure",
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"},
+        "LabelGroupArn":{"shape":"LabelGroupArn"},
+        "FaultCodes":{"shape":"FaultCodes"},
+        "CreatedAt":{"shape":"Timestamp"},
+        "UpdatedAt":{"shape":"Timestamp"}
+      }
+    },
+    "DescribeLabelRequest":{
+      "type":"structure",
+      "required":[
+        "LabelGroupName",
+        "LabelId"
+      ],
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"},
+        "LabelId":{"shape":"LabelId"}
+      }
+    },
+    "DescribeLabelResponse":{
+      "type":"structure",
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"},
+        "LabelGroupArn":{"shape":"LabelGroupArn"},
+        "LabelId":{"shape":"LabelId"},
+        "StartTime":{"shape":"Timestamp"},
+        "EndTime":{"shape":"Timestamp"},
+        "Rating":{"shape":"LabelRating"},
+        "FaultCode":{"shape":"FaultCode"},
+        "Notes":{"shape":"Comments"},
+        "Equipment":{"shape":"Equipment"},
+        "CreatedAt":{"shape":"Timestamp"}
       }
     },
     "DescribeModelRequest":{
@@ -779,7 +1387,114 @@
         "LastUpdatedTime":{"shape":"Timestamp"},
         "CreatedAt":{"shape":"Timestamp"},
         "ServerSideKmsKeyId":{"shape":"KmsKeyArn"},
-        "OffCondition":{"shape":"OffCondition"}
+        "OffCondition":{"shape":"OffCondition"},
+        "SourceModelVersionArn":{"shape":"ModelVersionArn"},
+        "ImportJobStartTime":{"shape":"Timestamp"},
+        "ImportJobEndTime":{"shape":"Timestamp"},
+        "ActiveModelVersion":{"shape":"ModelVersion"},
+        "ActiveModelVersionArn":{"shape":"ModelVersionArn"},
+        "ModelVersionActivatedAt":{"shape":"Timestamp"},
+        "PreviousActiveModelVersion":{"shape":"ModelVersion"},
+        "PreviousActiveModelVersionArn":{"shape":"ModelVersionArn"},
+        "PreviousModelVersionActivatedAt":{"shape":"Timestamp"},
+        "PriorModelMetrics":{
+          "shape":"ModelMetrics",
+          "jsonvalue":true
+        },
+        "LatestScheduledRetrainingFailedReason":{"shape":"BoundedLengthString"},
+        "LatestScheduledRetrainingStatus":{"shape":"ModelVersionStatus"},
+        "LatestScheduledRetrainingModelVersion":{"shape":"ModelVersion"},
+        "LatestScheduledRetrainingStartTime":{"shape":"Timestamp"},
+        "LatestScheduledRetrainingAvailableDataInDays":{"shape":"Integer"},
+        "NextScheduledRetrainingStartDate":{"shape":"Timestamp"},
+        "AccumulatedInferenceDataStartTime":{"shape":"Timestamp"},
+        "AccumulatedInferenceDataEndTime":{"shape":"Timestamp"},
+        "RetrainingSchedulerStatus":{"shape":"RetrainingSchedulerStatus"}
+      }
+    },
+    "DescribeModelVersionRequest":{
+      "type":"structure",
+      "required":[
+        "ModelName",
+        "ModelVersion"
+      ],
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "ModelVersion":{"shape":"ModelVersion"}
+      }
+    },
+    "DescribeModelVersionResponse":{
+      "type":"structure",
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "ModelArn":{"shape":"ModelArn"},
+        "ModelVersion":{"shape":"ModelVersion"},
+        "ModelVersionArn":{"shape":"ModelVersionArn"},
+        "Status":{"shape":"ModelVersionStatus"},
+        "SourceType":{"shape":"ModelVersionSourceType"},
+        "DatasetName":{"shape":"DatasetName"},
+        "DatasetArn":{"shape":"DatasetArn"},
+        "Schema":{"shape":"InlineDataSchema"},
+        "LabelsInputConfiguration":{"shape":"LabelsInputConfiguration"},
+        "TrainingDataStartTime":{"shape":"Timestamp"},
+        "TrainingDataEndTime":{"shape":"Timestamp"},
+        "EvaluationDataStartTime":{"shape":"Timestamp"},
+        "EvaluationDataEndTime":{"shape":"Timestamp"},
+        "RoleArn":{"shape":"IamRoleArn"},
+        "DataPreProcessingConfiguration":{"shape":"DataPreProcessingConfiguration"},
+        "TrainingExecutionStartTime":{"shape":"Timestamp"},
+        "TrainingExecutionEndTime":{"shape":"Timestamp"},
+        "FailedReason":{"shape":"BoundedLengthString"},
+        "ModelMetrics":{"shape":"ModelMetrics"},
+        "LastUpdatedTime":{"shape":"Timestamp"},
+        "CreatedAt":{"shape":"Timestamp"},
+        "ServerSideKmsKeyId":{"shape":"KmsKeyArn"},
+        "OffCondition":{"shape":"OffCondition"},
+        "SourceModelVersionArn":{"shape":"ModelVersionArn"},
+        "ImportJobStartTime":{"shape":"Timestamp"},
+        "ImportJobEndTime":{"shape":"Timestamp"},
+        "ImportedDataSizeInBytes":{"shape":"DataSizeInBytes"},
+        "PriorModelMetrics":{"shape":"ModelMetrics"},
+        "RetrainingAvailableDataInDays":{"shape":"Integer"},
+        "AutoPromotionResult":{"shape":"AutoPromotionResult"},
+        "AutoPromotionResultReason":{"shape":"AutoPromotionResultReason"}
+      }
+    },
+    "DescribeResourcePolicyRequest":{
+      "type":"structure",
+      "required":["ResourceArn"],
+      "members":{
+        "ResourceArn":{"shape":"ResourceArn"}
+      }
+    },
+    "DescribeResourcePolicyResponse":{
+      "type":"structure",
+      "members":{
+        "PolicyRevisionId":{"shape":"PolicyRevisionId"},
+        "ResourcePolicy":{"shape":"Policy"},
+        "CreationTime":{"shape":"Timestamp"},
+        "LastModifiedTime":{"shape":"Timestamp"}
+      }
+    },
+    "DescribeRetrainingSchedulerRequest":{
+      "type":"structure",
+      "required":["ModelName"],
+      "members":{
+        "ModelName":{"shape":"ModelName"}
+      }
+    },
+    "DescribeRetrainingSchedulerResponse":{
+      "type":"structure",
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "ModelArn":{"shape":"ModelArn"},
+        "RetrainingStartDate":{"shape":"Timestamp"},
+        "RetrainingFrequency":{"shape":"RetrainingFrequency"},
+        "LookbackWindow":{"shape":"LookbackWindow"},
+        "Status":{"shape":"RetrainingSchedulerStatus"},
+        "PromoteMode":{"shape":"ModelPromoteMode"},
+        "CreatedAt":{"shape":"Timestamp"},
+        "UpdatedAt":{"shape":"Timestamp"}
       }
     },
     "DuplicateTimestamps":{
@@ -788,6 +1503,28 @@
       "members":{
         "TotalNumberOfDuplicateTimestamps":{"shape":"Integer"}
       }
+    },
+    "Equipment":{
+      "type":"string",
+      "max":200,
+      "min":1,
+      "pattern":"[\\P{M}\\p{M}]{1,200}"
+    },
+    "EventDurationInSeconds":{
+      "type":"long",
+      "min":0
+    },
+    "FaultCode":{
+      "type":"string",
+      "max":100,
+      "min":1,
+      "pattern":"[\\P{M}\\p{M}]{1,100}"
+    },
+    "FaultCodes":{
+      "type":"list",
+      "member":{"shape":"FaultCode"},
+      "max":50,
+      "min":0
     },
     "FileNameTimestampFormat":{
       "type":"string",
@@ -805,6 +1542,87 @@
       "max":256,
       "min":1,
       "pattern":"\\p{ASCII}{1,256}"
+    },
+    "ImportDatasetRequest":{
+      "type":"structure",
+      "required":[
+        "SourceDatasetArn",
+        "ClientToken"
+      ],
+      "members":{
+        "SourceDatasetArn":{"shape":"DatasetArn"},
+        "DatasetName":{"shape":"DatasetName"},
+        "ClientToken":{
+          "shape":"IdempotenceToken",
+          "idempotencyToken":true
+        },
+        "ServerSideKmsKeyId":{"shape":"NameOrArn"},
+        "Tags":{"shape":"TagList"}
+      }
+    },
+    "ImportDatasetResponse":{
+      "type":"structure",
+      "members":{
+        "DatasetName":{"shape":"DatasetName"},
+        "DatasetArn":{"shape":"DatasetArn"},
+        "Status":{"shape":"DatasetStatus"},
+        "JobId":{"shape":"IngestionJobId"}
+      }
+    },
+    "ImportModelVersionRequest":{
+      "type":"structure",
+      "required":[
+        "SourceModelVersionArn",
+        "DatasetName",
+        "ClientToken"
+      ],
+      "members":{
+        "SourceModelVersionArn":{"shape":"ModelVersionArn"},
+        "ModelName":{"shape":"ModelName"},
+        "DatasetName":{"shape":"DatasetIdentifier"},
+        "LabelsInputConfiguration":{"shape":"LabelsInputConfiguration"},
+        "ClientToken":{
+          "shape":"IdempotenceToken",
+          "idempotencyToken":true
+        },
+        "RoleArn":{"shape":"IamRoleArn"},
+        "ServerSideKmsKeyId":{"shape":"NameOrArn"},
+        "Tags":{"shape":"TagList"},
+        "InferenceDataImportStrategy":{"shape":"InferenceDataImportStrategy"}
+      }
+    },
+    "ImportModelVersionResponse":{
+      "type":"structure",
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "ModelArn":{"shape":"ModelArn"},
+        "ModelVersionArn":{"shape":"ModelVersionArn"},
+        "ModelVersion":{"shape":"ModelVersion"},
+        "Status":{"shape":"ModelVersionStatus"}
+      }
+    },
+    "InferenceDataImportStrategy":{
+      "type":"string",
+      "enum":[
+        "NO_IMPORT",
+        "ADD_WHEN_EMPTY",
+        "OVERWRITE"
+      ]
+    },
+    "InferenceEventSummaries":{
+      "type":"list",
+      "member":{"shape":"InferenceEventSummary"}
+    },
+    "InferenceEventSummary":{
+      "type":"structure",
+      "members":{
+        "InferenceSchedulerArn":{"shape":"InferenceSchedulerArn"},
+        "InferenceSchedulerName":{"shape":"InferenceSchedulerName"},
+        "EventStartTime":{"shape":"Timestamp"},
+        "EventEndTime":{"shape":"Timestamp"},
+        "Diagnostics":{"shape":"ModelMetrics"},
+        "EventDurationInSeconds":{"shape":"EventDurationInSeconds"}
+      }
     },
     "InferenceExecutionStatus":{
       "type":"string",
@@ -832,7 +1650,9 @@
         "DataOutputConfiguration":{"shape":"InferenceOutputConfiguration"},
         "CustomerResultObject":{"shape":"S3Object"},
         "Status":{"shape":"InferenceExecutionStatus"},
-        "FailedReason":{"shape":"BoundedLengthString"}
+        "FailedReason":{"shape":"BoundedLengthString"},
+        "ModelVersion":{"shape":"ModelVersion"},
+        "ModelVersionArn":{"shape":"ModelVersionArn"}
       }
     },
     "InferenceInputConfiguration":{
@@ -914,7 +1734,8 @@
         "InferenceSchedulerArn":{"shape":"InferenceSchedulerArn"},
         "Status":{"shape":"InferenceSchedulerStatus"},
         "DataDelayOffsetInMinutes":{"shape":"DataDelayOffsetInMinutes"},
-        "DataUploadFrequency":{"shape":"DataUploadFrequency"}
+        "DataUploadFrequency":{"shape":"DataUploadFrequency"},
+        "LatestInferenceResult":{"shape":"LatestInferenceResult"}
       }
     },
     "IngestedFilesSummary":{
@@ -946,7 +1767,8 @@
       "enum":[
         "IN_PROGRESS",
         "SUCCESS",
-        "FAILED"
+        "FAILED",
+        "IMPORT_IN_PROGRESS"
       ]
     },
     "IngestionS3InputConfiguration":{
@@ -1006,11 +1828,67 @@
       "min":1,
       "pattern":"arn:aws[a-z\\-]*:kms:[a-z0-9\\-]*:\\d{12}:[\\w\\-\\/]+"
     },
+    "LabelGroupArn":{
+      "type":"string",
+      "max":2048,
+      "min":20,
+      "pattern":"arn:aws(-[^:]+)?:lookoutequipment:[a-zA-Z0-9\\-]*:[0-9]{12}:label-group\\/.+"
+    },
+    "LabelGroupName":{
+      "type":"string",
+      "max":200,
+      "min":1,
+      "pattern":"^[0-9a-zA-Z_-]{1,200}$"
+    },
+    "LabelGroupSummaries":{
+      "type":"list",
+      "member":{"shape":"LabelGroupSummary"}
+    },
+    "LabelGroupSummary":{
+      "type":"structure",
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"},
+        "LabelGroupArn":{"shape":"LabelGroupArn"},
+        "CreatedAt":{"shape":"Timestamp"},
+        "UpdatedAt":{"shape":"Timestamp"}
+      }
+    },
+    "LabelId":{
+      "type":"string",
+      "max":32,
+      "pattern":"[A-Fa-f0-9]{0,32}"
+    },
+    "LabelRating":{
+      "type":"string",
+      "enum":[
+        "ANOMALY",
+        "NO_ANOMALY",
+        "NEUTRAL"
+      ]
+    },
+    "LabelSummaries":{
+      "type":"list",
+      "member":{"shape":"LabelSummary"}
+    },
+    "LabelSummary":{
+      "type":"structure",
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"},
+        "LabelId":{"shape":"LabelId"},
+        "LabelGroupArn":{"shape":"LabelGroupArn"},
+        "StartTime":{"shape":"Timestamp"},
+        "EndTime":{"shape":"Timestamp"},
+        "Rating":{"shape":"LabelRating"},
+        "FaultCode":{"shape":"FaultCode"},
+        "Equipment":{"shape":"Equipment"},
+        "CreatedAt":{"shape":"Timestamp"}
+      }
+    },
     "LabelsInputConfiguration":{
       "type":"structure",
-      "required":["S3InputConfiguration"],
       "members":{
-        "S3InputConfiguration":{"shape":"LabelsS3InputConfiguration"}
+        "S3InputConfiguration":{"shape":"LabelsS3InputConfiguration"},
+        "LabelGroupName":{"shape":"LabelGroupName"}
       }
     },
     "LabelsS3InputConfiguration":{
@@ -1029,6 +1907,13 @@
         "NumberOfLargeTimestampGaps":{"shape":"Integer"},
         "MaxTimestampGapInDays":{"shape":"Integer"}
       }
+    },
+    "LatestInferenceResult":{
+      "type":"string",
+      "enum":[
+        "ANOMALOUS",
+        "NORMAL"
+      ]
     },
     "ListDataIngestionJobsRequest":{
       "type":"structure",
@@ -1061,6 +1946,28 @@
         "DatasetSummaries":{"shape":"DatasetSummaries"}
       }
     },
+    "ListInferenceEventsRequest":{
+      "type":"structure",
+      "required":[
+        "InferenceSchedulerName",
+        "IntervalStartTime",
+        "IntervalEndTime"
+      ],
+      "members":{
+        "NextToken":{"shape":"NextToken"},
+        "MaxResults":{"shape":"MaxResults"},
+        "InferenceSchedulerName":{"shape":"InferenceSchedulerIdentifier"},
+        "IntervalStartTime":{"shape":"Timestamp"},
+        "IntervalEndTime":{"shape":"Timestamp"}
+      }
+    },
+    "ListInferenceEventsResponse":{
+      "type":"structure",
+      "members":{
+        "NextToken":{"shape":"NextToken"},
+        "InferenceEventSummaries":{"shape":"InferenceEventSummaries"}
+      }
+    },
     "ListInferenceExecutionsRequest":{
       "type":"structure",
       "required":["InferenceSchedulerName"],
@@ -1086,7 +1993,8 @@
         "NextToken":{"shape":"NextToken"},
         "MaxResults":{"shape":"MaxResults"},
         "InferenceSchedulerNameBeginsWith":{"shape":"InferenceSchedulerIdentifier"},
-        "ModelName":{"shape":"ModelName"}
+        "ModelName":{"shape":"ModelName"},
+        "Status":{"shape":"InferenceSchedulerStatus"}
       }
     },
     "ListInferenceSchedulersResponse":{
@@ -1094,6 +2002,63 @@
       "members":{
         "NextToken":{"shape":"NextToken"},
         "InferenceSchedulerSummaries":{"shape":"InferenceSchedulerSummaries"}
+      }
+    },
+    "ListLabelGroupsRequest":{
+      "type":"structure",
+      "members":{
+        "LabelGroupNameBeginsWith":{"shape":"LabelGroupName"},
+        "NextToken":{"shape":"NextToken"},
+        "MaxResults":{"shape":"MaxResults"}
+      }
+    },
+    "ListLabelGroupsResponse":{
+      "type":"structure",
+      "members":{
+        "NextToken":{"shape":"NextToken"},
+        "LabelGroupSummaries":{"shape":"LabelGroupSummaries"}
+      }
+    },
+    "ListLabelsRequest":{
+      "type":"structure",
+      "required":["LabelGroupName"],
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"},
+        "IntervalStartTime":{"shape":"Timestamp"},
+        "IntervalEndTime":{"shape":"Timestamp"},
+        "FaultCode":{"shape":"FaultCode"},
+        "Equipment":{"shape":"Equipment"},
+        "NextToken":{"shape":"NextToken"},
+        "MaxResults":{"shape":"MaxResults"}
+      }
+    },
+    "ListLabelsResponse":{
+      "type":"structure",
+      "members":{
+        "NextToken":{"shape":"NextToken"},
+        "LabelSummaries":{"shape":"LabelSummaries"}
+      }
+    },
+    "ListModelVersionsRequest":{
+      "type":"structure",
+      "required":["ModelName"],
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "NextToken":{"shape":"NextToken"},
+        "MaxResults":{"shape":"MaxResults"},
+        "Status":{"shape":"ModelVersionStatus"},
+        "SourceType":{"shape":"ModelVersionSourceType"},
+        "CreatedAtEndTime":{"shape":"Timestamp"},
+        "CreatedAtStartTime":{"shape":"Timestamp"},
+        "MaxModelVersion":{"shape":"ModelVersion"},
+        "MinModelVersion":{"shape":"ModelVersion"}
+      }
+    },
+    "ListModelVersionsResponse":{
+      "type":"structure",
+      "members":{
+        "NextToken":{"shape":"NextToken"},
+        "ModelVersionSummaries":{"shape":"ModelVersionSummaries"}
       }
     },
     "ListModelsRequest":{
@@ -1117,6 +2082,22 @@
       "type":"list",
       "member":{"shape":"S3Object"},
       "min":0
+    },
+    "ListRetrainingSchedulersRequest":{
+      "type":"structure",
+      "members":{
+        "ModelNameBeginsWith":{"shape":"ModelName"},
+        "Status":{"shape":"RetrainingSchedulerStatus"},
+        "NextToken":{"shape":"NextToken"},
+        "MaxResults":{"shape":"MaxResults"}
+      }
+    },
+    "ListRetrainingSchedulersResponse":{
+      "type":"structure",
+      "members":{
+        "RetrainingSchedulerSummaries":{"shape":"RetrainingSchedulerSummaries"},
+        "NextToken":{"shape":"NextToken"}
+      }
     },
     "ListSensorStatisticsRequest":{
       "type":"structure",
@@ -1147,6 +2128,10 @@
       "members":{
         "Tags":{"shape":"TagList"}
       }
+    },
+    "LookbackWindow":{
+      "type":"string",
+      "pattern":"^P180D$|^P360D$|^P540D$|^P720D$"
     },
     "MaxResults":{
       "type":"integer",
@@ -1188,12 +2173,20 @@
       "min":1,
       "pattern":"^[0-9a-zA-Z_-]{1,200}$"
     },
+    "ModelPromoteMode":{
+      "type":"string",
+      "enum":[
+        "MANAGED",
+        "MANUAL"
+      ]
+    },
     "ModelStatus":{
       "type":"string",
       "enum":[
         "IN_PROGRESS",
         "SUCCESS",
-        "FAILED"
+        "FAILED",
+        "IMPORT_IN_PROGRESS"
       ]
     },
     "ModelSummaries":{
@@ -1208,7 +2201,58 @@
         "DatasetName":{"shape":"DatasetName"},
         "DatasetArn":{"shape":"DatasetArn"},
         "Status":{"shape":"ModelStatus"},
-        "CreatedAt":{"shape":"Timestamp"}
+        "CreatedAt":{"shape":"Timestamp"},
+        "ActiveModelVersion":{"shape":"ModelVersion"},
+        "ActiveModelVersionArn":{"shape":"ModelVersionArn"},
+        "LatestScheduledRetrainingStatus":{"shape":"ModelVersionStatus"},
+        "LatestScheduledRetrainingModelVersion":{"shape":"ModelVersion"},
+        "LatestScheduledRetrainingStartTime":{"shape":"Timestamp"},
+        "NextScheduledRetrainingStartDate":{"shape":"Timestamp"},
+        "RetrainingSchedulerStatus":{"shape":"RetrainingSchedulerStatus"}
+      }
+    },
+    "ModelVersion":{
+      "type":"long",
+      "min":1
+    },
+    "ModelVersionArn":{
+      "type":"string",
+      "max":2048,
+      "min":20,
+      "pattern":"^arn:aws(-[^:]+)?:lookoutequipment:[a-zA-Z0-9\\-]*:[0-9]{12}:model\\/.+\\/.+\\/model-version\\/[0-9]{1,}$"
+    },
+    "ModelVersionSourceType":{
+      "type":"string",
+      "enum":[
+        "TRAINING",
+        "RETRAINING",
+        "IMPORT"
+      ]
+    },
+    "ModelVersionStatus":{
+      "type":"string",
+      "enum":[
+        "IN_PROGRESS",
+        "SUCCESS",
+        "FAILED",
+        "IMPORT_IN_PROGRESS",
+        "CANCELED"
+      ]
+    },
+    "ModelVersionSummaries":{
+      "type":"list",
+      "member":{"shape":"ModelVersionSummary"}
+    },
+    "ModelVersionSummary":{
+      "type":"structure",
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "ModelArn":{"shape":"ModelArn"},
+        "ModelVersion":{"shape":"ModelVersion"},
+        "ModelVersionArn":{"shape":"ModelVersionArn"},
+        "CreatedAt":{"shape":"Timestamp"},
+        "Status":{"shape":"ModelVersionStatus"},
+        "SourceType":{"shape":"ModelVersionSourceType"}
       }
     },
     "MonotonicValues":{
@@ -1250,6 +2294,47 @@
       "max":2048,
       "min":1
     },
+    "Policy":{
+      "type":"string",
+      "max":20000,
+      "min":1,
+      "pattern":"[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"
+    },
+    "PolicyRevisionId":{
+      "type":"string",
+      "max":50,
+      "pattern":"[0-9A-Fa-f]+"
+    },
+    "PutResourcePolicyRequest":{
+      "type":"structure",
+      "required":[
+        "ResourceArn",
+        "ResourcePolicy",
+        "ClientToken"
+      ],
+      "members":{
+        "ResourceArn":{"shape":"ResourceArn"},
+        "ResourcePolicy":{"shape":"Policy"},
+        "PolicyRevisionId":{"shape":"PolicyRevisionId"},
+        "ClientToken":{
+          "shape":"IdempotenceToken",
+          "idempotencyToken":true
+        }
+      }
+    },
+    "PutResourcePolicyResponse":{
+      "type":"structure",
+      "members":{
+        "ResourceArn":{"shape":"ResourceArn"},
+        "PolicyRevisionId":{"shape":"PolicyRevisionId"}
+      }
+    },
+    "ResourceArn":{
+      "type":"string",
+      "max":2048,
+      "min":20,
+      "pattern":"arn:aws(-[^:]+)?:lookoutequipment:[a-zA-Z0-9\\-]*:[0-9]{12}:.+"
+    },
     "ResourceNotFoundException":{
       "type":"structure",
       "required":["Message"],
@@ -1257,6 +2342,36 @@
         "Message":{"shape":"BoundedLengthString"}
       },
       "exception":true
+    },
+    "RetrainingFrequency":{
+      "type":"string",
+      "max":10,
+      "min":1,
+      "pattern":"^P(\\dY)?(\\d{1,2}M)?(\\d{1,3}D)?$"
+    },
+    "RetrainingSchedulerStatus":{
+      "type":"string",
+      "enum":[
+        "PENDING",
+        "RUNNING",
+        "STOPPING",
+        "STOPPED"
+      ]
+    },
+    "RetrainingSchedulerSummaries":{
+      "type":"list",
+      "member":{"shape":"RetrainingSchedulerSummary"}
+    },
+    "RetrainingSchedulerSummary":{
+      "type":"structure",
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "ModelArn":{"shape":"ModelArn"},
+        "Status":{"shape":"RetrainingSchedulerStatus"},
+        "RetrainingStartDate":{"shape":"Timestamp"},
+        "RetrainingFrequency":{"shape":"RetrainingFrequency"},
+        "LookbackWindow":{"shape":"LookbackWindow"}
+      }
     },
     "S3Bucket":{
       "type":"string",
@@ -1285,7 +2400,7 @@
       "type":"string",
       "max":1024,
       "min":0,
-      "pattern":"(^$)|([\\P{M}\\p{M}]{1,1023}/$)"
+      "pattern":"(^$)|([\\u0009\\u000A\\u000D\\u0020-\\u00FF]{1,1023}/$)"
     },
     "SensorName":{
       "type":"string",
@@ -1372,6 +2487,21 @@
         "Status":{"shape":"InferenceSchedulerStatus"}
       }
     },
+    "StartRetrainingSchedulerRequest":{
+      "type":"structure",
+      "required":["ModelName"],
+      "members":{
+        "ModelName":{"shape":"ModelName"}
+      }
+    },
+    "StartRetrainingSchedulerResponse":{
+      "type":"structure",
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "ModelArn":{"shape":"ModelArn"},
+        "Status":{"shape":"RetrainingSchedulerStatus"}
+      }
+    },
     "StatisticalIssueStatus":{
       "type":"string",
       "enum":[
@@ -1394,6 +2524,21 @@
         "InferenceSchedulerName":{"shape":"InferenceSchedulerName"},
         "InferenceSchedulerArn":{"shape":"InferenceSchedulerArn"},
         "Status":{"shape":"InferenceSchedulerStatus"}
+      }
+    },
+    "StopRetrainingSchedulerRequest":{
+      "type":"structure",
+      "required":["ModelName"],
+      "members":{
+        "ModelName":{"shape":"ModelName"}
+      }
+    },
+    "StopRetrainingSchedulerResponse":{
+      "type":"structure",
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "ModelArn":{"shape":"ModelArn"},
+        "Status":{"shape":"RetrainingSchedulerStatus"}
       }
     },
     "Tag":{
@@ -1499,6 +2644,28 @@
       "members":{
       }
     },
+    "UpdateActiveModelVersionRequest":{
+      "type":"structure",
+      "required":[
+        "ModelName",
+        "ModelVersion"
+      ],
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "ModelVersion":{"shape":"ModelVersion"}
+      }
+    },
+    "UpdateActiveModelVersionResponse":{
+      "type":"structure",
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "ModelArn":{"shape":"ModelArn"},
+        "CurrentActiveVersion":{"shape":"ModelVersion"},
+        "PreviousActiveVersion":{"shape":"ModelVersion"},
+        "CurrentActiveVersionArn":{"shape":"ModelVersionArn"},
+        "PreviousActiveVersionArn":{"shape":"ModelVersionArn"}
+      }
+    },
     "UpdateInferenceSchedulerRequest":{
       "type":"structure",
       "required":["InferenceSchedulerName"],
@@ -1509,6 +2676,34 @@
         "DataInputConfiguration":{"shape":"InferenceInputConfiguration"},
         "DataOutputConfiguration":{"shape":"InferenceOutputConfiguration"},
         "RoleArn":{"shape":"IamRoleArn"}
+      }
+    },
+    "UpdateLabelGroupRequest":{
+      "type":"structure",
+      "required":["LabelGroupName"],
+      "members":{
+        "LabelGroupName":{"shape":"LabelGroupName"},
+        "FaultCodes":{"shape":"FaultCodes"}
+      }
+    },
+    "UpdateModelRequest":{
+      "type":"structure",
+      "required":["ModelName"],
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "LabelsInputConfiguration":{"shape":"LabelsInputConfiguration"},
+        "RoleArn":{"shape":"IamRoleArn"}
+      }
+    },
+    "UpdateRetrainingSchedulerRequest":{
+      "type":"structure",
+      "required":["ModelName"],
+      "members":{
+        "ModelName":{"shape":"ModelName"},
+        "RetrainingStartDate":{"shape":"Timestamp"},
+        "RetrainingFrequency":{"shape":"RetrainingFrequency"},
+        "LookbackWindow":{"shape":"LookbackWindow"},
+        "PromoteMode":{"shape":"ModelPromoteMode"}
       }
     },
     "ValidationException":{

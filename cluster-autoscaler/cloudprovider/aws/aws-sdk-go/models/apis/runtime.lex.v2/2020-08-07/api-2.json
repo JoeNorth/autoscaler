@@ -148,7 +148,7 @@
       "type":"string",
       "max":100,
       "min":1,
-      "pattern":"^([A-Za-z]_?)+$"
+      "pattern":"^([A-Za-z0-9]_?)+$"
     },
     "ActiveContextParametersMap":{
       "type":"map",
@@ -379,7 +379,8 @@
       "members":{
         "type":{"shape":"DialogActionType"},
         "slotToElicit":{"shape":"NonEmptyString"},
-        "slotElicitationStyle":{"shape":"StyleType"}
+        "slotElicitationStyle":{"shape":"StyleType"},
+        "subSlotToElicit":{"shape":"ElicitSubSlot"}
       }
     },
     "DialogActionType":{
@@ -402,6 +403,14 @@
       "event":true
     },
     "Double":{"type":"double"},
+    "ElicitSubSlot":{
+      "type":"structure",
+      "required":["name"],
+      "members":{
+        "name":{"shape":"NonEmptyString"},
+        "subSlotToElicit":{"shape":"ElicitSubSlot"}
+      }
+    },
     "EpochMillis":{"type":"long"},
     "EventId":{
       "type":"string",
@@ -492,7 +501,8 @@
         "sessionState":{"shape":"SessionState"},
         "requestAttributes":{"shape":"StringMap"},
         "sessionId":{"shape":"SessionId"},
-        "eventId":{"shape":"EventId"}
+        "eventId":{"shape":"EventId"},
+        "recognizedBotMember":{"shape":"RecognizedBotMember"}
       },
       "event":true
     },
@@ -522,8 +532,16 @@
       "members":{
         "nluConfidence":{"shape":"ConfidenceScore"},
         "sentimentResponse":{"shape":"SentimentResponse"},
-        "intent":{"shape":"Intent"}
+        "intent":{"shape":"Intent"},
+        "interpretationSource":{"shape":"InterpretationSource"}
       }
+    },
+    "InterpretationSource":{
+      "type":"string",
+      "enum":[
+        "Bedrock",
+        "Lex"
+      ]
     },
     "Interpretations":{
       "type":"list",
@@ -711,7 +729,8 @@
         "sessionState":{"shape":"SessionState"},
         "interpretations":{"shape":"Interpretations"},
         "requestAttributes":{"shape":"StringMap"},
-        "sessionId":{"shape":"SessionId"}
+        "sessionId":{"shape":"SessionId"},
+        "recognizedBotMember":{"shape":"RecognizedBotMember"}
       }
     },
     "RecognizeUtteranceRequest":{
@@ -811,9 +830,22 @@
           "location":"header",
           "locationName":"x-amz-lex-input-transcript"
         },
-        "audioStream":{"shape":"BlobStream"}
+        "audioStream":{"shape":"BlobStream"},
+        "recognizedBotMember":{
+          "shape":"NonEmptyString",
+          "location":"header",
+          "locationName":"x-amz-lex-recognized-bot-member"
+        }
       },
       "payload":"audioStream"
+    },
+    "RecognizedBotMember":{
+      "type":"structure",
+      "required":["botId"],
+      "members":{
+        "botId":{"shape":"BotIdentifier"},
+        "botName":{"shape":"Name"}
+      }
     },
     "ResourceNotFoundException":{
       "type":"structure",
@@ -826,9 +858,9 @@
     },
     "RuntimeHintDetails":{
       "type":"structure",
-      "required":["runtimeHintValues"],
       "members":{
-        "runtimeHintValues":{"shape":"RuntimeHintValuesList"}
+        "runtimeHintValues":{"shape":"RuntimeHintValuesList"},
+        "subSlotHints":{"shape":"SlotHintsSlotMap"}
       }
     },
     "RuntimeHintPhrase":{
@@ -905,7 +937,8 @@
       "type":"string",
       "enum":[
         "Scalar",
-        "List"
+        "List",
+        "Composite"
       ]
     },
     "Slot":{
@@ -913,7 +946,8 @@
       "members":{
         "value":{"shape":"Value"},
         "shape":{"shape":"Shape"},
-        "values":{"shape":"Values"}
+        "values":{"shape":"Values"},
+        "subSlots":{"shape":"Slots"}
       }
     },
     "SlotHintsIntentMap":{

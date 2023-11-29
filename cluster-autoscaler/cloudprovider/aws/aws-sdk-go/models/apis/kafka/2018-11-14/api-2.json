@@ -152,6 +152,83 @@
         }
       ]
     },
+    "CreateReplicator": {
+      "name": "CreateReplicator",
+      "http": {
+        "method": "POST",
+        "requestUri": "/replication/v1/replicators",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "CreateReplicatorRequest"
+      },
+      "output": {
+        "shape": "CreateReplicatorResponse"
+      },
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        },
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "TooManyRequestsException"
+        },
+        {
+          "shape": "ConflictException"
+        }
+      ]
+    },
+    "CreateVpcConnection": {
+      "name": "CreateVpcConnection",
+      "http": {
+        "method": "POST",
+        "requestUri": "/v1/vpc-connection",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "CreateVpcConnectionRequest"
+      },
+      "output": {
+        "shape": "CreateVpcConnectionResponse"
+      },
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "ForbiddenException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "TooManyRequestsException"
+        },
+        {
+          "shape": "ConflictException"
+        }
+      ]
+    },
     "DeleteCluster": {
       "name": "DeleteCluster",
       "http": {
@@ -192,6 +269,71 @@
       },
       "output": {
         "shape": "DeleteConfigurationResponse"
+      },
+      "errors": [
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        }
+      ]
+    },
+    "DeleteReplicator": {
+      "name": "DeleteReplicator",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/replication/v1/replicators/{replicatorArn}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "DeleteReplicatorRequest"
+      },
+      "output": {
+        "shape": "DeleteReplicatorResponse"
+      },
+      "errors": [
+        {
+        "shape": "BadRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        },
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "TooManyRequestsException"
+        }
+      ]
+    },
+    "DeleteVpcConnection": {
+      "name": "DeleteVpcConnection",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/v1/vpc-connection/{arn}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "DeleteVpcConnectionRequest"
+      },
+      "output": {
+        "shape": "DeleteVpcConnectionResponse"
       },
       "errors": [
         {
@@ -301,6 +443,35 @@
         }
       ]
     },
+    "DescribeClusterOperationV2" : {
+      "name" : "DescribeClusterOperationV2",
+      "http" : {
+        "method" : "GET",
+        "requestUri" : "/api/v2/operations/{clusterOperationArn}",
+        "responseCode" : 200
+      },
+      "input" : {
+        "shape" : "DescribeClusterOperationV2Request"
+      },
+      "output" : {
+        "shape" : "DescribeClusterOperationV2Response"
+      },
+      "errors" : [ {
+        "shape" : "BadRequestException"
+      }, {
+        "shape" : "UnauthorizedException"
+      }, {
+        "shape" : "InternalServerErrorException"
+      }, {
+        "shape" : "ForbiddenException"
+      }, {
+        "shape" : "NotFoundException"
+      }, {
+        "shape" : "ServiceUnavailableException"
+      }, {
+        "shape" : "TooManyRequestsException"
+      } ]
+    },
     "DescribeConfiguration": {
       "name": "DescribeConfiguration",
       "http": {
@@ -347,6 +518,77 @@
       },
       "output": {
         "shape": "DescribeConfigurationRevisionResponse"
+      },
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        },
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        }
+      ]
+    },
+    "DescribeReplicator": {
+      "name": "DescribeReplicator",
+      "http": {
+        "method": "GET",
+        "requestUri": "/replication/v1/replicators/{replicatorArn}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "DescribeReplicatorRequest"
+      },
+      "output": {
+        "shape": "DescribeReplicatorResponse"
+      },
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        },
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "TooManyRequestsException"
+        }
+      ]
+    },
+    "DescribeVpcConnection": {
+      "name": "DescribeVpcConnection",
+      "http": {
+        "method": "GET",
+        "requestUri": "/v1/vpc-connection/{arn}",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "DescribeVpcConnectionRequest"
+      },
+      "output": {
+        "shape": "DescribeVpcConnectionResponse"
       },
       "errors": [
         {
@@ -442,28 +684,28 @@
       "output" : {
         "shape" : "GetCompatibleKafkaVersionsResponse"
       },
-      "errors" : [ 
+      "errors" : [
         {
           "shape" : "BadRequestException"
-        }, 
+        },
         {
           "shape" : "UnauthorizedException"
-        }, 
+        },
         {
           "shape" : "InternalServerErrorException"
-        }, 
+        },
         {
           "shape" : "ForbiddenException"
-        }, 
+        },
         {
           "shape" : "NotFoundException"
-        }, 
+        },
         {
           "shape" : "ServiceUnavailableException"
-        }, 
+        },
         {
           "shape" : "TooManyRequestsException"
-        } 
+        }
       ]
     },
     "ListClusterOperations": {
@@ -493,6 +735,35 @@
           "shape": "ForbiddenException"
         }
       ]
+    },
+    "ListClusterOperationsV2" : {
+      "name" : "ListClusterOperationsV2",
+      "http" : {
+        "method" : "GET",
+        "requestUri" : "/api/v2/clusters/{clusterArn}/operations",
+        "responseCode" : 200
+      },
+      "input" : {
+        "shape" : "ListClusterOperationsV2Request"
+      },
+      "output" : {
+        "shape" : "ListClusterOperationsV2Response"
+      },
+      "errors" : [ {
+        "shape" : "BadRequestException"
+      }, {
+        "shape" : "UnauthorizedException"
+      }, {
+        "shape" : "InternalServerErrorException"
+      }, {
+        "shape" : "ForbiddenException"
+      }, {
+        "shape" : "NotFoundException"
+      }, {
+        "shape" : "ServiceUnavailableException"
+      }, {
+        "shape" : "TooManyRequestsException"
+      } ]
     },
     "ListClusters": {
       "name": "ListClusters",
@@ -671,6 +942,43 @@
         }
       ]
     },
+    "ListReplicators": {
+      "name": "ListReplicators",
+      "http": {
+        "method": "GET",
+        "requestUri": "/replication/v1/replicators",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListReplicatorsRequest"
+      },
+      "output": {
+        "shape": "ListReplicatorsResponse"
+      },
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        },
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "TooManyRequestsException"
+        }
+      ]
+    },
     "ListScramSecrets" : {
       "name" : "ListScramSecrets",
       "http" : {
@@ -725,6 +1033,192 @@
         }
       ]
     },
+    "ListClientVpcConnections": {
+      "name": "ListClientVpcConnections",
+      "http": {
+        "method": "GET",
+        "requestUri": "/v1/clusters/{clusterArn}/client-vpc-connections",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListClientVpcConnectionsRequest"
+      },
+      "output": {
+        "shape": "ListClientVpcConnectionsResponse"
+      },
+      "errors": [
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        }
+      ]
+    },
+    "ListVpcConnections": {
+      "name": "ListVpcConnections",
+      "http": {
+        "method": "GET",
+        "requestUri": "/v1/vpc-connections",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "ListVpcConnectionsRequest"
+      },
+      "output": {
+        "shape": "ListVpcConnectionsResponse"
+      },
+      "errors": [
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        }
+      ]
+    },
+    "RejectClientVpcConnection": {
+      "name": "RejectClientVpcConnection",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/v1/clusters/{clusterArn}/client-vpc-connection",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "RejectClientVpcConnectionRequest"
+      },
+      "output": {
+        "shape": "RejectClientVpcConnectionResponse"
+      },
+      "errors": [
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        }
+      ]
+    },
+    "DeleteClusterPolicy": {
+      "name": "DeleteClusterPolicy",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/v1/clusters/{clusterArn}/policy",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "DeleteClusterPolicyRequest"
+      },
+      "output": {
+        "shape": "DeleteClusterPolicyResponse"
+      },
+      "errors": [
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape" : "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        }
+      ]
+    },
+    "GetClusterPolicy": {
+      "name": "GetClusterPolicy",
+      "http": {
+        "method": "GET",
+        "requestUri": "/v1/clusters/{clusterArn}/policy",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "GetClusterPolicyRequest"
+      },
+      "output": {
+        "shape": "GetClusterPolicyResponse"
+      },
+      "errors": [
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape" : "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        }
+      ]
+    },
+    "PutClusterPolicy": {
+      "name": "PutClusterPolicy",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/v1/clusters/{clusterArn}/policy",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "PutClusterPolicyRequest"
+      },
+      "output": {
+        "shape": "PutClusterPolicyResponse"
+      },
+      "errors": [
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape" : "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        }
+      ]
+    },
     "RebootBroker": {
       "name": "RebootBroker",
       "http": {
@@ -740,7 +1234,7 @@
       },
       "errors": [
         {
-        "shape": "BadRequestException"
+          "shape": "BadRequestException"
         },
         {
           "shape": "UnauthorizedException"
@@ -758,7 +1252,7 @@
           "shape": "ServiceUnavailableException"
         },
         {
-        "shape": "TooManyRequestsException"
+          "shape": "TooManyRequestsException"
         }
       ]
     },
@@ -983,28 +1477,28 @@
       "output" : {
         "shape" : "UpdateClusterKafkaVersionResponse"
       },
-      "errors" : [ 
+      "errors" : [
         {
           "shape" : "BadRequestException"
-        }, 
+        },
         {
           "shape" : "UnauthorizedException"
-        }, 
+        },
         {
           "shape" : "InternalServerErrorException"
-        }, 
+        },
         {
           "shape" : "ForbiddenException"
-        }, 
+        },
         {
           "shape" : "NotFoundException"
-        }, 
+        },
         {
           "shape" : "ServiceUnavailableException"
-        }, 
+        },
         {
           "shape" : "TooManyRequestsException"
-        } 
+        }
       ]
     },
     "UpdateConnectivity":{
@@ -1069,6 +1563,43 @@
         "shape" : "ForbiddenException"
       } ]
     },
+    "UpdateReplicationInfo": {
+      "name": "UpdateReplicationInfo",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/replication/v1/replicators/{replicatorArn}/replication-info",
+        "responseCode": 200
+      },
+      "input": {
+        "shape": "UpdateReplicationInfoRequest"
+      },
+      "output": {
+        "shape": "UpdateReplicationInfoResponse"
+      },
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "UnauthorizedException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        },
+        {
+          "shape": "ForbiddenException"
+        },
+        {
+          "shape": "NotFoundException"
+        },
+        {
+          "shape": "ServiceUnavailableException"
+        },
+        {
+          "shape": "TooManyRequestsException"
+        }
+      ]
+    },
     "UpdateSecurity" : {
       "name" : "UpdateSecurity",
       "http" : {
@@ -1097,9 +1628,48 @@
       }, {
         "shape" : "TooManyRequestsException"
       } ]
+    },
+    "UpdateStorage" : {
+      "name" : "UpdateStorage",
+      "http" : {
+        "method" : "PUT",
+        "requestUri" : "/v1/clusters/{clusterArn}/storage",
+        "responseCode" : 200
+      },
+      "input" : {
+        "shape" : "UpdateStorageRequest"
+      },
+      "output" : {
+        "shape" : "UpdateStorageResponse"
+      },
+      "errors" : [ {
+        "shape" : "BadRequestException"
+      }, {
+        "shape" : "UnauthorizedException"
+      }, {
+        "shape" : "InternalServerErrorException"
+      }, {
+        "shape" : "ForbiddenException"
+      }, {
+        "shape" : "NotFoundException"
+      }, {
+        "shape" : "ServiceUnavailableException"
+      }, {
+        "shape" : "TooManyRequestsException"
+      } ]
     }
   },
   "shapes": {
+    "AmazonMskCluster": {
+      "type": "structure",
+      "members": {
+        "MskClusterArn": {
+          "shape": "__string",
+          "locationName": "mskClusterArn"
+        }
+      },
+      "required": ["MskClusterArn"]
+    },
     "BatchAssociateScramSecretRequest" : {
       "type" : "structure",
       "members" : {
@@ -1214,6 +1784,10 @@
         "ConnectivityInfo":{
           "shape":"ConnectivityInfo",
           "locationName":"connectivityInfo"
+        },
+        "ZoneIds": {
+          "shape": "__listOf__string",
+          "locationName": "zoneIds"
         }
       },
       "required": [
@@ -1281,6 +1855,19 @@
         "Unauthenticated" : {
           "shape" : "Unauthenticated",
           "locationName" : "unauthenticated"
+        }
+      }
+    },
+    "VpcConnectivityClientAuthentication" : {
+      "type" : "structure",
+      "members" : {
+        "Sasl" : {
+          "shape" : "VpcConnectivitySasl",
+          "locationName" : "sasl"
+        },
+        "Tls" : {
+          "shape" : "VpcConnectivityTls",
+          "locationName" : "tls"
         }
       }
     },
@@ -1380,6 +1967,14 @@
         "ZookeeperConnectStringTls" : {
           "shape" : "__string",
           "locationName" : "zookeeperConnectStringTls"
+        },
+        "StorageMode" : {
+          "shape" : "StorageMode",
+          "locationName" : "storageMode"
+        },
+        "CustomerActionStatus": {
+          "shape": "CustomerActionStatus",
+          "locationName": "customerActionStatus"
         }
       }
     },
@@ -1429,6 +2024,10 @@
         "TargetClusterInfo": {
           "shape": "MutableClusterInfo",
           "locationName": "targetClusterInfo"
+        },
+        "VpcConnectionInfo": {
+          "shape": "VpcConnectionInfo",
+          "locationName": "vpcConnectionInfo"
         }
       }
     },
@@ -1454,6 +2053,110 @@
         }
       }
     },
+    "ClusterOperationV2" : {
+      "type" : "structure",
+      "members" : {
+        "ClusterArn" : {
+          "shape" : "__string",
+          "locationName" : "clusterArn"
+        },
+        "ClusterType" : {
+          "shape" : "ClusterType",
+          "locationName" : "clusterType"
+        },
+        "StartTime" : {
+          "shape" : "__timestampIso8601",
+          "locationName" : "startTime"
+        },
+        "EndTime" : {
+          "shape" : "__timestampIso8601",
+          "locationName" : "endTime"
+        },
+        "OperationArn" : {
+          "shape" : "__string",
+          "locationName" : "operationArn"
+        },
+        "OperationState" : {
+          "shape" : "__string",
+          "locationName" : "operationState"
+        },
+        "OperationType" : {
+          "shape" : "__string",
+          "locationName" : "operationType"
+        },
+        "Provisioned" : {
+          "shape" : "ClusterOperationV2Provisioned",
+          "locationName" : "provisioned"
+        },
+        "Serverless" : {
+          "shape" : "ClusterOperationV2Serverless",
+          "locationName" : "serverless"
+        }
+      }
+    },
+    "ClusterOperationV2Provisioned" : {
+      "type" : "structure",
+      "members" : {
+        "OperationSteps" : {
+          "shape" : "__listOfClusterOperationStep",
+          "locationName" : "operationSteps"
+        },
+        "SourceClusterInfo" : {
+          "shape" : "MutableClusterInfo",
+          "locationName" : "sourceClusterInfo"
+        },
+        "TargetClusterInfo" : {
+          "shape" : "MutableClusterInfo",
+          "locationName" : "targetClusterInfo"
+        },
+        "VpcConnectionInfo" : {
+          "shape" : "VpcConnectionInfo",
+          "locationName" : "vpcConnectionInfo"
+        }
+      }
+    },
+    "ClusterOperationV2Serverless" : {
+      "type" : "structure",
+      "members" : {
+        "VpcConnectionInfo" : {
+          "shape" : "VpcConnectionInfoServerless",
+          "locationName" : "vpcConnectionInfo"
+        }
+      }
+    },
+    "ClusterOperationV2Summary" : {
+      "type" : "structure",
+      "members" : {
+        "ClusterArn" : {
+          "shape" : "__string",
+          "locationName" : "clusterArn"
+        },
+        "ClusterType" : {
+          "shape" : "ClusterType",
+          "locationName" : "clusterType"
+        },
+        "StartTime" : {
+          "shape" : "__timestampIso8601",
+          "locationName" : "startTime"
+        },
+        "EndTime" : {
+          "shape" : "__timestampIso8601",
+          "locationName" : "endTime"
+        },
+        "OperationArn" : {
+          "shape" : "__string",
+          "locationName" : "operationArn"
+        },
+        "OperationState" : {
+          "shape" : "__string",
+          "locationName" : "operationState"
+        },
+        "OperationType" : {
+          "shape" : "__string",
+          "locationName" : "operationType"
+        }
+      }
+    },
     "ClusterState": {
       "type": "string",
       "enum": [
@@ -1465,6 +2168,67 @@
         "MAINTENANCE",
         "REBOOTING_BROKER",
         "UPDATING"
+      ]
+    },
+    "ClientVpcConnection": {
+      "type": "structure",
+      "members": {
+        "Authentication": {
+          "shape": "__string",
+          "locationName": "authentication"
+        },
+        "CreationTime": {
+          "shape": "__timestampIso8601",
+          "locationName": "creationTime"
+        },
+        "State": {
+          "shape": "VpcConnectionState",
+          "locationName": "state"
+        },
+        "VpcConnectionArn": {
+          "shape": "__string",
+          "locationName": "vpcConnectionArn"
+        },
+        "Owner": {
+          "shape": "__string",
+          "locationName": "owner"
+        }
+      },
+      "required": [
+        "VpcConnectionArn"
+      ]
+    },
+    "VpcConnection": {
+      "type": "structure",
+      "members": {
+        "VpcConnectionArn": {
+          "shape": "__string",
+          "locationName": "vpcConnectionArn"
+        },
+        "TargetClusterArn": {
+          "shape": "__string",
+          "locationName": "targetClusterArn"
+        },
+        "CreationTime": {
+          "shape": "__timestampIso8601",
+          "locationName": "creationTime"
+        },
+        "Authentication": {
+          "shape": "__string",
+          "locationName": "authentication"
+        },
+        "VpcId": {
+          "shape": "__string",
+          "locationName": "vpcId"
+        },
+        "State": {
+          "shape": "VpcConnectionState",
+          "locationName": "state"
+        }
+      },
+      "required": [
+        "VpcConnectionArn",
+        "TargetClusterArn"
       ]
     },
     "CompatibleKafkaVersion" : {
@@ -1591,8 +2355,56 @@
         "PublicAccess":{
           "shape":"PublicAccess",
           "locationName":"publicAccess"
+        },
+        "VpcConnectivity": {
+          "shape":"VpcConnectivity",
+          "locationName":"vpcConnectivity"
         }
       }
+    },
+    "ConsumerGroupReplication": {
+      "type": "structure",
+      "members": {
+        "ConsumerGroupsToExclude": {
+          "shape": "__listOf__stringMax256",
+          "locationName": "consumerGroupsToExclude"
+        },
+        "ConsumerGroupsToReplicate": {
+          "shape": "__listOf__stringMax256",
+          "locationName": "consumerGroupsToReplicate"
+        },
+        "DetectAndCopyNewConsumerGroups": {
+          "shape": "__boolean",
+          "locationName": "detectAndCopyNewConsumerGroups"
+        },
+        "SynchroniseConsumerGroupOffsets": {
+          "shape": "__boolean",
+          "locationName": "synchroniseConsumerGroupOffsets"
+        }
+      },
+      "required": ["ConsumerGroupsToReplicate"]
+    },
+    "ConsumerGroupReplicationUpdate": {
+      "type": "structure",
+      "members": {
+        "ConsumerGroupsToExclude": {
+          "shape": "__listOf__stringMax256",
+          "locationName": "consumerGroupsToExclude"
+        },
+        "ConsumerGroupsToReplicate": {
+          "shape": "__listOf__stringMax256",
+          "locationName": "consumerGroupsToReplicate"
+        },
+        "DetectAndCopyNewConsumerGroups": {
+          "shape": "__boolean",
+          "locationName": "detectAndCopyNewConsumerGroups"
+        },
+        "SynchroniseConsumerGroupOffsets": {
+          "shape": "__boolean",
+          "locationName": "synchroniseConsumerGroupOffsets"
+        }
+      },
+      "required": ["ConsumerGroupsToReplicate", "ConsumerGroupsToExclude", "SynchroniseConsumerGroupOffsets", "DetectAndCopyNewConsumerGroups"]
     },
     "CreateClusterRequest": {
       "type": "structure",
@@ -1640,6 +2452,10 @@
         "Tags": {
           "shape": "__mapOf__string",
           "locationName": "tags"
+        },
+        "StorageMode" : {
+          "shape" : "StorageMode",
+          "locationName" : "storageMode"
         }
       },
       "required": [
@@ -1716,6 +2532,128 @@
         }
       }
     },
+    "CreateReplicatorRequest": {
+      "type": "structure",
+      "members": {
+        "Description": {
+          "shape": "__stringMax1024",
+          "locationName": "description"
+        },
+        "KafkaClusters": {
+          "shape": "__listOfKafkaCluster",
+          "locationName": "kafkaClusters"
+        },
+        "ReplicationInfoList": {
+          "shape": "__listOfReplicationInfo",
+          "locationName": "replicationInfoList"
+        },
+        "ReplicatorName": {
+          "shape": "__stringMin1Max128Pattern09AZaZ09AZaZ0",
+          "locationName": "replicatorName"
+        },
+        "ServiceExecutionRoleArn": {
+          "shape": "__string",
+          "locationName": "serviceExecutionRoleArn"
+        },
+        "Tags": {
+          "shape": "__mapOf__string",
+          "locationName": "tags"
+        }
+      },
+      "required": ["ServiceExecutionRoleArn", "ReplicatorName", "ReplicationInfoList", "KafkaClusters"]
+    },
+    "CreateReplicatorResponse": {
+      "type": "structure",
+      "members": {
+        "ReplicatorArn": {
+          "shape": "__string",
+          "locationName": "replicatorArn"
+        },
+        "ReplicatorName": {
+          "shape": "__string",
+          "locationName": "replicatorName"
+        },
+        "ReplicatorState": {
+          "shape": "ReplicatorState",
+          "locationName": "replicatorState"
+        }
+      }
+    },
+    "CreateVpcConnectionRequest": {
+      "type": "structure",
+      "members": {
+        "TargetClusterArn": {
+          "shape": "__string",
+          "locationName": "targetClusterArn"
+        },
+        "Authentication": {
+          "shape": "__string",
+          "locationName": "authentication"
+        },
+        "VpcId": {
+          "shape": "__string",
+          "locationName": "vpcId"
+        },
+        "ClientSubnets": {
+          "shape": "__listOf__string",
+          "locationName": "clientSubnets"
+        },
+        "SecurityGroups": {
+          "shape": "__listOf__string",
+          "locationName": "securityGroups"
+        },
+        "Tags": {
+          "shape": "__mapOf__string",
+          "locationName": "tags",
+          "documentation": "\n            <p>A map of tags for the VPC connection.</p>\n         "
+        }
+      },
+      "required": [
+        "TargetClusterArn",
+        "Authentication",
+        "VpcId",
+        "ClientSubnets",
+        "SecurityGroups"
+      ]
+    },
+    "CreateVpcConnectionResponse": {
+      "type": "structure",
+      "members": {
+        "VpcConnectionArn": {
+          "shape": "__string",
+          "locationName": "vpcConnectionArn"
+        },
+        "State": {
+          "shape": "VpcConnectionState",
+          "locationName": "state"
+        },
+        "Authentication": {
+          "shape": "__string",
+          "locationName": "authentication"
+        },
+        "VpcId": {
+          "shape": "__string",
+          "locationName": "vpcId"
+        },
+        "ClientSubnets": {
+          "shape": "__listOf__string",
+          "locationName": "clientSubnets"
+        },
+        "SecurityGroups": {
+          "shape": "__listOf__string",
+          "locationName": "securityGroups"
+        },
+        "CreationTime": {
+          "shape": "__timestampIso8601",
+          "locationName": "creationTime"
+        },
+        "Tags": {
+          "shape": "__mapOf__string",
+          "locationName": "tags",
+          "documentation": "\n            <p>A map of tags that you want the vpc connection to have.</p>\n         "
+        }
+      }
+    },
     "DeleteClusterRequest": {
       "type": "structure",
       "members": {
@@ -1773,6 +2711,61 @@
         }
       }
     },
+    "DeleteReplicatorRequest": {
+      "type": "structure",
+      "members": {
+        "CurrentVersion": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "currentVersion"
+        },
+        "ReplicatorArn": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "replicatorArn"
+        }
+      },
+      "required": ["ReplicatorArn"]
+    },
+    "DeleteReplicatorResponse": {
+      "type": "structure",
+      "members": {
+        "ReplicatorArn": {
+          "shape": "__string",
+          "locationName": "replicatorArn"
+        },
+        "ReplicatorState": {
+          "shape": "ReplicatorState",
+          "locationName": "replicatorState"
+        }
+      }
+    },
+    "DeleteVpcConnectionRequest": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "arn"
+        }
+      },
+      "required": [
+        "Arn"
+      ]
+    },
+    "DeleteVpcConnectionResponse": {
+      "type": "structure",
+      "members": {
+        "VpcConnectionArn": {
+          "shape": "__string",
+          "locationName": "vpcConnectionArn"
+        },
+        "State": {
+          "shape": "VpcConnectionState",
+          "locationName": "state"
+        }
+      }
+    },
     "DescribeClusterOperationRequest": {
       "type": "structure",
       "members": {
@@ -1786,12 +2779,32 @@
         "ClusterOperationArn"
       ]
     },
+    "DescribeClusterOperationV2Request" : {
+      "type" : "structure",
+      "members" : {
+        "ClusterOperationArn" : {
+          "shape" : "__string",
+          "location" : "uri",
+          "locationName" : "clusterOperationArn"
+        }
+      },
+      "required" : [ "ClusterOperationArn" ]
+    },
     "DescribeClusterOperationResponse": {
       "type": "structure",
       "members": {
         "ClusterOperationInfo": {
           "shape": "ClusterOperationInfo",
           "locationName": "clusterOperationInfo"
+        }
+      }
+    },
+    "DescribeClusterOperationV2Response" : {
+      "type" : "structure",
+      "members" : {
+        "ClusterOperationInfo" : {
+          "shape" : "ClusterOperationV2",
+          "locationName" : "clusterOperationInfo"
         }
       }
     },
@@ -1904,6 +2917,129 @@
         "ServerProperties": {
           "shape": "__blob",
           "locationName": "serverProperties"
+        }
+      }
+    },
+    "DescribeReplicatorRequest": {
+      "type": "structure",
+      "members": {
+        "ReplicatorArn": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "replicatorArn"
+        }
+      },
+      "required": ["ReplicatorArn"]
+    },
+    "DescribeReplicatorResponse": {
+      "type": "structure",
+      "members": {
+        "CreationTime": {
+          "shape": "__timestampIso8601",
+          "locationName": "creationTime"
+        },
+        "CurrentVersion": {
+          "shape": "__string",
+          "locationName": "currentVersion"
+        },
+        "IsReplicatorReference": {
+          "shape": "__boolean",
+          "locationName": "isReplicatorReference"
+        },
+        "KafkaClusters": {
+          "shape": "__listOfKafkaClusterDescription",
+          "locationName": "kafkaClusters"
+        },
+        "ReplicationInfoList": {
+          "shape": "__listOfReplicationInfoDescription",
+          "locationName": "replicationInfoList"
+        },
+        "ReplicatorArn": {
+          "shape": "__string",
+          "locationName": "replicatorArn"
+        },
+        "ReplicatorDescription": {
+          "shape": "__string",
+          "locationName": "replicatorDescription"
+        },
+        "ReplicatorName": {
+          "shape": "__string",
+          "locationName": "replicatorName"
+        },
+        "ReplicatorResourceArn": {
+          "shape": "__string",
+          "locationName": "replicatorResourceArn"
+        },
+        "ReplicatorState": {
+          "shape": "ReplicatorState",
+          "locationName": "replicatorState"
+        },
+        "ServiceExecutionRoleArn": {
+          "shape": "__string",
+          "locationName": "serviceExecutionRoleArn"
+        },
+        "StateInfo": {
+          "shape": "ReplicationStateInfo",
+          "locationName": "stateInfo"
+        },
+        "Tags": {
+          "shape": "__mapOf__string",
+          "locationName": "tags"
+        }
+      }
+    },
+    "DescribeVpcConnectionRequest": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "arn"
+        }
+      },
+      "required": [
+        "Arn"
+      ]
+    },
+    "DescribeVpcConnectionResponse": {
+      "type": "structure",
+      "members": {
+        "VpcConnectionArn": {
+          "shape": "__string",
+          "locationName": "vpcConnectionArn"
+        },
+        "TargetClusterArn": {
+          "shape": "__string",
+          "locationName": "targetClusterArn"
+        },
+        "State": {
+          "shape": "VpcConnectionState",
+          "locationName": "state"
+        },
+        "Authentication": {
+          "shape": "__string",
+          "locationName": "authentication"
+        },
+        "VpcId": {
+          "shape": "__string",
+          "locationName": "vpcId"
+        },
+        "Subnets": {
+          "shape": "__listOf__string",
+          "locationName": "subnets"
+        },
+        "SecurityGroups": {
+          "shape": "__listOf__string",
+          "locationName": "securityGroups"
+        },
+        "CreationTime": {
+          "shape": "__timestampIso8601",
+          "locationName": "creationTime"
+        },
+        "Tags": {
+          "shape": "__mapOf__string",
+          "locationName": "tags",
+          "documentation": "\n            <p>A map of tags that you want the vpc connection to have.</p>\n         "
         }
       }
     },
@@ -2095,6 +3231,18 @@
         "BootstrapBrokerStringSaslIam": {
           "shape": "__string",
           "locationName": "bootstrapBrokerStringSaslIam"
+        },
+        "BootstrapBrokerStringVpcConnectivityTls": {
+          "shape": "__string",
+          "locationName": "bootstrapBrokerStringVpcConnectivityTls"
+        },
+        "BootstrapBrokerStringVpcConnectivitySaslScram": {
+          "shape": "__string",
+          "locationName": "bootstrapBrokerStringVpcConnectivitySaslScram"
+        },
+        "BootstrapBrokerStringVpcConnectivitySaslIam": {
+          "shape": "__string",
+          "locationName": "bootstrapBrokerStringVpcConnectivitySaslIam"
         }
       }
     },
@@ -2132,6 +3280,64 @@
       "exception": true,
       "error": {
         "httpStatusCode": 500
+      }
+    },
+    "KafkaCluster": {
+      "type": "structure",
+      "members": {
+        "AmazonMskCluster": {
+          "shape": "AmazonMskCluster",
+          "locationName": "amazonMskCluster"
+        },
+        "VpcConfig": {
+          "shape": "KafkaClusterClientVpcConfig",
+          "locationName": "vpcConfig"
+        }
+      },
+      "required": ["VpcConfig", "AmazonMskCluster"]
+    },
+    "KafkaClusterClientVpcConfig" : {
+      "type" : "structure",
+      "members" : {
+        "SecurityGroupIds" : {
+          "shape" : "__listOf__string",
+          "locationName" : "securityGroupIds"
+        },
+        "SubnetIds" : {
+          "shape" : "__listOf__string",
+          "locationName" : "subnetIds"
+        }
+      },
+      "required" : [ "SubnetIds" ]
+    },
+    "KafkaClusterDescription": {
+      "type": "structure",
+      "members": {
+        "AmazonMskCluster": {
+          "shape": "AmazonMskCluster",
+          "locationName": "amazonMskCluster"
+        },
+        "KafkaClusterAlias": {
+          "shape": "__string",
+          "locationName": "kafkaClusterAlias"
+        },
+        "VpcConfig": {
+          "shape": "KafkaClusterClientVpcConfig",
+          "locationName": "vpcConfig"
+        }
+      }
+    },
+    "KafkaClusterSummary": {
+      "type": "structure",
+      "members": {
+        "AmazonMskCluster": {
+          "shape": "AmazonMskCluster",
+          "locationName": "amazonMskCluster"
+        },
+        "KafkaClusterAlias": {
+          "shape": "__string",
+          "locationName": "kafkaClusterAlias"
+        }
       }
     },
     "KafkaVersion": {
@@ -2177,6 +3383,27 @@
         "ClusterArn"
       ]
     },
+    "ListClusterOperationsV2Request" : {
+      "type" : "structure",
+      "members" : {
+        "ClusterArn" : {
+          "shape" : "__string",
+          "location" : "uri",
+          "locationName" : "clusterArn"
+        },
+        "MaxResults" : {
+          "shape" : "MaxResults",
+          "location" : "querystring",
+          "locationName" : "maxResults"
+        },
+        "NextToken" : {
+          "shape" : "__string",
+          "location" : "querystring",
+          "locationName" : "nextToken"
+        }
+      },
+      "required" : [ "ClusterArn" ]
+    },
     "ListClusterOperationsResponse": {
       "type": "structure",
       "members": {
@@ -2187,6 +3414,19 @@
         "NextToken": {
           "shape": "__string",
           "locationName": "nextToken"
+        }
+      }
+    },
+    "ListClusterOperationsV2Response" : {
+      "type" : "structure",
+      "members" : {
+        "ClusterOperationInfoList" : {
+          "shape" : "__listOfClusterOperationV2Summary",
+          "locationName" : "clusterOperationInfoList"
+        },
+        "NextToken" : {
+          "shape" : "__string",
+          "locationName" : "nextToken"
         }
       }
     },
@@ -2287,6 +3527,10 @@
         }
       }
     },
+    "CustomerActionStatus": {
+      "type": "string",
+      "enum": [ "CRITICAL_ACTION_REQUIRED", "ACTION_RECOMMENDED", "NONE" ]
+    },
     "DescribeClusterV2Request": {
       "type": "structure",
       "members": {
@@ -2308,6 +3552,81 @@
           "shape": "Cluster",
           "locationName": "clusterInfo",
           "documentation": "\n            <p>The cluster information.</p>\n         "
+        }
+      }
+    },
+    "DeleteClusterPolicyRequest": {
+      "type": "structure",
+      "members": {
+        "ClusterArn": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "clusterArn"
+        }
+      },
+      "required": [
+        "ClusterArn"
+      ]
+    },
+    "DeleteClusterPolicyResponse": {
+      "type": "structure",
+      "members": {
+      }
+    },
+    "GetClusterPolicyRequest": {
+      "type": "structure",
+      "members": {
+        "ClusterArn": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "clusterArn"
+        }
+      },
+      "required": [
+        "ClusterArn"
+      ]
+    },
+    "GetClusterPolicyResponse": {
+      "type": "structure",
+      "members": {
+        "CurrentVersion": {
+          "shape": "__string",
+          "locationName": "currentVersion"
+        },
+        "Policy": {
+          "shape": "__string",
+          "locationName": "policy"
+        }
+      }
+    },
+    "PutClusterPolicyRequest": {
+      "type": "structure",
+      "members": {
+        "ClusterArn": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "clusterArn"
+        },
+        "CurrentVersion": {
+          "shape": "__string",
+          "locationName": "currentVersion"
+        },
+        "Policy": {
+          "shape": "__string",
+          "locationName": "policy"
+        }
+      },
+      "required": [
+        "ClusterArn",
+        "Policy"
+      ]
+    },
+    "PutClusterPolicyResponse": {
+      "type": "structure",
+      "members": {
+        "CurrentVersion": {
+          "shape": "__string",
+          "locationName": "currentVersion"
         }
       }
     },
@@ -2428,6 +3747,11 @@
           "shape": "__integerMin1Max15",
           "locationName": "numberOfBrokerNodes",
           "documentation": "\n            <p>The number of brokers in the cluster.</p>\n         "
+        },
+        "StorageMode" : {
+          "shape" : "StorageMode",
+          "locationName" : "storageMode",
+          "documentation": "\n            <p>This controls storage mode for supported storage tiers.</p>\n         "
         }
       },
       "required": [
@@ -2489,6 +3813,16 @@
           "shape" : "__string",
           "locationName" : "zookeeperConnectStringTls",
           "documentation" : "\n            <p>The connection string to use to connect to the Apache ZooKeeper cluster on a TLS port.</p>\n         "
+        },
+        "StorageMode" : {
+          "shape" : "StorageMode",
+          "locationName" : "storageMode",
+          "documentation": "\n            <p>This controls storage mode for supported storage tiers.</p>\n         "
+        },
+        "CustomerActionStatus": {
+          "shape": "CustomerActionStatus",
+          "locationName": "customerActionStatus",
+          "documentation": "\n            <p>Determines if there is an action required from the customer.</p>\n         "
         }
       },
       "required": [
@@ -2805,7 +4139,122 @@
           "locationName": "brokerLogs"
         }
       },
-     "required": [ "BrokerLogs" ]
+      "required": [ "BrokerLogs" ]
+    },
+    "ListClientVpcConnectionsRequest" : {
+      "type" : "structure",
+      "members" : {
+        "ClusterArn" : {
+          "shape" : "__string",
+          "location" : "uri",
+          "locationName" : "clusterArn"
+        },
+        "MaxResults" : {
+          "shape" : "MaxResults",
+          "location" : "querystring",
+          "locationName" : "maxResults"
+        },
+        "NextToken" : {
+          "shape" : "__string",
+          "location" : "querystring",
+          "locationName" : "nextToken"
+        }
+      },
+      "required" : [ "ClusterArn" ]
+    },
+    "ListClientVpcConnectionsResponse" : {
+      "type" : "structure",
+      "members" : {
+        "NextToken" : {
+          "shape" : "__string",
+          "locationName" : "nextToken"
+        },
+        "ClientVpcConnections" : {
+          "shape" : "__listOfClientVpcConnection",
+          "locationName" : "clientVpcConnections"
+        }
+      }
+    },
+    "ListReplicatorsRequest": {
+      "type": "structure",
+      "members": {
+        "MaxResults": {
+          "shape": "MaxResults",
+          "location": "querystring",
+          "locationName": "maxResults"
+        },
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "nextToken"
+        },
+        "ReplicatorNameFilter": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "replicatorNameFilter"
+        }
+      }
+    },
+    "ListReplicatorsResponse": {
+      "type": "structure",
+      "members": {
+        "NextToken": {
+          "shape": "__string",
+          "locationName": "nextToken"
+        },
+        "Replicators": {
+          "shape": "__listOfReplicatorSummary",
+          "locationName": "replicators"
+        }
+      }
+    },
+    "ListVpcConnectionsRequest" : {
+      "type" : "structure",
+      "members" : {
+        "MaxResults" : {
+          "shape" : "MaxResults",
+          "location" : "querystring",
+          "locationName" : "maxResults"
+        },
+        "NextToken" : {
+          "shape" : "__string",
+          "location" : "querystring",
+          "locationName" : "nextToken"
+        }
+      }
+    },
+    "ListVpcConnectionsResponse" : {
+      "type" : "structure",
+      "members" : {
+        "NextToken" : {
+          "shape" : "__string",
+          "locationName" : "nextToken"
+        },
+        "VpcConnections" : {
+          "shape" : "__listOfVpcConnection",
+          "locationName" : "vpcConnections"
+        }
+      }
+    },
+    "RejectClientVpcConnectionRequest" : {
+      "type" : "structure",
+      "members" : {
+        "ClusterArn": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "clusterArn"
+        },
+        "VpcConnectionArn": {
+          "shape": "__string",
+          "locationName": "vpcConnectionArn"
+        }
+      },
+      "required" : [ "VpcConnectionArn", "ClusterArn" ]
+    },
+    "RejectClientVpcConnectionResponse" : {
+      "type": "structure",
+      "members": {
+      }
     },
     "MutableClusterInfo" : {
       "type" : "structure",
@@ -2850,9 +4299,13 @@
           "shape" : "EncryptionInfo",
           "locationName" : "encryptionInfo"
         },
-        "ConnectivityInfo":{
-          "shape":"ConnectivityInfo",
-          "locationName":"connectivityInfo"
+        "ConnectivityInfo": {
+          "shape": "ConnectivityInfo",
+          "locationName": "connectivityInfo"
+        },
+        "StorageMode" : {
+          "shape" : "StorageMode",
+          "locationName" : "storageMode"
         }
       }
     },
@@ -2908,6 +4361,128 @@
         "httpStatusCode": 404
       }
     },
+    "ReplicationInfo": {
+      "type": "structure",
+      "members": {
+        "ConsumerGroupReplication": {
+          "shape": "ConsumerGroupReplication",
+          "locationName": "consumerGroupReplication"
+        },
+        "SourceKafkaClusterArn": {
+          "shape": "__string",
+          "locationName": "sourceKafkaClusterArn"
+        },
+        "TargetCompressionType": {
+          "shape": "TargetCompressionType",
+          "locationName": "targetCompressionType"
+        },
+        "TargetKafkaClusterArn": {
+          "shape": "__string",
+          "locationName": "targetKafkaClusterArn"
+        },
+        "TopicReplication": {
+          "shape": "TopicReplication",
+          "locationName": "topicReplication"
+        }
+      },
+      "required": ["TargetCompressionType", "TopicReplication", "ConsumerGroupReplication", "SourceKafkaClusterArn", "TargetKafkaClusterArn"]
+    },
+    "ReplicationInfoDescription": {
+      "type": "structure",
+      "members": {
+        "ConsumerGroupReplication": {
+          "shape": "ConsumerGroupReplication",
+          "locationName": "consumerGroupReplication"
+        },
+        "SourceKafkaClusterAlias": {
+          "shape": "__string",
+          "locationName": "sourceKafkaClusterAlias"
+        },
+        "TargetCompressionType": {
+          "shape": "TargetCompressionType",
+          "locationName": "targetCompressionType"
+        },
+        "TargetKafkaClusterAlias": {
+          "shape": "__string",
+          "locationName": "targetKafkaClusterAlias"
+        },
+        "TopicReplication": {
+          "shape": "TopicReplication",
+          "locationName": "topicReplication"
+        }
+      }
+    },
+    "ReplicationInfoSummary": {
+      "type": "structure",
+      "members": {
+        "SourceKafkaClusterAlias": {
+          "shape": "__string",
+          "locationName": "sourceKafkaClusterAlias"
+        },
+        "TargetKafkaClusterAlias": {
+          "shape": "__string",
+          "locationName": "targetKafkaClusterAlias"
+        }
+      }
+    },
+    "ReplicationStateInfo": {
+      "type": "structure",
+      "members": {
+        "Code": {
+          "shape": "__string",
+          "locationName": "code"
+        },
+        "Message": {
+          "shape": "__string",
+          "locationName": "message"
+        }
+      }
+    },
+    "ReplicatorState": {
+      "type": "string",
+      "enum": ["RUNNING", "CREATING", "UPDATING", "DELETING", "FAILED"]
+    },
+    "ReplicatorSummary": {
+      "type": "structure",
+      "members": {
+        "CreationTime": {
+          "shape": "__timestampIso8601",
+          "locationName": "creationTime"
+        },
+        "CurrentVersion": {
+          "shape": "__string",
+          "locationName": "currentVersion"
+        },
+        "IsReplicatorReference": {
+          "shape": "__boolean",
+          "locationName": "isReplicatorReference"
+        },
+        "KafkaClustersSummary": {
+          "shape": "__listOfKafkaClusterSummary",
+          "locationName": "kafkaClustersSummary"
+        },
+        "ReplicationInfoSummaryList": {
+          "shape": "__listOfReplicationInfoSummary",
+          "locationName": "replicationInfoSummaryList"
+        },
+        "ReplicatorArn": {
+          "shape": "__string",
+          "locationName": "replicatorArn"
+        },
+        "ReplicatorName": {
+          "shape": "__string",
+          "locationName": "replicatorName"
+        },
+        "ReplicatorResourceArn": {
+          "shape": "__string",
+          "locationName": "replicatorResourceArn"
+        },
+        "ReplicatorState": {
+          "shape": "ReplicatorState",
+          "locationName": "replicatorState"
+        }
+      }
+    },
     "Sasl" : {
       "type" : "structure",
       "members" : {
@@ -2921,6 +4496,19 @@
         }
       }
     },
+    "VpcConnectivitySasl" : {
+      "type" : "structure",
+      "members" : {
+        "Scram" : {
+          "shape" : "VpcConnectivityScram",
+          "locationName" : "scram"
+        },
+        "Iam" : {
+          "shape" : "VpcConnectivityIam",
+          "locationName" : "iam"
+        }
+      }
+    },
     "Scram" : {
       "type" : "structure",
       "members" : {
@@ -2930,7 +4518,25 @@
         }
       }
     },
+    "VpcConnectivityScram" : {
+      "type" : "structure",
+      "members" : {
+        "Enabled" : {
+          "shape" : "__boolean",
+          "locationName" : "enabled"
+        }
+      }
+    },
     "Iam" : {
+      "type" : "structure",
+      "members" : {
+        "Enabled" : {
+          "shape" : "__boolean",
+          "locationName" : "enabled"
+        }
+      }
+    },
+    "VpcConnectivityIam" : {
       "type" : "structure",
       "members" : {
         "Enabled" : {
@@ -2978,6 +4584,10 @@
         }
       }
     },
+    "StorageMode" : {
+      "type" : "string",
+      "enum" : [ "LOCAL", "TIERED" ]
+    },
     "TagResourceRequest": {
       "type": "structure",
       "members": {
@@ -2996,6 +4606,62 @@
         "Tags"
       ]
     },
+    "TargetCompressionType": {
+      "type": "string",
+      "enum": ["NONE", "GZIP", "SNAPPY", "LZ4", "ZSTD"]
+    },
+    "TopicReplication": {
+      "type": "structure",
+      "members": {
+        "CopyAccessControlListsForTopics": {
+          "shape": "__boolean",
+          "locationName": "copyAccessControlListsForTopics"
+        },
+        "CopyTopicConfigurations": {
+          "shape": "__boolean",
+          "locationName": "copyTopicConfigurations"
+        },
+        "DetectAndCopyNewTopics": {
+          "shape": "__boolean",
+          "locationName": "detectAndCopyNewTopics"
+        },
+        "TopicsToExclude": {
+          "shape": "__listOf__stringMax249",
+          "locationName": "topicsToExclude"
+        },
+        "TopicsToReplicate": {
+          "shape": "__listOf__stringMax249",
+          "locationName": "topicsToReplicate"
+        }
+      },
+      "required": ["TopicsToReplicate"]
+    },
+    "TopicReplicationUpdate": {
+      "type": "structure",
+      "members": {
+        "CopyAccessControlListsForTopics": {
+          "shape": "__boolean",
+          "locationName": "copyAccessControlListsForTopics"
+        },
+        "CopyTopicConfigurations": {
+          "shape": "__boolean",
+          "locationName": "copyTopicConfigurations"
+        },
+        "DetectAndCopyNewTopics": {
+          "shape": "__boolean",
+          "locationName": "detectAndCopyNewTopics"
+        },
+        "TopicsToExclude": {
+          "shape": "__listOf__stringMax249",
+          "locationName": "topicsToExclude"
+        },
+        "TopicsToReplicate": {
+          "shape": "__listOf__stringMax249",
+          "locationName": "topicsToReplicate"
+        }
+      },
+      "required": ["TopicsToReplicate", "TopicsToExclude", "CopyTopicConfigurations", "DetectAndCopyNewTopics", "CopyAccessControlListsForTopics"]
+    },
     "Tls" : {
       "type" : "structure",
       "members" : {
@@ -3003,6 +4669,15 @@
           "shape" : "__listOf__string",
           "locationName" : "certificateAuthorityArnList"
         },
+        "Enabled" : {
+          "shape" : "__boolean",
+          "locationName" : "enabled"
+        }
+      }
+    },
+    "VpcConnectivityTls" : {
+      "type" : "structure",
+      "members" : {
         "Enabled" : {
           "shape" : "__boolean",
           "locationName" : "enabled"
@@ -3379,6 +5054,50 @@
         }
       }
     },
+    "UpdateReplicationInfoRequest": {
+      "type": "structure",
+      "members": {
+        "ConsumerGroupReplication": {
+          "shape": "ConsumerGroupReplicationUpdate",
+          "locationName": "consumerGroupReplication"
+        },
+        "CurrentVersion": {
+          "shape": "__string",
+          "locationName": "currentVersion"
+        },
+        "ReplicatorArn": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "replicatorArn"
+        },
+        "SourceKafkaClusterArn": {
+          "shape": "__string",
+          "locationName": "sourceKafkaClusterArn"
+        },
+        "TargetKafkaClusterArn": {
+          "shape": "__string",
+          "locationName": "targetKafkaClusterArn"
+        },
+        "TopicReplication": {
+          "shape": "TopicReplicationUpdate",
+          "locationName": "topicReplication"
+        }
+      },
+      "required": ["ReplicatorArn", "SourceKafkaClusterArn", "CurrentVersion", "TargetKafkaClusterArn"]
+    },
+    "UpdateReplicationInfoResponse": {
+      "type": "structure",
+      "members": {
+        "ReplicatorArn": {
+          "shape": "__string",
+          "locationName": "replicatorArn"
+        },
+        "ReplicatorState": {
+          "shape": "ReplicatorState",
+          "locationName": "replicatorState"
+        }
+      }
+    },
     "UpdateSecurityRequest" : {
       "type" : "structure",
       "members" : {
@@ -3414,6 +5133,66 @@
           "locationName" : "clusterOperationArn"
         }
       }
+    },
+    "UpdateStorageRequest" : {
+      "type" : "structure",
+      "members" : {
+        "ClusterArn" : {
+          "shape" : "__string",
+          "location" : "uri",
+          "locationName" : "clusterArn"
+        },
+        "CurrentVersion" : {
+          "shape" : "__string",
+          "locationName" : "currentVersion"
+        },
+        "ProvisionedThroughput" : {
+          "shape" : "ProvisionedThroughput",
+          "locationName" : "provisionedThroughput"
+        },
+        "StorageMode" : {
+          "shape" : "StorageMode",
+          "locationName" : "storageMode"
+        },
+        "VolumeSizeGB" : {
+          "shape" : "__integer",
+          "locationName" : "volumeSizeGB"
+        }
+      },
+      "required" : [ "ClusterArn", "CurrentVersion" ]
+    },
+    "UpdateStorageResponse" : {
+      "type" : "structure",
+      "members" : {
+        "ClusterArn" : {
+          "shape" : "__string",
+          "locationName" : "clusterArn"
+        },
+        "ClusterOperationArn" : {
+          "shape" : "__string",
+          "locationName" : "clusterOperationArn"
+        }
+      }
+    },
+    "UserIdentity": {
+      "type": "structure",
+      "members": {
+        "Type": {
+          "shape": "UserIdentityType",
+          "locationName": "type"
+        },
+        "PrincipalId": {
+          "shape": "__string",
+          "locationName": "principalId"
+        }
+      }
+    },
+    "UserIdentityType": {
+      "type": "string",
+      "enum": [
+        "AWSACCOUNT",
+        "AWSSERVICE"
+      ]
     },
     "ZookeeperNodeInfo": {
       "type": "structure",
@@ -3507,6 +5286,70 @@
           "locationName":"type"
         }
       }
+    },
+    "VpcConnectivity":{
+      "type":"structure",
+      "members":{
+        "ClientAuthentication":{
+          "shape":"VpcConnectivityClientAuthentication",
+          "locationName":"clientAuthentication"
+        }
+      }
+    },
+    "VpcConnectionInfo": {
+      "type": "structure",
+      "members": {
+        "VpcConnectionArn": {
+          "shape": "__string",
+          "locationName": "vpcConnectionArn"
+        },
+        "Owner": {
+          "shape": "__string",
+          "locationName": "owner"
+        },
+        "UserIdentity": {
+          "shape": "UserIdentity",
+          "locationName": "userIdentity"
+        },
+        "CreationTime": {
+          "shape": "__timestampIso8601",
+          "locationName": "creationTime"
+        }
+      }
+    },
+    "VpcConnectionInfoServerless" : {
+      "type" : "structure",
+      "members" : {
+        "CreationTime" : {
+          "shape" : "__timestampIso8601",
+          "locationName" : "creationTime"
+        },
+        "Owner" : {
+          "shape" : "__string",
+          "locationName" : "owner"
+        },
+        "UserIdentity" : {
+          "shape" : "UserIdentity",
+          "locationName" : "userIdentity"
+        },
+        "VpcConnectionArn" : {
+          "shape" : "__string",
+          "locationName" : "vpcConnectionArn"
+        }
+      }
+    },
+    "VpcConnectionState":{
+      "type": "string",
+      "enum": [
+        "CREATING",
+        "AVAILABLE",
+        "INACTIVE",
+        "DEACTIVATING",
+        "DELETING",
+        "FAILED",
+        "REJECTED",
+        "REJECTING"
+      ]
     },
     "RebootBrokerRequest": {
       "type": "structure",
@@ -3628,6 +5471,12 @@
         "shape": "ClusterInfo"
       }
     },
+    "__listOfClusterOperationV2Summary" : {
+      "type" : "list",
+      "member" : {
+        "shape" : "ClusterOperationV2Summary"
+      }
+    },
     "__listOfClusterOperationInfo": {
       "type": "list",
       "member": {
@@ -3670,6 +5519,24 @@
         "shape": "ConfigurationRevision"
       }
     },
+    "__listOfKafkaCluster" : {
+      "type" : "list",
+      "member" : {
+        "shape" : "KafkaCluster"
+      }
+    },
+    "__listOfKafkaClusterDescription" : {
+      "type" : "list",
+      "member" : {
+        "shape" : "KafkaClusterDescription"
+      }
+    },
+    "__listOfKafkaClusterSummary" : {
+      "type" : "list",
+      "member" : {
+        "shape" : "KafkaClusterSummary"
+      }
+    },
     "__listOfKafkaVersion": {
       "type": "list",
       "member": {
@@ -3682,6 +5549,43 @@
         "shape": "NodeInfo"
       }
     },
+    "__listOfClientVpcConnection": {
+      "type": "list",
+      "member": {
+        "shape": "ClientVpcConnection"
+      }
+    },
+    "__listOfReplicationInfo" : {
+      "type" : "list",
+      "member" : {
+        "shape" : "ReplicationInfo"
+      }
+    },
+    "__listOfReplicationInfoDescription" : {
+      "type" : "list",
+      "member" : {
+        "shape" : "ReplicationInfoDescription"
+      }
+    },
+    "__listOfReplicationInfoSummary" : {
+      "type" : "list",
+      "member" : {
+        "shape" : "ReplicationInfoSummary"
+      }
+    },
+    "__listOfReplicatorSummary" : {
+      "type" : "list",
+      "member" : {
+        "shape" : "ReplicatorSummary"
+      }
+    },
+
+    "__listOfVpcConnection": {
+      "type": "list",
+      "member": {
+        "shape": "VpcConnection"
+      }
+    },
     "__listOfUnprocessedScramSecret" : {
       "type" : "list",
       "member" : {
@@ -3692,6 +5596,18 @@
       "type": "list",
       "member": {
         "shape": "__string"
+      }
+    },
+    "__listOf__stringMax249" : {
+      "type" : "list",
+      "member" : {
+        "shape" : "__stringMax249"
+      }
+    },
+    "__listOf__stringMax256" : {
+      "type" : "list",
+      "member" : {
+        "shape" : "__stringMax256"
       }
     },
     "__long": {
@@ -3709,10 +5625,28 @@
     "__string": {
       "type": "string"
     },
+    "__stringMax1024" : {
+      "type" : "string",
+      "max" : 1024
+    },
+    "__stringMax249" : {
+      "type" : "string",
+      "max" : 249
+    },
+    "__stringMax256" : {
+      "type" : "string",
+      "max" : 256
+    },
     "__stringMin1Max128": {
       "type": "string",
       "min": 1,
       "max": 128
+    },
+    "__stringMin1Max128Pattern09AZaZ09AZaZ0" : {
+      "type" : "string",
+      "min" : 1,
+      "max" : 128,
+      "pattern" : "^[0-9A-Za-z][0-9A-Za-z-]{0,}$"
     },
     "__stringMin1Max64": {
       "type": "string",
@@ -3727,6 +5661,10 @@
     "__timestampIso8601": {
       "type": "timestamp",
       "timestampFormat": "iso8601"
+    },
+    "__timestampUnix": {
+      "type": "timestamp",
+      "timestampFormat": "unixTimestamp"
     }
   }
 }

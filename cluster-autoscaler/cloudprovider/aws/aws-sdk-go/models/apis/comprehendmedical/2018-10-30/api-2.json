@@ -442,7 +442,12 @@
         "SIGN",
         "SYMPTOM",
         "DIAGNOSIS",
-        "NEGATION"
+        "NEGATION",
+        "PERTAINS_TO_FAMILY",
+        "HYPOTHETICAL",
+        "LOW_CONFIDENCE",
+        "PAST_HISTORY",
+        "FUTURE"
       ]
     },
     "BoundedLengthString":{
@@ -676,7 +681,14 @@
         "TIME_TO_DX_NAME",
         "TIME_TO_TEST_NAME",
         "TIME_TO_PROCEDURE_NAME",
-        "TIME_TO_TREATMENT_NAME"
+        "TIME_TO_TREATMENT_NAME",
+        "AMOUNT",
+        "GENDER",
+        "RACE_ETHNICITY",
+        "ALLERGIES",
+        "TOBACCO_USE",
+        "ALCOHOL_CONSUMPTION",
+        "REC_DRUG_USE"
       ]
     },
     "EntityType":{
@@ -687,7 +699,8 @@
         "PROTECTED_HEALTH_INFORMATION",
         "TEST_TREATMENT_PROCEDURE",
         "ANATOMY",
-        "TIME_EXPRESSION"
+        "TIME_EXPRESSION",
+        "BEHAVIORAL_ENVIRONMENTAL_SOCIAL"
       ]
     },
     "Float":{"type":"float"},
@@ -768,7 +781,8 @@
       "type":"string",
       "enum":[
         "OVERLAP",
-        "SYSTEM_ORGAN_SITE"
+        "SYSTEM_ORGAN_SITE",
+        "QUALITY"
       ]
     },
     "ICD10CMTrait":{
@@ -788,7 +802,10 @@
         "NEGATION",
         "DIAGNOSIS",
         "SIGN",
-        "SYMPTOM"
+        "SYMPTOM",
+        "PERTAINS_TO_FAMILY",
+        "HYPOTHETICAL",
+        "LOW_CONFIDENCE"
       ]
     },
     "IamRoleArn":{
@@ -1032,7 +1049,10 @@
         "TEST_UNITS",
         "TEST_UNIT",
         "DIRECTION",
-        "SYSTEM_ORGAN_SITE"
+        "SYSTEM_ORGAN_SITE",
+        "AMOUNT",
+        "USAGE",
+        "QUALITY"
       ]
     },
     "ResourceNotFoundException":{
@@ -1126,7 +1146,10 @@
     },
     "RxNormTraitName":{
       "type":"string",
-      "enum":["NEGATION"]
+      "enum":[
+        "NEGATION",
+        "PAST_HISTORY"
+      ]
     },
     "S3Bucket":{
       "type":"string",
@@ -1234,7 +1257,8 @@
         "TEST_VALUE",
         "TEST_UNITS",
         "DIRECTION",
-        "SYSTEM_ORGAN_SITE"
+        "SYSTEM_ORGAN_SITE",
+        "TEST_UNIT"
       ]
     },
     "SNOMEDCTTrait":{
@@ -1254,7 +1278,12 @@
         "NEGATION",
         "DIAGNOSIS",
         "SIGN",
-        "SYMPTOM"
+        "SYMPTOM",
+        "PERTAINS_TO_FAMILY",
+        "HYPOTHETICAL",
+        "LOW_CONFIDENCE",
+        "PAST_HISTORY",
+        "FUTURE"
       ]
     },
     "ServiceUnavailableException":{

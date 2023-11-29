@@ -241,7 +241,8 @@ func mockStartConversationReadEvents() (
 						Name:              aws.String("string value goes here"),
 						Slots: map[string]*Slot{
 							"a": {
-								Shape: aws.String("string value goes here"),
+								Shape:    aws.String("string value goes here"),
+								SubSlots: nil,
 								Value: &Value{
 									InterpretedValue: aws.String("string value goes here"),
 									OriginalValue:    aws.String("string value goes here"),
@@ -254,7 +255,8 @@ func mockStartConversationReadEvents() (
 								Values: []*Slot{},
 							},
 							"b": {
-								Shape: aws.String("string value goes here"),
+								Shape:    aws.String("string value goes here"),
+								SubSlots: nil,
 								Value: &Value{
 									InterpretedValue: aws.String("string value goes here"),
 									OriginalValue:    aws.String("string value goes here"),
@@ -267,7 +269,8 @@ func mockStartConversationReadEvents() (
 								Values: []*Slot{},
 							},
 							"c": {
-								Shape: aws.String("string value goes here"),
+								Shape:    aws.String("string value goes here"),
+								SubSlots: nil,
 								Value: &Value{
 									InterpretedValue: aws.String("string value goes here"),
 									OriginalValue:    aws.String("string value goes here"),
@@ -282,6 +285,7 @@ func mockStartConversationReadEvents() (
 						},
 						State: aws.String("string value goes here"),
 					},
+					InterpretationSource: aws.String("string value goes here"),
 					NluConfidence: &ConfidenceScore{
 						Score: aws.Float64(123.45),
 					},
@@ -301,7 +305,8 @@ func mockStartConversationReadEvents() (
 						Name:              aws.String("string value goes here"),
 						Slots: map[string]*Slot{
 							"a": {
-								Shape: aws.String("string value goes here"),
+								Shape:    aws.String("string value goes here"),
+								SubSlots: nil,
 								Value: &Value{
 									InterpretedValue: aws.String("string value goes here"),
 									OriginalValue:    aws.String("string value goes here"),
@@ -314,7 +319,8 @@ func mockStartConversationReadEvents() (
 								Values: []*Slot{},
 							},
 							"b": {
-								Shape: aws.String("string value goes here"),
+								Shape:    aws.String("string value goes here"),
+								SubSlots: nil,
 								Value: &Value{
 									InterpretedValue: aws.String("string value goes here"),
 									OriginalValue:    aws.String("string value goes here"),
@@ -327,7 +333,8 @@ func mockStartConversationReadEvents() (
 								Values: []*Slot{},
 							},
 							"c": {
-								Shape: aws.String("string value goes here"),
+								Shape:    aws.String("string value goes here"),
+								SubSlots: nil,
 								Value: &Value{
 									InterpretedValue: aws.String("string value goes here"),
 									OriginalValue:    aws.String("string value goes here"),
@@ -342,6 +349,7 @@ func mockStartConversationReadEvents() (
 						},
 						State: aws.String("string value goes here"),
 					},
+					InterpretationSource: aws.String("string value goes here"),
 					NluConfidence: &ConfidenceScore{
 						Score: aws.Float64(123.45),
 					},
@@ -361,7 +369,8 @@ func mockStartConversationReadEvents() (
 						Name:              aws.String("string value goes here"),
 						Slots: map[string]*Slot{
 							"a": {
-								Shape: aws.String("string value goes here"),
+								Shape:    aws.String("string value goes here"),
+								SubSlots: nil,
 								Value: &Value{
 									InterpretedValue: aws.String("string value goes here"),
 									OriginalValue:    aws.String("string value goes here"),
@@ -374,7 +383,8 @@ func mockStartConversationReadEvents() (
 								Values: []*Slot{},
 							},
 							"b": {
-								Shape: aws.String("string value goes here"),
+								Shape:    aws.String("string value goes here"),
+								SubSlots: nil,
 								Value: &Value{
 									InterpretedValue: aws.String("string value goes here"),
 									OriginalValue:    aws.String("string value goes here"),
@@ -387,7 +397,8 @@ func mockStartConversationReadEvents() (
 								Values: []*Slot{},
 							},
 							"c": {
-								Shape: aws.String("string value goes here"),
+								Shape:    aws.String("string value goes here"),
+								SubSlots: nil,
 								Value: &Value{
 									InterpretedValue: aws.String("string value goes here"),
 									OriginalValue:    aws.String("string value goes here"),
@@ -402,6 +413,7 @@ func mockStartConversationReadEvents() (
 						},
 						State: aws.String("string value goes here"),
 					},
+					InterpretationSource: aws.String("string value goes here"),
 					NluConfidence: &ConfidenceScore{
 						Score: aws.Float64(123.45),
 					},
@@ -415,6 +427,10 @@ func mockStartConversationReadEvents() (
 						},
 					},
 				},
+			},
+			RecognizedBotMember: &RecognizedBotMember{
+				BotId:   aws.String("string value goes here"),
+				BotName: aws.String("string value goes here"),
 			},
 			RequestAttributes: map[string]*string{
 				"a": aws.String("string value goes here"),
@@ -464,14 +480,19 @@ func mockStartConversationReadEvents() (
 				DialogAction: &DialogAction{
 					SlotElicitationStyle: aws.String("string value goes here"),
 					SlotToElicit:         aws.String("string value goes here"),
-					Type:                 aws.String("string value goes here"),
+					SubSlotToElicit: &ElicitSubSlot{
+						Name:            aws.String("string value goes here"),
+						SubSlotToElicit: nil,
+					},
+					Type: aws.String("string value goes here"),
 				},
 				Intent: &Intent{
 					ConfirmationState: aws.String("string value goes here"),
 					Name:              aws.String("string value goes here"),
 					Slots: map[string]*Slot{
 						"a": {
-							Shape: aws.String("string value goes here"),
+							Shape:    aws.String("string value goes here"),
+							SubSlots: nil,
 							Value: &Value{
 								InterpretedValue: aws.String("string value goes here"),
 								OriginalValue:    aws.String("string value goes here"),
@@ -484,7 +505,8 @@ func mockStartConversationReadEvents() (
 							Values: []*Slot{},
 						},
 						"b": {
-							Shape: aws.String("string value goes here"),
+							Shape:    aws.String("string value goes here"),
+							SubSlots: nil,
 							Value: &Value{
 								InterpretedValue: aws.String("string value goes here"),
 								OriginalValue:    aws.String("string value goes here"),
@@ -497,7 +519,8 @@ func mockStartConversationReadEvents() (
 							Values: []*Slot{},
 						},
 						"c": {
-							Shape: aws.String("string value goes here"),
+							Shape:    aws.String("string value goes here"),
+							SubSlots: nil,
 							Value: &Value{
 								InterpretedValue: aws.String("string value goes here"),
 								OriginalValue:    aws.String("string value goes here"),
@@ -528,6 +551,7 @@ func mockStartConversationReadEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"b": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -541,6 +565,7 @@ func mockStartConversationReadEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"c": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -554,6 +579,7 @@ func mockStartConversationReadEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 						},
 						"b": {
@@ -569,6 +595,7 @@ func mockStartConversationReadEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"b": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -582,6 +609,7 @@ func mockStartConversationReadEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"c": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -595,6 +623,7 @@ func mockStartConversationReadEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 						},
 						"c": {
@@ -610,6 +639,7 @@ func mockStartConversationReadEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"b": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -623,6 +653,7 @@ func mockStartConversationReadEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"c": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -636,6 +667,7 @@ func mockStartConversationReadEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 						},
 					},
@@ -1118,14 +1150,19 @@ func mockStartConversationWriteEvents() (
 				DialogAction: &DialogAction{
 					SlotElicitationStyle: aws.String("string value goes here"),
 					SlotToElicit:         aws.String("string value goes here"),
-					Type:                 aws.String("string value goes here"),
+					SubSlotToElicit: &ElicitSubSlot{
+						Name:            aws.String("string value goes here"),
+						SubSlotToElicit: nil,
+					},
+					Type: aws.String("string value goes here"),
 				},
 				Intent: &Intent{
 					ConfirmationState: aws.String("string value goes here"),
 					Name:              aws.String("string value goes here"),
 					Slots: map[string]*Slot{
 						"a": {
-							Shape: aws.String("string value goes here"),
+							Shape:    aws.String("string value goes here"),
+							SubSlots: nil,
 							Value: &Value{
 								InterpretedValue: aws.String("string value goes here"),
 								OriginalValue:    aws.String("string value goes here"),
@@ -1138,7 +1175,8 @@ func mockStartConversationWriteEvents() (
 							Values: []*Slot{},
 						},
 						"b": {
-							Shape: aws.String("string value goes here"),
+							Shape:    aws.String("string value goes here"),
+							SubSlots: nil,
 							Value: &Value{
 								InterpretedValue: aws.String("string value goes here"),
 								OriginalValue:    aws.String("string value goes here"),
@@ -1151,7 +1189,8 @@ func mockStartConversationWriteEvents() (
 							Values: []*Slot{},
 						},
 						"c": {
-							Shape: aws.String("string value goes here"),
+							Shape:    aws.String("string value goes here"),
+							SubSlots: nil,
 							Value: &Value{
 								InterpretedValue: aws.String("string value goes here"),
 								OriginalValue:    aws.String("string value goes here"),
@@ -1182,6 +1221,7 @@ func mockStartConversationWriteEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"b": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -1195,6 +1235,7 @@ func mockStartConversationWriteEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"c": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -1208,6 +1249,7 @@ func mockStartConversationWriteEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 						},
 						"b": {
@@ -1223,6 +1265,7 @@ func mockStartConversationWriteEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"b": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -1236,6 +1279,7 @@ func mockStartConversationWriteEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"c": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -1249,6 +1293,7 @@ func mockStartConversationWriteEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 						},
 						"c": {
@@ -1264,6 +1309,7 @@ func mockStartConversationWriteEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"b": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -1277,6 +1323,7 @@ func mockStartConversationWriteEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 							"c": {
 								RuntimeHintValues: []*RuntimeHintValue{
@@ -1290,6 +1337,7 @@ func mockStartConversationWriteEvents() (
 										Phrase: aws.String("string value goes here"),
 									},
 								},
+								SubSlotHints: nil,
 							},
 						},
 					},

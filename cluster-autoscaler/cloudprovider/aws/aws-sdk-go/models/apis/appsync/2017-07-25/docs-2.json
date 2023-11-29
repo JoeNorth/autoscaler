@@ -3,6 +3,8 @@
   "service": "<p>AppSync provides API actions for creating and interacting with data sources using GraphQL from your application.</p>",
   "operations": {
     "AssociateApi": "<p>Maps an endpoint to your custom domain.</p>",
+    "AssociateMergedGraphqlApi": "<p>Creates an association between a Merged API and source API using the source API's identifier.</p>",
+    "AssociateSourceGraphqlApi": "<p>Creates an association between a Merged API and source API using the Merged API's identifier.</p>",
     "CreateApiCache": "<p>Creates a cache for the GraphQL API.</p>",
     "CreateApiKey": "<p>Creates a unique key that you can distribute to clients who invoke your API.</p>",
     "CreateDataSource": "<p>Creates a <code>DataSource</code> object.</p>",
@@ -20,16 +22,22 @@
     "DeleteResolver": "<p>Deletes a <code>Resolver</code> object.</p>",
     "DeleteType": "<p>Deletes a <code>Type</code> object.</p>",
     "DisassociateApi": "<p>Removes an <code>ApiAssociation</code> object from a custom domain.</p>",
+    "DisassociateMergedGraphqlApi": "<p>Deletes an association between a Merged API and source API using the source API's identifier and the association ID.</p>",
+    "DisassociateSourceGraphqlApi": "<p>Deletes an association between a Merged API and source API using the Merged API's identifier and the association ID.</p>",
+    "EvaluateCode": "<p>Evaluates the given code and returns the response. The code definition requirements depend on the specified runtime. For <code>APPSYNC_JS</code> runtimes, the code defines the request and response functions. The request function takes the incoming request after a GraphQL operation is parsed and converts it into a request configuration for the selected data source operation. The response function interprets responses from the data source and maps it to the shape of the GraphQL field output type. </p>",
+    "EvaluateMappingTemplate": "<p>Evaluates a given template and returns the response. The mapping template can be a request or response template.</p> <p>Request templates take the incoming request after a GraphQL operation is parsed and convert it into a request configuration for the selected data source operation. Response templates interpret responses from the data source and map it to the shape of the GraphQL field output type.</p> <p>Mapping templates are written in the Apache Velocity Template Language (VTL).</p>",
     "FlushApiCache": "<p>Flushes an <code>ApiCache</code> object.</p>",
     "GetApiAssociation": "<p>Retrieves an <code>ApiAssociation</code> object.</p>",
     "GetApiCache": "<p>Retrieves an <code>ApiCache</code> object.</p>",
     "GetDataSource": "<p>Retrieves a <code>DataSource</code> object.</p>",
+    "GetDataSourceIntrospection": "<p>Retrieves the record of an existing introspection. If the retrieval is successful, the result of the instrospection will also be returned. If the retrieval fails the operation, an error message will be returned instead.</p>",
     "GetDomainName": "<p>Retrieves a custom <code>DomainName</code> object.</p>",
     "GetFunction": "<p>Get a <code>Function</code>.</p>",
     "GetGraphqlApi": "<p>Retrieves a <code>GraphqlApi</code> object.</p>",
     "GetIntrospectionSchema": "<p>Retrieves the introspection schema for a GraphQL API.</p>",
     "GetResolver": "<p>Retrieves a <code>Resolver</code> object.</p>",
     "GetSchemaCreationStatus": "<p>Retrieves the current status of a schema creation operation.</p>",
+    "GetSourceApiAssociation": "<p>Retrieves a <code>SourceApiAssociation</code> object.</p>",
     "GetType": "<p>Retrieves a <code>Type</code> object.</p>",
     "ListApiKeys": "<p>Lists the API keys for a given API.</p> <note> <p>API keys are deleted automatically 60 days after they expire. However, they may still be included in the response until they have actually been deleted. You can safely call <code>DeleteApiKey</code> to manually delete a key before it's automatically deleted.</p> </note>",
     "ListDataSources": "<p>Lists the data sources for a given API.</p>",
@@ -38,9 +46,13 @@
     "ListGraphqlApis": "<p>Lists your GraphQL APIs.</p>",
     "ListResolvers": "<p>Lists the resolvers for a given API and type.</p>",
     "ListResolversByFunction": "<p>List the resolvers that are associated with a specific function.</p>",
+    "ListSourceApiAssociations": "<p>Lists the <code>SourceApiAssociationSummary</code> data.</p>",
     "ListTagsForResource": "<p>Lists the tags for a resource.</p>",
     "ListTypes": "<p>Lists the types for a given API.</p>",
+    "ListTypesByAssociation": "<p>Lists <code>Type</code> objects by the source API association ID.</p>",
+    "StartDataSourceIntrospection": "<p>Creates a new introspection. Returns the <code>introspectionId</code> of the new introspection after its creation. </p>",
     "StartSchemaCreation": "<p>Adds a new schema to your GraphQL API.</p> <p>This operation is asynchronous. Use to determine when it has completed.</p>",
+    "StartSchemaMerge": "<p>Initiates a merge operation. Returns a status that shows the result of the merge operation.</p>",
     "TagResource": "<p>Tags a resource with user-supplied tags.</p>",
     "UntagResource": "<p>Untags a resource.</p>",
     "UpdateApiCache": "<p>Updates the cache for the GraphQL API.</p>",
@@ -50,6 +62,7 @@
     "UpdateFunction": "<p>Updates a <code>Function</code> object.</p>",
     "UpdateGraphqlApi": "<p>Updates a <code>GraphqlApi</code> object.</p>",
     "UpdateResolver": "<p>Updates a <code>Resolver</code> object.</p>",
+    "UpdateSourceApiAssociation": "<p>Updates some of the configuration choices of a particular source API association.</p>",
     "UpdateType": "<p>Updates a <code>Type</code> object.</p>"
   },
   "shapes": {
@@ -138,12 +151,44 @@
       "refs": {
       }
     },
+    "AppSyncRuntime": {
+      "base": "<p>Describes a runtime used by an Amazon Web Services AppSync pipeline resolver or Amazon Web Services AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified.</p>",
+      "refs": {
+        "CreateFunctionRequest$runtime": null,
+        "CreateResolverRequest$runtime": null,
+        "EvaluateCodeRequest$runtime": "<p>The runtime to be used when evaluating the code. Currently, only the <code>APPSYNC_JS</code> runtime is supported.</p>",
+        "FunctionConfiguration$runtime": null,
+        "Resolver$runtime": null,
+        "UpdateFunctionRequest$runtime": null,
+        "UpdateResolverRequest$runtime": null
+      }
+    },
     "AssociateApiRequest": {
       "base": null,
       "refs": {
       }
     },
     "AssociateApiResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "AssociateMergedGraphqlApiRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "AssociateMergedGraphqlApiResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "AssociateSourceGraphqlApiRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "AssociateSourceGraphqlApiResponse": {
       "base": null,
       "refs": {
       }
@@ -181,9 +226,21 @@
         "AuthorizationConfig$awsIamConfig": "<p>The Identity and Access Management (IAM) settings.</p>"
       }
     },
+    "BadRequestDetail": {
+      "base": "<p>Provides further details for the reason behind the bad request. For reason type <code>CODE_ERROR</code>, the detail will contain a list of code errors.</p>",
+      "refs": {
+        "BadRequestException$detail": null
+      }
+    },
     "BadRequestException": {
       "base": "<p>The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and then try again.</p>",
       "refs": {
+      }
+    },
+    "BadRequestReason": {
+      "base": "<p>Provides context for the cause of the bad request. The only supported value is <code>CODE_ERROR</code>.</p>",
+      "refs": {
+        "BadRequestException$reason": null
       }
     },
     "Blob": {
@@ -203,6 +260,7 @@
         "CreateGraphqlApiRequest$xrayEnabled": "<p>A flag indicating whether to use X-Ray tracing for the <code>GraphqlApi</code>.</p>",
         "DynamodbDataSourceConfig$useCallerCredentials": "<p>Set to TRUE to use Amazon Cognito credentials with this data source.</p>",
         "DynamodbDataSourceConfig$versioned": "<p>Set to TRUE to use Conflict Detection and Resolution with this data source.</p>",
+        "GetDataSourceIntrospectionRequest$includeModelsSDL": "<p>A boolean flag that determines whether SDL should be generated for introspected types or not. If set to <code>true</code>, each model will contain an <code>sdl</code> property that contains the SDL for that type. The SDL only contains the type data and no additional metadata or directives. </p>",
         "GraphqlApi$xrayEnabled": "<p>A flag indicating whether to use X-Ray tracing for this <code>GraphqlApi</code>.</p>",
         "LogConfig$excludeVerboseContent": "<p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>",
         "UpdateGraphqlApiRequest$xrayEnabled": "<p>A flag indicating whether to use X-Ray tracing for the <code>GraphqlApi</code>.</p>"
@@ -235,6 +293,55 @@
         "DomainNameConfig$certificateArn": "<p>The Amazon Resource Name (ARN) of the certificate. This can be an Certificate Manager (ACM) certificate or an Identity and Access Management (IAM) server certificate.</p>"
       }
     },
+    "Code": {
+      "base": null,
+      "refs": {
+        "CreateFunctionRequest$code": "<p>The <code>function</code> code that contains the request and response functions. When code is used, the <code>runtime</code> is required. The <code>runtime</code> value must be <code>APPSYNC_JS</code>.</p>",
+        "CreateResolverRequest$code": "<p>The <code>resolver</code> code that contains the request and response functions. When code is used, the <code>runtime</code> is required. The <code>runtime</code> value must be <code>APPSYNC_JS</code>.</p>",
+        "EvaluateCodeRequest$code": "<p>The code definition to be evaluated. Note that <code>code</code> and <code>runtime</code> are both required for this action. The <code>runtime</code> value must be <code>APPSYNC_JS</code>.</p>",
+        "FunctionConfiguration$code": "<p>The <code>function</code> code that contains the request and response functions. When code is used, the <code>runtime</code> is required. The <code>runtime</code> value must be <code>APPSYNC_JS</code>.</p>",
+        "Resolver$code": "<p>The <code>resolver</code> code that contains the request and response functions. When code is used, the <code>runtime</code> is required. The <code>runtime</code> value must be <code>APPSYNC_JS</code>.</p>",
+        "UpdateFunctionRequest$code": "<p>The <code>function</code> code that contains the request and response functions. When code is used, the <code>runtime</code> is required. The <code>runtime</code> value must be <code>APPSYNC_JS</code>.</p>",
+        "UpdateResolverRequest$code": "<p>The <code>resolver</code> code that contains the request and response functions. When code is used, the <code>runtime</code> is required. The <code>runtime</code> value must be <code>APPSYNC_JS</code>.</p>"
+      }
+    },
+    "CodeError": {
+      "base": "<p>Describes an AppSync error.</p>",
+      "refs": {
+        "CodeErrors$member": null
+      }
+    },
+    "CodeErrorColumn": {
+      "base": null,
+      "refs": {
+        "CodeErrorLocation$column": "<p>The column number in the code. Defaults to <code>0</code> if unknown.</p>"
+      }
+    },
+    "CodeErrorLine": {
+      "base": null,
+      "refs": {
+        "CodeErrorLocation$line": "<p>The line number in the code. Defaults to <code>0</code> if unknown.</p>"
+      }
+    },
+    "CodeErrorLocation": {
+      "base": "<p>Describes the location of the error in a code sample.</p>",
+      "refs": {
+        "CodeError$location": "<p>The line, column, and span location of the error in the code.</p>"
+      }
+    },
+    "CodeErrorSpan": {
+      "base": null,
+      "refs": {
+        "CodeErrorLocation$span": "<p>The span/length of the error. Defaults to <code>-1</code> if unknown.</p>"
+      }
+    },
+    "CodeErrors": {
+      "base": null,
+      "refs": {
+        "BadRequestDetail$codeErrors": "<p>Contains the list of errors in the request.</p>",
+        "EvaluateCodeErrorDetail$codeErrors": "<p>Contains the list of <code>CodeError</code> objects.</p>"
+      }
+    },
     "CognitoUserPoolConfig": {
       "base": "<p>Describes an Amazon Cognito user pool configuration.</p>",
       "refs": {
@@ -256,6 +363,13 @@
       "base": null,
       "refs": {
         "SyncConfig$conflictHandler": "<p>The Conflict Resolution strategy to perform in the event of a conflict.</p> <ul> <li> <p> <b>OPTIMISTIC_CONCURRENCY</b>: Resolve conflicts by rejecting mutations when versions don't match the latest version at the server.</p> </li> <li> <p> <b>AUTOMERGE</b>: Resolve conflicts with the Automerge conflict resolution strategy.</p> </li> <li> <p> <b>LAMBDA</b>: Resolve conflicts with an Lambda function supplied in the <code>LambdaConflictHandlerConfig</code>.</p> </li> </ul>"
+      }
+    },
+    "Context": {
+      "base": null,
+      "refs": {
+        "EvaluateCodeRequest$context": "<p>The map that holds all of the contextual information for your resolver invocation. A <code>context</code> is required for this action.</p>",
+        "EvaluateMappingTemplateRequest$context": "<p>The map that holds all of the contextual information for your resolver invocation. A <code>context</code> is required for this action.</p>"
       }
     },
     "CreateApiCacheRequest": {
@@ -347,11 +461,80 @@
         "UpdateDataSourceResponse$dataSource": "<p>The updated <code>DataSource</code> object.</p>"
       }
     },
+    "DataSourceIntrospectionModel": {
+      "base": "<p>Contains the introspected data that was retrieved from the data source.</p>",
+      "refs": {
+        "DataSourceIntrospectionModels$member": null
+      }
+    },
+    "DataSourceIntrospectionModelField": {
+      "base": "<p>Represents the fields that were retrieved from the introspected data.</p>",
+      "refs": {
+        "DataSourceIntrospectionModelFields$member": null
+      }
+    },
+    "DataSourceIntrospectionModelFieldType": {
+      "base": "<p>Represents the type data for each field retrieved from the introspection.</p>",
+      "refs": {
+        "DataSourceIntrospectionModelField$type": "<p>The <code>DataSourceIntrospectionModelFieldType</code> object data.</p>",
+        "DataSourceIntrospectionModelFieldType$type": "<p>The <code>DataSourceIntrospectionModelFieldType</code> object data. The <code>type</code> is only present if <code>DataSourceIntrospectionModelFieldType.kind</code> is set to <code>NonNull</code> or <code>List</code>. </p> <p>The <code>type</code> typically contains its own <code>kind</code> and <code>name</code> fields to represent the actual type data. For instance, <code>type</code> could contain a <code>kind</code> value of <code>Scalar</code> with a <code>name</code> value of <code>String</code>. The values <code>Scalar</code> and <code>String</code> will be collectively stored in the <code>values</code> field.</p>"
+      }
+    },
+    "DataSourceIntrospectionModelFieldTypeValues": {
+      "base": null,
+      "refs": {
+        "DataSourceIntrospectionModelFieldType$values": "<p>The values of the <code>type</code> field. This field represents the AppSync data type equivalent of the introspected field.</p>"
+      }
+    },
+    "DataSourceIntrospectionModelFields": {
+      "base": null,
+      "refs": {
+        "DataSourceIntrospectionModel$fields": "<p>The <code>DataSourceIntrospectionModelField</code> object data.</p>"
+      }
+    },
+    "DataSourceIntrospectionModelIndex": {
+      "base": "<p>The index that was retrieved from the introspected data.</p>",
+      "refs": {
+        "DataSourceIntrospectionModel$primaryKey": "<p>The primary key stored as a <code>DataSourceIntrospectionModelIndex</code> object.</p>",
+        "DataSourceIntrospectionModelIndexes$member": null
+      }
+    },
+    "DataSourceIntrospectionModelIndexFields": {
+      "base": null,
+      "refs": {
+        "DataSourceIntrospectionModelIndex$fields": "<p>The fields of the index.</p>"
+      }
+    },
+    "DataSourceIntrospectionModelIndexes": {
+      "base": null,
+      "refs": {
+        "DataSourceIntrospectionModel$indexes": "<p>The array of <code>DataSourceIntrospectionModelIndex</code> objects.</p>"
+      }
+    },
+    "DataSourceIntrospectionModels": {
+      "base": null,
+      "refs": {
+        "DataSourceIntrospectionResult$models": "<p>The array of <code>DataSourceIntrospectionModel</code> objects.</p>"
+      }
+    },
+    "DataSourceIntrospectionResult": {
+      "base": "<p>Represents the output of a <code>DataSourceIntrospectionResult</code>. This is the populated result of a <code>GetDataSourceIntrospection</code> operation.</p>",
+      "refs": {
+        "GetDataSourceIntrospectionResponse$introspectionResult": "<p>The <code>DataSourceIntrospectionResult</code> object data.</p>"
+      }
+    },
+    "DataSourceIntrospectionStatus": {
+      "base": null,
+      "refs": {
+        "GetDataSourceIntrospectionResponse$introspectionStatus": "<p>The status of the introspection during retrieval. By default, when a new instrospection is being retrieved, the status will be set to <code>PROCESSING</code>. Once the operation has been completed, the status will change to <code>SUCCESS</code> or <code>FAILED</code> depending on how the data was parsed. A <code>FAILED</code> operation will return an error and its details as an <code>introspectionStatusDetail</code>.</p>",
+        "StartDataSourceIntrospectionResponse$introspectionStatus": "<p>The status of the introspection during creation. By default, when a new instrospection has been created, the status will be set to <code>PROCESSING</code>. Once the operation has been completed, the status will change to <code>SUCCESS</code> or <code>FAILED</code> depending on how the data was parsed. A <code>FAILED</code> operation will return an error and its details as an <code>introspectionStatusDetail</code>.</p>"
+      }
+    },
     "DataSourceType": {
       "base": null,
       "refs": {
         "CreateDataSourceRequest$type": "<p>The type of the <code>DataSource</code>.</p>",
-        "DataSource$type": "<p>The type of the data source.</p> <ul> <li> <p> <b>AWS_LAMBDA</b>: The data source is an Lambda function.</p> </li> <li> <p> <b>AMAZON_DYNAMODB</b>: The data source is an Amazon DynamoDB table.</p> </li> <li> <p> <b>AMAZON_ELASTICSEARCH</b>: The data source is an Amazon OpenSearch Service domain.</p> </li> <li> <p> <b>AMAZON_OPENSEARCH_SERVICE</b>: The data source is an Amazon OpenSearch Service domain.</p> </li> <li> <p> <b>NONE</b>: There is no data source. Use this type when you want to invoke a GraphQL operation without connecting to a data source, such as when you're performing data transformation with resolvers or invoking a subscription from a mutation.</p> </li> <li> <p> <b>HTTP</b>: The data source is an HTTP endpoint.</p> </li> <li> <p> <b>RELATIONAL_DATABASE</b>: The data source is a relational database.</p> </li> </ul>",
+        "DataSource$type": "<p>The type of the data source.</p> <ul> <li> <p> <b>AWS_LAMBDA</b>: The data source is an Lambda function.</p> </li> <li> <p> <b>AMAZON_DYNAMODB</b>: The data source is an Amazon DynamoDB table.</p> </li> <li> <p> <b>AMAZON_ELASTICSEARCH</b>: The data source is an Amazon OpenSearch Service domain.</p> </li> <li> <p> <b>AMAZON_OPENSEARCH_SERVICE</b>: The data source is an Amazon OpenSearch Service domain.</p> </li> <li> <p> <b>AMAZON_EVENTBRIDGE</b>: The data source is an Amazon EventBridge configuration.</p> </li> <li> <p> <b>NONE</b>: There is no data source. Use this type when you want to invoke a GraphQL operation without connecting to a data source, such as when you're performing data transformation with resolvers or invoking a subscription from a mutation.</p> </li> <li> <p> <b>HTTP</b>: The data source is an HTTP endpoint.</p> </li> <li> <p> <b>RELATIONAL_DATABASE</b>: The data source is a relational database.</p> </li> </ul>",
         "UpdateDataSourceRequest$type": "<p>The new data source type.</p>"
       }
     },
@@ -359,6 +542,12 @@
       "base": null,
       "refs": {
         "ListDataSourcesResponse$dataSources": "<p>The <code>DataSource</code> objects.</p>"
+      }
+    },
+    "Date": {
+      "base": null,
+      "refs": {
+        "SourceApiAssociation$lastSuccessfulMergeDate": "<p>The datetime value of the last successful merge of the source API association. The result will be in UTC format and your local time zone.</p>"
       }
     },
     "DefaultAction": {
@@ -471,6 +660,26 @@
       "refs": {
       }
     },
+    "DisassociateMergedGraphqlApiRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "DisassociateMergedGraphqlApiResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "DisassociateSourceGraphqlApiRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "DisassociateSourceGraphqlApiResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
     "DomainName": {
       "base": null,
       "refs": {
@@ -516,12 +725,61 @@
         "UpdateDataSourceRequest$elasticsearchConfig": "<p>The new OpenSearch configuration.</p> <p>As of September 2021, Amazon Elasticsearch service is Amazon OpenSearch Service. This configuration is deprecated. Instead, use <a>UpdateDataSourceRequest$openSearchServiceConfig</a> to update an OpenSearch data source.</p>"
       }
     },
+    "ErrorDetail": {
+      "base": "<p>Contains the list of errors generated. When using JavaScript, this will apply to the request or response function evaluation.</p>",
+      "refs": {
+        "EvaluateMappingTemplateResponse$error": "<p>The <code>ErrorDetail</code> object.</p>"
+      }
+    },
     "ErrorMessage": {
       "base": null,
       "refs": {
         "BadRequestException$message": null,
         "ConcurrentModificationException$message": null,
+        "ErrorDetail$message": "<p>The error payload.</p>",
+        "EvaluateCodeErrorDetail$message": "<p>The error payload.</p>",
         "GraphQLSchemaException$message": null
+      }
+    },
+    "EvaluateCodeErrorDetail": {
+      "base": "<p>Contains the list of errors from a code evaluation response.</p>",
+      "refs": {
+        "EvaluateCodeResponse$error": "<p>Contains the payload of the response error.</p>"
+      }
+    },
+    "EvaluateCodeRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "EvaluateCodeResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "EvaluateMappingTemplateRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "EvaluateMappingTemplateResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "EvaluationResult": {
+      "base": null,
+      "refs": {
+        "EvaluateCodeResponse$evaluationResult": "<p>The result of the evaluation operation.</p>",
+        "EvaluateMappingTemplateResponse$evaluationResult": "<p>The mapping template; this can be a request or response template.</p>"
+      }
+    },
+    "EventBridgeDataSourceConfig": {
+      "base": "<p>Describes an Amazon EventBridge bus data source configuration.</p>",
+      "refs": {
+        "CreateDataSourceRequest$eventBridgeConfig": "<p>Amazon EventBridge settings.</p>",
+        "DataSource$eventBridgeConfig": "<p>Amazon EventBridge settings.</p>",
+        "UpdateDataSourceRequest$eventBridgeConfig": "<p>The new Amazon EventBridge settings.</p>"
       }
     },
     "FieldLogLevel": {
@@ -578,6 +836,16 @@
     },
     "GetApiCacheResponse": {
       "base": "<p>Represents the output of a <code>GetApiCache</code> operation.</p>",
+      "refs": {
+      }
+    },
+    "GetDataSourceIntrospectionRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "GetDataSourceIntrospectionResponse": {
+      "base": null,
       "refs": {
       }
     },
@@ -651,6 +919,16 @@
       "refs": {
       }
     },
+    "GetSourceApiAssociationRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "GetSourceApiAssociationResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
     "GetTypeRequest": {
       "base": null,
       "refs": {
@@ -659,6 +937,21 @@
     "GetTypeResponse": {
       "base": null,
       "refs": {
+      }
+    },
+    "GraphQLApiType": {
+      "base": null,
+      "refs": {
+        "CreateGraphqlApiRequest$apiType": "<p>The value that indicates whether the GraphQL API is a standard API (<code>GRAPHQL</code>) or merged API (<code>MERGED</code>).</p>",
+        "GraphqlApi$apiType": "<p>The value that indicates whether the GraphQL API is a standard API (<code>GRAPHQL</code>) or merged API (<code>MERGED</code>).</p>",
+        "ListGraphqlApisRequest$apiType": "<p>The value that indicates whether the GraphQL API is a standard API (<code>GRAPHQL</code>) or merged API (<code>MERGED</code>).</p>"
+      }
+    },
+    "GraphQLApiVisibility": {
+      "base": null,
+      "refs": {
+        "CreateGraphqlApiRequest$visibility": "<p>Sets the value of the GraphQL API to public (<code>GLOBAL</code>) or private (<code>PRIVATE</code>). If no value is provided, the visibility will be set to <code>GLOBAL</code> by default. This value cannot be changed once the API has been created.</p>",
+        "GraphqlApi$visibility": "<p>Sets the value of the GraphQL API to public (<code>GLOBAL</code>) or private (<code>PRIVATE</code>). If no value is provided, the visibility will be set to <code>GLOBAL</code> by default. This value cannot be changed once the API has been created.</p>"
       }
     },
     "GraphQLSchemaException": {
@@ -792,12 +1085,32 @@
       "refs": {
       }
     },
+    "ListSourceApiAssociationsRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "ListSourceApiAssociationsResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
     "ListTagsForResourceRequest": {
       "base": null,
       "refs": {
       }
     },
     "ListTagsForResourceResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "ListTypesByAssociationRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "ListTypesByAssociationResponse": {
       "base": null,
       "refs": {
       }
@@ -820,6 +1133,13 @@
         "UpdateGraphqlApiRequest$logConfig": "<p>The Amazon CloudWatch Logs configuration for the <code>GraphqlApi</code> object.</p>"
       }
     },
+    "Logs": {
+      "base": null,
+      "refs": {
+        "EvaluateCodeResponse$logs": "<p>A list of logs that were generated by calls to <code>util.log.info</code> and <code>util.log.error</code> in the evaluated code.</p>",
+        "EvaluateMappingTemplateResponse$logs": "<p>A list of logs that were generated by calls to <code>util.log.info</code> and <code>util.log.error</code> in the evaluated code.</p>"
+      }
+    },
     "Long": {
       "base": null,
       "refs": {
@@ -829,6 +1149,7 @@
         "CachingConfig$ttl": "<p>The TTL in seconds for a resolver that has caching activated.</p> <p>Valid values are 1–3,600 seconds.</p>",
         "CreateApiCacheRequest$ttl": "<p>TTL in seconds for cache entries.</p> <p>Valid values are 1–3,600 seconds.</p>",
         "CreateApiKeyRequest$expires": "<p>From the creation time, the time after which the API key expires. The date is represented as seconds since the epoch, rounded down to the nearest hour. The default value for this parameter is 7 days from creation time. For more information, see .</p>",
+        "DataSourceIntrospectionModelField$length": "<p>The length value of the introspected field.</p>",
         "DeltaSyncConfig$baseTableTTL": "<p>The number of minutes that an Item is stored in the data source.</p>",
         "DeltaSyncConfig$deltaSyncTableTTL": "<p>The number of minutes that a Delta Sync log entry is stored in the Delta Sync table.</p>",
         "OpenIDConnectConfig$iatTTL": "<p>The number of milliseconds that a token is valid after it's issued to a user.</p>",
@@ -840,7 +1161,8 @@
     "MapOfStringToString": {
       "base": null,
       "refs": {
-        "GraphqlApi$uris": "<p>The URIs.</p>"
+        "GraphqlApi$uris": "<p>The URIs.</p>",
+        "GraphqlApi$dns": "<p>The DNS records for the API.</p>"
       }
     },
     "MappingTemplate": {
@@ -874,6 +1196,7 @@
     "MaxResults": {
       "base": null,
       "refs": {
+        "GetDataSourceIntrospectionRequest$maxResults": "<p>The maximum number of introspected types that will be returned in a single response.</p>",
         "ListApiKeysRequest$maxResults": "<p>The maximum number of results that you want the request to return.</p>",
         "ListDataSourcesRequest$maxResults": "<p>The maximum number of results that you want the request to return.</p>",
         "ListDomainNamesRequest$maxResults": "<p>The maximum number of results that you want the request to return.</p>",
@@ -881,7 +1204,15 @@
         "ListGraphqlApisRequest$maxResults": "<p>The maximum number of results that you want the request to return.</p>",
         "ListResolversByFunctionRequest$maxResults": "<p>The maximum number of results that you want the request to return.</p>",
         "ListResolversRequest$maxResults": "<p>The maximum number of results that you want the request to return.</p>",
+        "ListSourceApiAssociationsRequest$maxResults": "<p>The maximum number of results that you want the request to return.</p>",
+        "ListTypesByAssociationRequest$maxResults": "<p>The maximum number of results that you want the request to return.</p>",
         "ListTypesRequest$maxResults": "<p>The maximum number of results that you want the request to return.</p>"
+      }
+    },
+    "MergeType": {
+      "base": null,
+      "refs": {
+        "SourceApiAssociationConfig$mergeType": "<p>The property that indicates which merging option is enabled in the source API association.</p> <p>Valid merge types are <code>MANUAL_MERGE</code> (default) and <code>AUTO_MERGE</code>. Manual merges are the default behavior and require the user to trigger any changes from the source APIs to the merged API manually. Auto merges subscribe the merged API to the changes performed on the source APIs so that any change in the source APIs are also made to the merged API. Auto merges use <code>MergedApiExecutionRoleArn</code> to perform merge operations.</p>"
       }
     },
     "NotFoundException": {
@@ -912,15 +1243,23 @@
         "GetIntrospectionSchemaRequest$format": "<p>The schema format: SDL or JSON.</p>"
       }
     },
+    "Ownership": {
+      "base": null,
+      "refs": {
+        "ListGraphqlApisRequest$owner": "<p>The account owner of the GraphQL API.</p>"
+      }
+    },
     "PaginationToken": {
       "base": null,
       "refs": {
+        "DataSourceIntrospectionResult$nextToken": "<p>Determines the number of types to be returned in a single response before paginating. This value is typically taken from <code>nextToken</code> value from the previous response.</p>",
+        "GetDataSourceIntrospectionRequest$nextToken": "<p>Determines the number of types to be returned in a single response before paginating. This value is typically taken from <code>nextToken</code> value from the previous response.</p>",
         "ListApiKeysRequest$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
         "ListApiKeysResponse$nextToken": "<p>An identifier to pass in the next request to this operation to return the next set of items in the list.</p>",
         "ListDataSourcesRequest$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
         "ListDataSourcesResponse$nextToken": "<p>An identifier to pass in the next request to this operation to return the next set of items in the list.</p>",
-        "ListDomainNamesRequest$nextToken": "<p>The API token.</p>",
-        "ListDomainNamesResponse$nextToken": "<p>The API token.</p>",
+        "ListDomainNamesRequest$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
+        "ListDomainNamesResponse$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
         "ListFunctionsRequest$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
         "ListFunctionsResponse$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
         "ListGraphqlApisRequest$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
@@ -929,6 +1268,10 @@
         "ListResolversByFunctionResponse$nextToken": "<p>An identifier that you can use to return the next set of items in the list.</p>",
         "ListResolversRequest$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
         "ListResolversResponse$nextToken": "<p>An identifier to pass in the next request to this operation to return the next set of items in the list.</p>",
+        "ListSourceApiAssociationsRequest$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
+        "ListSourceApiAssociationsResponse$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
+        "ListTypesByAssociationRequest$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
+        "ListTypesByAssociationResponse$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
         "ListTypesRequest$nextToken": "<p>An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.</p>",
         "ListTypesResponse$nextToken": "<p>An identifier to pass in the next request to this operation to return the next set of items in the list.</p>"
       }
@@ -939,6 +1282,30 @@
         "CreateResolverRequest$pipelineConfig": "<p>The <code>PipelineConfig</code>.</p>",
         "Resolver$pipelineConfig": "<p>The <code>PipelineConfig</code>.</p>",
         "UpdateResolverRequest$pipelineConfig": "<p>The <code>PipelineConfig</code>.</p>"
+      }
+    },
+    "RdsDataApiConfig": {
+      "base": "<p>Contains the metadata required to introspect the RDS cluster.</p>",
+      "refs": {
+        "StartDataSourceIntrospectionRequest$rdsDataApiConfig": "<p>The <code>rdsDataApiConfig</code> object data.</p>"
+      }
+    },
+    "RdsDataApiConfigDatabaseName": {
+      "base": null,
+      "refs": {
+        "RdsDataApiConfig$databaseName": "<p>The name of the database in the cluster.</p>"
+      }
+    },
+    "RdsDataApiConfigResourceArn": {
+      "base": null,
+      "refs": {
+        "RdsDataApiConfig$resourceArn": "<p>The resource ARN of the RDS cluster.</p>"
+      }
+    },
+    "RdsDataApiConfigSecretArn": {
+      "base": null,
+      "refs": {
+        "RdsDataApiConfig$secretArn": "<p>The secret's ARN that was obtained from Secrets Manager. A secret consists of secret information, the secret value, plus metadata about the secret. A secret value can be a string or binary. It typically includes the ARN, secret name and description, policies, tags, encryption key from the Key Management Service, and key rotation data.</p>"
       }
     },
     "RdsHttpEndpointConfig": {
@@ -1030,11 +1397,66 @@
         "UpdateTypeRequest$typeName": "<p>The new type name.</p>"
       }
     },
+    "RuntimeName": {
+      "base": null,
+      "refs": {
+        "AppSyncRuntime$name": "<p>The <code>name</code> of the runtime to use. Currently, the only allowed value is <code>APPSYNC_JS</code>.</p>"
+      }
+    },
     "SchemaStatus": {
       "base": null,
       "refs": {
         "GetSchemaCreationStatusResponse$status": "<p>The current state of the schema (PROCESSING, FAILED, SUCCESS, or NOT_APPLICABLE). When the schema is in the ACTIVE state, you can add data.</p>",
         "StartSchemaCreationResponse$status": "<p>The current state of the schema (PROCESSING, FAILED, SUCCESS, or NOT_APPLICABLE). When the schema is in the ACTIVE state, you can add data.</p>"
+      }
+    },
+    "SourceApiAssociation": {
+      "base": "<p>Describes the configuration of a source API. A source API is a GraphQL API that is linked to a merged API. There can be multiple source APIs attached to each merged API. When linked to a merged API, the source API's schema, data sources, and resolvers will be combined with other linked source API data to form a new, singular API. </p> <p>Source APIs can originate from your account or from other accounts via Amazon Web Services Resource Access Manager. For more information about sharing resources from other accounts, see <a href=\"https://docs.aws.amazon.com/ram/latest/userguide/what-is.html\">What is Amazon Web Services Resource Access Manager?</a> in the <i>Amazon Web Services Resource Access Manager</i> guide.</p>",
+      "refs": {
+        "AssociateMergedGraphqlApiResponse$sourceApiAssociation": "<p>The <code>SourceApiAssociation</code> object data.</p>",
+        "AssociateSourceGraphqlApiResponse$sourceApiAssociation": "<p>The <code>SourceApiAssociation</code> object data.</p>",
+        "GetSourceApiAssociationResponse$sourceApiAssociation": "<p>The <code>SourceApiAssociation</code> object data.</p>",
+        "UpdateSourceApiAssociationResponse$sourceApiAssociation": "<p>The <code>SourceApiAssociation</code> object data.</p>"
+      }
+    },
+    "SourceApiAssociationConfig": {
+      "base": "<p>Describes properties used to specify configurations related to a source API.</p>",
+      "refs": {
+        "AssociateMergedGraphqlApiRequest$sourceApiAssociationConfig": "<p>The <code>SourceApiAssociationConfig</code> object data.</p>",
+        "AssociateSourceGraphqlApiRequest$sourceApiAssociationConfig": "<p>The <code>SourceApiAssociationConfig</code> object data.</p>",
+        "SourceApiAssociation$sourceApiAssociationConfig": "<p>The <code>SourceApiAssociationConfig</code> object data.</p>",
+        "UpdateSourceApiAssociationRequest$sourceApiAssociationConfig": "<p>The <code>SourceApiAssociationConfig</code> object data.</p>"
+      }
+    },
+    "SourceApiAssociationStatus": {
+      "base": null,
+      "refs": {
+        "DisassociateMergedGraphqlApiResponse$sourceApiAssociationStatus": "<p>The state of the source API association.</p>",
+        "DisassociateSourceGraphqlApiResponse$sourceApiAssociationStatus": "<p>The state of the source API association.</p>",
+        "SourceApiAssociation$sourceApiAssociationStatus": "<p>The state of the source API association.</p>",
+        "StartSchemaMergeResponse$sourceApiAssociationStatus": "<p>The state of the source API association.</p>"
+      }
+    },
+    "SourceApiAssociationSummary": {
+      "base": "<p>Describes the ARNs and IDs of associations, Merged APIs, and source APIs.</p>",
+      "refs": {
+        "SourceApiAssociationSummaryList$member": null
+      }
+    },
+    "SourceApiAssociationSummaryList": {
+      "base": null,
+      "refs": {
+        "ListSourceApiAssociationsResponse$sourceApiAssociationSummaries": "<p>The <code>SourceApiAssociationSummary</code> object data.</p>"
+      }
+    },
+    "StartDataSourceIntrospectionRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "StartDataSourceIntrospectionResponse": {
+      "base": null,
+      "refs": {
       }
     },
     "StartSchemaCreationRequest": {
@@ -1043,6 +1465,16 @@
       }
     },
     "StartSchemaCreationResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "StartSchemaMergeRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "StartSchemaMergeResponse": {
       "base": null,
       "refs": {
       }
@@ -1058,13 +1490,22 @@
         "ApiKeyLimitExceededException$message": null,
         "ApiKeyValidityOutOfBoundsException$message": null,
         "ApiLimitExceededException$message": null,
-        "AssociateApiRequest$apiId": "<p>The API ID.</p>",
+        "AppSyncRuntime$runtimeVersion": "<p>The <code>version</code> of the runtime to use. Currently, the only allowed version is <code>1.0.0</code>.</p>",
+        "AssociateApiRequest$apiId": "<p>The API ID. Private APIs can not be associated with custom domains.</p>",
+        "AssociateMergedGraphqlApiRequest$sourceApiIdentifier": "<p>The identifier of the AppSync Source API. This is generated by the AppSync service. In most cases, source APIs (especially in your account) only require the API ID value or ARN of the source API. However, source APIs from other accounts (cross-account use cases) strictly require the full resource ARN of the source API.</p>",
+        "AssociateMergedGraphqlApiRequest$mergedApiIdentifier": "<p>The identifier of the AppSync Merged API. This is generated by the AppSync service. In most cases, Merged APIs (especially in your account) only require the API ID value or ARN of the merged API. However, Merged APIs in other accounts (cross-account use cases) strictly require the full resource ARN of the merged API.</p>",
+        "AssociateMergedGraphqlApiRequest$description": "<p>The description field.</p>",
+        "AssociateSourceGraphqlApiRequest$mergedApiIdentifier": "<p>The identifier of the AppSync Merged API. This is generated by the AppSync service. In most cases, Merged APIs (especially in your account) only require the API ID value or ARN of the merged API. However, Merged APIs in other accounts (cross-account use cases) strictly require the full resource ARN of the merged API.</p>",
+        "AssociateSourceGraphqlApiRequest$sourceApiIdentifier": "<p>The identifier of the AppSync Source API. This is generated by the AppSync service. In most cases, source APIs (especially in your account) only require the API ID value or ARN of the source API. However, source APIs from other accounts (cross-account use cases) strictly require the full resource ARN of the source API.</p>",
+        "AssociateSourceGraphqlApiRequest$description": "<p>The description field.</p>",
         "AwsIamConfig$signingRegion": "<p>The signing Amazon Web Services Region for IAM authorization.</p>",
         "AwsIamConfig$signingServiceName": "<p>The signing service name for IAM authorization.</p>",
         "CachingKeys$member": null,
+        "CodeError$errorType": "<p>The type of code error. </p> <p>Examples include, but aren't limited to: <code>LINT_ERROR</code>, <code>PARSER_ERROR</code>.</p>",
+        "CodeError$value": "<p>A user presentable error.</p> <p>Examples include, but aren't limited to: <code>Parsing error: Unterminated string literal</code>.</p>",
         "CognitoUserPoolConfig$userPoolId": "<p>The user pool ID.</p>",
         "CognitoUserPoolConfig$awsRegion": "<p>The Amazon Web Services Region in which the user pool was created.</p>",
-        "CognitoUserPoolConfig$appIdClientRegex": "<p>A regular expression for validating the incoming Amazon Cognito user pool app client ID.</p>",
+        "CognitoUserPoolConfig$appIdClientRegex": "<p>A regular expression for validating the incoming Amazon Cognito user pool app client ID. If this value isn't set, no filtering is applied.</p>",
         "CreateApiCacheRequest$apiId": "<p>The GraphQL API ID.</p>",
         "CreateApiKeyRequest$apiId": "<p>The ID for your GraphQL API.</p>",
         "CreateApiKeyRequest$description": "<p>A description of the purpose of the API key.</p>",
@@ -1073,14 +1514,24 @@
         "CreateDataSourceRequest$serviceRoleArn": "<p>The Identity and Access Management (IAM) service role Amazon Resource Name (ARN) for the data source. The system assumes this role when accessing the data source.</p>",
         "CreateFunctionRequest$apiId": "<p>The GraphQL API ID.</p>",
         "CreateFunctionRequest$description": "<p>The <code>Function</code> description.</p>",
-        "CreateFunctionRequest$functionVersion": "<p>The <code>version</code> of the request mapping template. Currently, the supported value is 2018-05-29.</p>",
+        "CreateFunctionRequest$functionVersion": "<p>The <code>version</code> of the request mapping template. Currently, the supported value is 2018-05-29. Note that when using VTL and mapping templates, the <code>functionVersion</code> is required.</p>",
         "CreateGraphqlApiRequest$name": "<p>A user-supplied name for the <code>GraphqlApi</code>.</p>",
+        "CreateGraphqlApiRequest$mergedApiExecutionRoleArn": "<p>The Identity and Access Management service role ARN for a merged API. The AppSync service assumes this role on behalf of the Merged API to validate access to source APIs at runtime and to prompt the <code>AUTO_MERGE</code> to update the merged API endpoint with the source API changes automatically.</p>",
+        "CreateGraphqlApiRequest$ownerContact": "<p>The owner contact information for an API resource.</p> <p>This field accepts any string input with a length of 0 - 256 characters.</p>",
         "CreateResolverRequest$apiId": "<p>The ID for the GraphQL API for which the resolver is being created.</p>",
         "CreateTypeRequest$apiId": "<p>The API ID.</p>",
         "CreateTypeRequest$definition": "<p>The type definition, in GraphQL Schema Definition Language (SDL) format.</p> <p>For more information, see the <a href=\"http://graphql.org/learn/schema/\">GraphQL SDL documentation</a>.</p>",
         "DataSource$dataSourceArn": "<p>The data source Amazon Resource Name (ARN).</p>",
         "DataSource$description": "<p>The description of the data source.</p>",
         "DataSource$serviceRoleArn": "<p>The Identity and Access Management (IAM) service role Amazon Resource Name (ARN) for the data source. The system assumes this role when accessing the data source.</p>",
+        "DataSourceIntrospectionModel$name": "<p>The name of the model. For example, this could be the name of a single table in a database.</p>",
+        "DataSourceIntrospectionModel$sdl": "<p>Contains the output of the SDL that was generated from the introspected types. This is controlled by the <code>includeModelsSDL</code> parameter of the <code>GetDataSourceIntrospection</code> operation.</p>",
+        "DataSourceIntrospectionModelField$name": "<p>The name of the field that was retrieved from the introspected data.</p>",
+        "DataSourceIntrospectionModelFieldType$kind": "<p>Specifies the classification of data. For example, this could be set to values like <code>Scalar</code> or <code>NonNull</code> to indicate a fundamental property of the field.</p> <p>Valid values include:</p> <ul> <li> <p> <code>Scalar</code>: Indicates the value is a primitive type (scalar).</p> </li> <li> <p> <code>NonNull</code>: Indicates the field cannot be <code>null</code>.</p> </li> <li> <p> <code>List</code>: Indicates the field contains a list.</p> </li> </ul>",
+        "DataSourceIntrospectionModelFieldType$name": "<p>The name of the data type that represents the field. For example, <code>String</code> is a valid <code>name</code> value.</p>",
+        "DataSourceIntrospectionModelFieldTypeValues$member": null,
+        "DataSourceIntrospectionModelIndex$name": "<p>The name of the index.</p>",
+        "DataSourceIntrospectionModelIndexFields$member": null,
         "DeleteApiCacheRequest$apiId": "<p>The API ID.</p>",
         "DeleteApiKeyRequest$apiId": "<p>The API ID.</p>",
         "DeleteApiKeyRequest$id": "<p>The ID for the API key.</p>",
@@ -1090,12 +1541,18 @@
         "DeleteResolverRequest$apiId": "<p>The API ID.</p>",
         "DeleteTypeRequest$apiId": "<p>The API ID.</p>",
         "DeltaSyncConfig$deltaSyncTableName": "<p>The Delta Sync table name.</p>",
+        "DisassociateMergedGraphqlApiRequest$sourceApiIdentifier": "<p>The identifier of the AppSync Source API. This is generated by the AppSync service. In most cases, source APIs (especially in your account) only require the API ID value or ARN of the source API. However, source APIs from other accounts (cross-account use cases) strictly require the full resource ARN of the source API.</p>",
+        "DisassociateMergedGraphqlApiRequest$associationId": "<p>The ID generated by the AppSync service for the source API association.</p>",
+        "DisassociateSourceGraphqlApiRequest$mergedApiIdentifier": "<p>The identifier of the AppSync Merged API. This is generated by the AppSync service. In most cases, Merged APIs (especially in your account) only require the API ID value or ARN of the merged API. However, Merged APIs in other accounts (cross-account use cases) strictly require the full resource ARN of the merged API.</p>",
+        "DisassociateSourceGraphqlApiRequest$associationId": "<p>The ID generated by the AppSync service for the source API association.</p>",
         "DomainNameConfig$appsyncDomainName": "<p>The domain name that AppSync provides.</p>",
         "DomainNameConfig$hostedZoneId": "<p>The ID of your Amazon Route 53 hosted zone.</p>",
         "DynamodbDataSourceConfig$tableName": "<p>The table name.</p>",
         "DynamodbDataSourceConfig$awsRegion": "<p>The Amazon Web Services Region.</p>",
         "ElasticsearchDataSourceConfig$endpoint": "<p>The endpoint.</p>",
         "ElasticsearchDataSourceConfig$awsRegion": "<p>The Amazon Web Services Region.</p>",
+        "EvaluateCodeRequest$function": "<p>The function within the code to be evaluated. If provided, the valid values are <code>request</code> and <code>response</code>.</p>",
+        "EventBridgeDataSourceConfig$eventBusArn": "<p>The ARN of the event bus. For more information about event buses, see <a href=\"https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-event-bus.html\">Amazon EventBridge event buses</a>.</p>",
         "FlushApiCacheRequest$apiId": "<p>The API ID.</p>",
         "FunctionConfiguration$functionId": "<p>A unique ID representing the <code>Function</code> object.</p>",
         "FunctionConfiguration$functionArn": "<p>The Amazon Resource Name (ARN) of the <code>Function</code> object.</p>",
@@ -1103,6 +1560,9 @@
         "FunctionConfiguration$functionVersion": "<p>The version of the request mapping template. Currently, only the 2018-05-29 version of the template is supported.</p>",
         "FunctionsIds$member": null,
         "GetApiCacheRequest$apiId": "<p>The API ID.</p>",
+        "GetDataSourceIntrospectionRequest$introspectionId": "<p>The introspection ID. Each introspection contains a unique ID that can be used to reference the instrospection record.</p>",
+        "GetDataSourceIntrospectionResponse$introspectionId": "<p>The introspection ID. Each introspection contains a unique ID that can be used to reference the instrospection record.</p>",
+        "GetDataSourceIntrospectionResponse$introspectionStatusDetail": "<p>The error detail field. When a <code>FAILED</code> <code>introspectionStatus</code> is returned, the <code>introspectionStatusDetail</code> will also return the exact error that was generated during the operation.</p>",
         "GetDataSourceRequest$apiId": "<p>The API ID.</p>",
         "GetFunctionRequest$apiId": "<p>The GraphQL API ID.</p>",
         "GetGraphqlApiRequest$apiId": "<p>The API ID for the GraphQL API.</p>",
@@ -1110,10 +1570,15 @@
         "GetResolverRequest$apiId": "<p>The API ID.</p>",
         "GetSchemaCreationStatusRequest$apiId": "<p>The API ID.</p>",
         "GetSchemaCreationStatusResponse$details": "<p>Detailed information about the status of the schema creation operation.</p>",
+        "GetSourceApiAssociationRequest$mergedApiIdentifier": "<p>The identifier of the AppSync Merged API. This is generated by the AppSync service. In most cases, Merged APIs (especially in your account) only require the API ID value or ARN of the merged API. However, Merged APIs in other accounts (cross-account use cases) strictly require the full resource ARN of the merged API.</p>",
+        "GetSourceApiAssociationRequest$associationId": "<p>The ID generated by the AppSync service for the source API association.</p>",
         "GetTypeRequest$apiId": "<p>The API ID.</p>",
         "GraphqlApi$apiId": "<p>The API ID.</p>",
         "GraphqlApi$arn": "<p>The Amazon Resource Name (ARN).</p>",
         "GraphqlApi$wafWebAclArn": "<p>The ARN of the WAF access control list (ACL) associated with this <code>GraphqlApi</code>, if one exists.</p>",
+        "GraphqlApi$mergedApiExecutionRoleArn": "<p>The Identity and Access Management service role ARN for a merged API. The AppSync service assumes this role on behalf of the Merged API to validate access to source APIs at runtime and to prompt the <code>AUTO_MERGE</code> to update the merged API endpoint with the source API changes automatically.</p>",
+        "GraphqlApi$owner": "<p>The account owner of the GraphQL API.</p>",
+        "GraphqlApi$ownerContact": "<p>The owner contact information for an API resource.</p> <p>This field accepts any string input with a length of 0 - 256 characters.</p>",
         "HttpDataSourceConfig$endpoint": "<p>The HTTP URL endpoint. You can specify either the domain name or IP, and port combination, and the URL scheme must be HTTP or HTTPS. If you don't specify the port, AppSync uses the default port 80 for the HTTP endpoint and port 443 for HTTPS endpoints.</p>",
         "InternalFailureException$message": null,
         "LambdaAuthorizerConfig$authorizerUri": "<p>The Amazon Resource Name (ARN) of the Lambda function to be called for authorization. This can be a standard Lambda ARN, a version ARN (<code>.../v3</code>), or an alias ARN. </p> <p> <b>Note</b>: This Lambda function must have the following resource-based policy assigned to it. When configuring Lambda authorizers in the console, this is done for you. To use the Command Line Interface (CLI), run the following:</p> <p> <code>aws lambda add-permission --function-name \"arn:aws:lambda:us-east-2:111122223333:function:my-function\" --statement-id \"appsync\" --principal appsync.amazonaws.com --action lambda:InvokeFunction</code> </p>",
@@ -1128,8 +1593,12 @@
         "ListResolversByFunctionRequest$functionId": "<p>The function ID.</p>",
         "ListResolversRequest$apiId": "<p>The API ID.</p>",
         "ListResolversRequest$typeName": "<p>The type name.</p>",
+        "ListSourceApiAssociationsRequest$apiId": "<p>The API ID.</p>",
+        "ListTypesByAssociationRequest$mergedApiIdentifier": "<p>The identifier of the AppSync Merged API. This is generated by the AppSync service. In most cases, Merged APIs (especially in your account) only require the API ID value or ARN of the merged API. However, Merged APIs in other accounts (cross-account use cases) strictly require the full resource ARN of the merged API.</p>",
+        "ListTypesByAssociationRequest$associationId": "<p>The ID generated by the AppSync service for the source API association.</p>",
         "ListTypesRequest$apiId": "<p>The API ID.</p>",
         "LogConfig$cloudWatchLogsRoleArn": "<p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>",
+        "Logs$member": null,
         "MapOfStringToString$key": null,
         "MapOfStringToString$value": null,
         "NotFoundException$message": null,
@@ -1143,7 +1612,26 @@
         "RdsHttpEndpointConfig$schema": "<p>Logical schema name.</p>",
         "RdsHttpEndpointConfig$awsSecretStoreArn": "<p>Amazon Web Services secret store Amazon Resource Name (ARN) for database credentials.</p>",
         "Resolver$resolverArn": "<p>The resolver Amazon Resource Name (ARN).</p>",
+        "SourceApiAssociation$associationId": "<p>The ID generated by the AppSync service for the source API association.</p>",
+        "SourceApiAssociation$associationArn": "<p>The Amazon Resource Name (ARN) of the source API association.</p>",
+        "SourceApiAssociation$sourceApiId": "<p>The ID of the AppSync source API.</p>",
+        "SourceApiAssociation$sourceApiArn": "<p>The Amazon Resource Name (ARN) of the AppSync source API.</p>",
+        "SourceApiAssociation$mergedApiArn": "<p>The Amazon Resource Name (ARN) of the AppSync Merged API.</p>",
+        "SourceApiAssociation$mergedApiId": "<p>The ID of the AppSync Merged API.</p>",
+        "SourceApiAssociation$description": "<p>The description field.</p>",
+        "SourceApiAssociation$sourceApiAssociationStatusDetail": "<p>The detailed message related to the current state of the source API association.</p>",
+        "SourceApiAssociationSummary$associationId": "<p>The ID generated by the AppSync service for the source API association.</p>",
+        "SourceApiAssociationSummary$associationArn": "<p>The Amazon Resource Name (ARN) of the source API association.</p>",
+        "SourceApiAssociationSummary$sourceApiId": "<p>The ID of the AppSync source API.</p>",
+        "SourceApiAssociationSummary$sourceApiArn": "<p>The Amazon Resource Name (ARN) of the AppSync Source API.</p>",
+        "SourceApiAssociationSummary$mergedApiId": "<p>The ID of the AppSync Merged API.</p>",
+        "SourceApiAssociationSummary$mergedApiArn": "<p>The Amazon Resource Name (ARN) of the AppSync Merged API.</p>",
+        "SourceApiAssociationSummary$description": "<p>The description field.</p>",
+        "StartDataSourceIntrospectionResponse$introspectionId": "<p>The introspection ID. Each introspection contains a unique ID that can be used to reference the instrospection record.</p>",
+        "StartDataSourceIntrospectionResponse$introspectionStatusDetail": "<p>The error detail field. When a <code>FAILED</code> <code>introspectionStatus</code> is returned, the <code>introspectionStatusDetail</code> will also return the exact error that was generated during the operation.</p>",
         "StartSchemaCreationRequest$apiId": "<p>The API ID.</p>",
+        "StartSchemaMergeRequest$associationId": "<p>The ID generated by the AppSync service for the source API association.</p>",
+        "StartSchemaMergeRequest$mergedApiIdentifier": "<p>The identifier of the AppSync Merged API. This is generated by the AppSync service. In most cases, Merged APIs (especially in your account) only require the API ID value or ARN of the merged API. However, Merged APIs in other accounts (cross-account use cases) strictly require the full resource ARN of the merged API.</p>",
         "Type$description": "<p>The type description.</p>",
         "Type$arn": "<p>The type Amazon Resource Name (ARN).</p>",
         "Type$definition": "<p>The type definition.</p>",
@@ -1157,15 +1645,20 @@
         "UpdateDataSourceRequest$serviceRoleArn": "<p>The new service role Amazon Resource Name (ARN) for the data source.</p>",
         "UpdateFunctionRequest$apiId": "<p>The GraphQL API ID.</p>",
         "UpdateFunctionRequest$description": "<p>The <code>Function</code> description.</p>",
-        "UpdateFunctionRequest$functionVersion": "<p>The <code>version</code> of the request mapping template. Currently, the supported value is 2018-05-29.</p>",
+        "UpdateFunctionRequest$functionVersion": "<p>The <code>version</code> of the request mapping template. Currently, the supported value is 2018-05-29. Note that when using VTL and mapping templates, the <code>functionVersion</code> is required.</p>",
         "UpdateGraphqlApiRequest$apiId": "<p>The API ID.</p>",
         "UpdateGraphqlApiRequest$name": "<p>The new name for the <code>GraphqlApi</code> object.</p>",
+        "UpdateGraphqlApiRequest$mergedApiExecutionRoleArn": "<p>The Identity and Access Management service role ARN for a merged API. The AppSync service assumes this role on behalf of the Merged API to validate access to source APIs at runtime and to prompt the <code>AUTO_MERGE</code> to update the merged API endpoint with the source API changes automatically.</p>",
+        "UpdateGraphqlApiRequest$ownerContact": "<p>The owner contact information for an API resource.</p> <p>This field accepts any string input with a length of 0 - 256 characters.</p>",
         "UpdateResolverRequest$apiId": "<p>The API ID.</p>",
+        "UpdateSourceApiAssociationRequest$associationId": "<p>The ID generated by the AppSync service for the source API association.</p>",
+        "UpdateSourceApiAssociationRequest$mergedApiIdentifier": "<p>The identifier of the AppSync Merged API. This is generated by the AppSync service. In most cases, Merged APIs (especially in your account) only require the API ID value or ARN of the merged API. However, Merged APIs in other accounts (cross-account use cases) strictly require the full resource ARN of the merged API.</p>",
+        "UpdateSourceApiAssociationRequest$description": "<p>The description field.</p>",
         "UpdateTypeRequest$apiId": "<p>The API ID.</p>",
         "UpdateTypeRequest$definition": "<p>The new definition.</p>",
         "UserPoolConfig$userPoolId": "<p>The user pool ID.</p>",
         "UserPoolConfig$awsRegion": "<p>The Amazon Web Services Region in which the user pool was created.</p>",
-        "UserPoolConfig$appIdClientRegex": "<p>A regular expression for validating the incoming Amazon Cognito user pool app client ID.</p>"
+        "UserPoolConfig$appIdClientRegex": "<p>A regular expression for validating the incoming Amazon Cognito user pool app client ID. If this value isn't set, no filtering is applied.</p>"
       }
     },
     "SyncConfig": {
@@ -1182,7 +1675,7 @@
     "TTL": {
       "base": null,
       "refs": {
-        "LambdaAuthorizerConfig$authorizerResultTtlInSeconds": "<p>The number of seconds a response should be cached for. The default is 5 minutes (300 seconds). The Lambda function can override this by returning a <code>ttlOverride</code> key in its response. A value of 0 disables caching of responses.</p>"
+        "LambdaAuthorizerConfig$authorizerResultTtlInSeconds": "<p>The number of seconds a response should be cached for. The default is 0 seconds, which disables caching. If you don't specify a value for <code>authorizerResultTtlInSeconds</code>, the default value is used. The maximum value is one hour (3600 seconds). The Lambda function can override this by returning a <code>ttlOverride</code> key in its response.</p>"
       }
     },
     "TagKey": {
@@ -1223,6 +1716,12 @@
         "TagMap$value": null
       }
     },
+    "Template": {
+      "base": null,
+      "refs": {
+        "EvaluateMappingTemplateRequest$template": "<p>The mapping template; this can be a request or response template. A <code>template</code> is required for this action.</p>"
+      }
+    },
     "Type": {
       "base": "<p>Describes a type.</p>",
       "refs": {
@@ -1237,6 +1736,7 @@
       "refs": {
         "CreateTypeRequest$format": "<p>The type format: SDL or JSON.</p>",
         "GetTypeRequest$format": "<p>The type format: SDL or JSON.</p>",
+        "ListTypesByAssociationRequest$format": "<p>The format type.</p>",
         "ListTypesRequest$format": "<p>The type format: SDL or JSON.</p>",
         "Type$format": "<p>The type format: SDL or JSON.</p>",
         "UpdateTypeRequest$format": "<p>The new type format: SDL or JSON.</p>"
@@ -1245,6 +1745,7 @@
     "TypeList": {
       "base": null,
       "refs": {
+        "ListTypesByAssociationResponse$types": "<p>The <code>Type</code> objects.</p>",
         "ListTypesResponse$types": "<p>The <code>Type</code> objects.</p>"
       }
     },
@@ -1329,6 +1830,16 @@
       }
     },
     "UpdateResolverResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "UpdateSourceApiAssociationRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "UpdateSourceApiAssociationResponse": {
       "base": null,
       "refs": {
       }
